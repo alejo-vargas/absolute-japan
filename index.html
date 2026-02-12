@@ -136,6 +136,8 @@
       animation: heroZoom 20s ease-out forwards;
     }
 
+    .hero-img-mobile { display: none; }
+
     @keyframes heroZoom {
       to { transform: scale(1); }
     }
@@ -890,6 +892,15 @@
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
       .nav-jp { display: none; }
+      .hero { align-items: center; }
+      .hero-content { padding: 0 1.5rem; margin-top: -14vh; }
+      .hero-bg .hero-img-desktop { display: none; }
+      .hero-bg .hero-img-mobile { display: block; }
+      .hero-bg::after {
+        background:
+          linear-gradient(to bottom, var(--bg-primary) 0%, transparent 35%),
+          linear-gradient(to top, var(--bg-primary) 0%, transparent 40%);
+      }
       .section { padding: 5rem 1.5rem; }
       .hero-content { padding: 0 1.5rem 4rem; }
       .hero-scroll { right: 1.5rem; }
@@ -908,9 +919,12 @@
         padding: 1rem 2rem;
       }
     }
+    /* ========== LANGUAGE TOGGLE ========== */
+    body.lang-en .jp-only { display: none; }
+    body.lang-jp .en-only { display: none; }
   </style>
 </head>
-<body>
+<body class="lang-jp">
 
   <!-- Noise overlay -->
   <div class="noise"></div>
@@ -931,7 +945,8 @@
   <!-- Hero -->
   <section class="hero">
     <div class="hero-bg">
-      <img src="https://absoluteracing.net/images/slide/lamborghini-2025.jpg" alt="Absolute Racing Lamborghini">
+      <img src="https://absoluteracing.net/images/slide/lamborghini-2025.jpg" alt="Absolute Racing Lamborghini" class="hero-img-desktop">
+      <img src="mobile top banner.jpg" alt="Absolute Racing" class="hero-img-mobile" style="object-position: 55% 45%; transform: scale(1.25);">
     </div>
     <div class="kanji-watermark">絶対</div>
     <div class="hero-content">
@@ -940,10 +955,13 @@
         ABSOLUTE
         <span class="japan">JAPAN</span>
       </h1>
-      <p class="hero-subtitle-jp">アブソリュート・ジャパン</p>
+      <p class="hero-subtitle-jp">
+        <span class="jp-only">アブソリュート・ジャパン</span>
+        <span class="en-only">Coming Soon</span>
+      </p>
       <p class="hero-tagline">
-        レースで培った情熱と技術を、ストリートへ。<br>
-        東京近郊に、クルマを愛する方のための特別な場所が誕生します。
+        <span class="jp-only">レースで培った情熱と技術を、ストリートへ。<br>東京近郊に、クルマを愛する方のための特別な場所が誕生します。</span>
+        <span class="en-only">Bringing the passion and precision of racing to the street.<br>A destination for those who love cars is coming to Tokyo.</span>
       </p>
     </div>
     <div class="hero-scroll">
@@ -963,25 +981,37 @@
       <div class="offering-card">
         <div class="offering-number">01</div>
         <h3 class="offering-title">DEALERSHIP</h3>
-        <p class="offering-title-jp">ディーラーシップ</p>
+        <p class="offering-title-jp">
+          <span class="jp-only">ディーラーシップ</span>
+          <span class="en-only">Premium Vehicles</span>
+        </p>
         <p class="offering-desc">
-          厳選されたハイパフォーマンスカーを取り扱います。ポルシェ、ランボルギーニ、フェラーリなど、レースの血統を持つ車両を中心に、最高の一台をお届けします。
+          <span class="jp-only">厳選されたハイパフォーマンスカーを取り扱います。ポルシェ、ランボルギーニ、フェラーリなど、レースの血統を持つ車両を中心に、最高の一台をお届けします。</span>
+          <span class="en-only">A curated selection of high-performance cars. Centred on vehicles with racing pedigree — Porsche, Lamborghini, Ferrari and more — we deliver the perfect car for you.</span>
         </p>
       </div>
       <div class="offering-card">
         <div class="offering-number">02</div>
         <h3 class="offering-title">SERVICE CENTER</h3>
-        <p class="offering-title-jp">サービスセンター</p>
+        <p class="offering-title-jp">
+          <span class="jp-only">サービスセンター</span>
+          <span class="en-only">Race-Grade Service</span>
+        </p>
         <p class="offering-desc">
-          レースチームと同じ基準のメンテナンス。エンジニアリングの精度と情熱で、あなたの愛車を最高のコンディションに保ちます。
+          <span class="jp-only">レースチームと同じ基準のメンテナンス。エンジニアリングの精度と情熱で、あなたの愛車を最高のコンディションに保ちます。</span>
+          <span class="en-only">Maintenance to the same standards as our racing team. With engineering precision and passion, we keep your car in peak condition.</span>
         </p>
       </div>
       <div class="offering-card">
         <div class="offering-number">03</div>
         <h3 class="offering-title">AN ELEVATED EXPERIENCE</h3>
-        <p class="offering-title-jp">特別なつながり</p>
+        <p class="offering-title-jp">
+          <span class="jp-only">特別なつながり</span>
+          <span class="en-only">The Inner Circle</span>
+        </p>
         <p class="offering-desc">
-          厳選された最高の車両、レーシングチーム直結のサービス、そしてオーナーだけが体験できる限定イベント。Absolute Japanは、お客様を特別なモータースポーツの世界へお招きします。
+          <span class="jp-only">厳選された最高の車両、レーシングチーム直結のサービス、そしてオーナーだけが体験できる限定イベント。Absolute Japanは、お客様を特別なモータースポーツの世界へお招きします。</span>
+          <span class="en-only">Handpicked cars, service direct from the racing team, and exclusive events only for our owners. Absolute Japan invites you into an extraordinary world of motorsport.</span>
         </p>
       </div>
     </div>
@@ -997,12 +1027,17 @@
         <div class="section-label">Heritage</div>
         <div class="section-label-jp" style="margin-bottom: 1.5rem;">レーシングの血統</div>
         <h2>BORN ON <span>THE TRACK</span></h2>
-        <p class="jp-heading">サーキットで生まれた技術と情熱</p>
-        <p>
-          2010年の設立以来、Absolute Racingはアジアのモータースポーツシーンを牽引してきました。GT World Challenge Asia、ル・マン24時間、鈴鹿10時間 — 世界最高峰のレースで培った経験が、私たちの全てのサービスの基盤です。
+        <p class="jp-heading">
+          <span class="jp-only">サーキットで生まれた技術と情熱</span>
+          <span class="en-only">Precision and passion, born on the circuit</span>
         </p>
         <p>
-          上海、珠海、バンコク、セパンに拠点を持つ私たちが、次の挑戦の地として選んだのが日本です。
+          <span class="jp-only">2010年の設立以来、Absolute Racingはアジアのモータースポーツシーンを牽引してきました。GT World Challenge Asia、ル・マン24時間、鈴鹿10時間 — 世界最高峰のレースで培った経験が、私たちの全てのサービスの基盤です。</span>
+          <span class="en-only">Since 2010, Absolute Racing has been a driving force in Asian motorsport. GT World Challenge Asia, the 24 Hours of Le Mans, the Suzuka 10 Hours — experience from the world's greatest races is the foundation of everything we do.</span>
+        </p>
+        <p>
+          <span class="jp-only">上海、珠海、バンコク、セパンに拠点を持つ私たちが、次の挑戦の地として選んだのが日本です。</span>
+          <span class="en-only">With bases in Shanghai, Zhuhai, Bangkok, and Sepang, Japan was the natural choice for our next chapter.</span>
         </p>
       </div>
     </div>
@@ -1034,9 +1069,13 @@
       <div class="section-label">Our Story in Japan</div>
       <div class="section-label-jp" style="margin-bottom: 1.5rem;">日本との歩み</div>
       <h2>JAPAN IS <span>HOME</span></h2>
-      <p class="jp-heading">日本は、私たちのホームです</p>
+      <p class="jp-heading">
+        <span class="jp-only">日本は、私たちのホームです</span>
+        <span class="en-only">Japan has always been home</span>
+      </p>
       <p>
-        毎年、日本の名門サーキットで戦い続けてきたAbsolute Racing。富士、鈴鹿、岡山 — この地で築いた絆とファンの皆様への感謝が、次の拠点を日本に置くという決断を、自然なものにしました。
+        <span class="jp-only">毎年、日本の名門サーキットで戦い続けてきたAbsolute Racing。富士、鈴鹿、岡山 — この地で築いた絆とファンの皆様への感謝が、次の拠点を日本に置くという決断を、自然なものにしました。</span>
+        <span class="en-only">Year after year, Absolute Racing competes at Japan's most iconic circuits. Fuji, Suzuka, Okayama — the bonds we've built here and our gratitude to Japanese fans made the decision to establish our next base in Japan a natural one.</span>
       </p>
     </div>
     <div class="japan-races reveal">
@@ -1076,7 +1115,10 @@
     <div class="location-content">
       <p class="location-pre">ロケーション / Location</p>
       <h2>NEAR <span class="accent">TOKYO</span></h2>
-      <p class="location-sub">首都圏に新拠点オープン予定 — 詳細は近日発表</p>
+      <p class="location-sub">
+        <span class="jp-only">首都圏に新拠点オープン予定 — 詳細は近日発表</span>
+        <span class="en-only">Opening soon in the Greater Tokyo area — details coming soon</span>
+      </p>
     </div>
   </section>
 
@@ -1110,12 +1152,18 @@
   <!-- CTA -->
   <section class="cta reveal">
     <h2>BE THE FIRST TO KNOW</h2>
-    <p class="jp-sub">最新情報を受け取る</p>
+    <p class="jp-sub">
+      <span class="jp-only">最新情報を受け取る</span>
+      <span class="en-only">Stay in the loop</span>
+    </p>
     <form class="email-form" onsubmit="handleSubmit(event)">
       <input type="email" placeholder="メールアドレスを入力 / Enter your email" required>
       <button type="submit">NOTIFY ME</button>
     </form>
-    <p class="cta-note">スパムは送信しません。オープン情報のみをお届けします。</p>
+    <p class="cta-note">
+      <span class="jp-only">スパムは送信しません。オープン情報のみをお届けします。</span>
+      <span class="en-only">No spam — only opening updates.</span>
+    </p>
   </section>
 
   <!-- Accent stripe -->
@@ -1135,6 +1183,17 @@
   </footer>
 
   <script>
+    // Language toggle
+    const langSwitchers = document.querySelectorAll('.nav-lang');
+    langSwitchers.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.textContent.trim().toLowerCase();
+        document.body.className = document.body.className.replace(/lang-\w+/, 'lang-' + lang);
+        langSwitchers.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
     // Nav scroll effect
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
