@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABSOLUTE JAPAN — アブソリュート・ジャパン | Coming Soon</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- Open Graph / Link Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ABSOLUTE JAPAN — アブソリュート・ジャパン">
+  <meta property="og:description" content="レースで培った情熱と技術を、ストリートへ。東京近郊に、クルマを愛する方のための特別な場所が誕生します。">
+  <meta property="og:image" content="https://alejo-vargas.github.io/absolute-japan/og-image.png">
+  <meta property="og:url" content="https://alejo-vargas.github.io/absolute-japan/">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ABSOLUTE JAPAN — アブソリュート・ジャパン">
+  <meta name="twitter:description" content="レースで培った情熱と技術を、ストリートへ。東京近郊に、クルマを愛する方のための特別な場所が誕生します。">
+  <meta name="twitter:image" content="https://alejo-vargas.github.io/absolute-japan/og-image.png">
+
+  <meta name="description" content="Absolute Japan — Dealership, Service Center & Elevated Experience. Coming soon near Tokyo.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&family=Saira:wght@300;400;500;600;700&family=Shippori+Mincho:wght@400;500;600;700;800&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-primary: #0a0d14;
+      --bg-secondary: #151a25;
+      --bg-tertiary: #1d2330;
+      --accent-gold: #ece711;
+      --accent-red: #e2001a;
+      --text-primary: #ffffff;
+      --text-secondary: #a0a8b8;
+      --text-muted: #5a6275;
+      --font-stencil: 'Saira Stencil One', sans-serif;
+      --font-body: 'Saira', sans-serif;
+      --font-jp: 'Shippori Mincho', serif;
+      --font-jp-sans: 'Zen Kaku Gothic New', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ========== NAV ========== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 1.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s, backdrop-filter 0.4s;
+    }
+
+    nav.scrolled {
+      background: rgba(10, 13, 20, 0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .nav-logo {
+      height: 38px;
+      filter: brightness(1.1);
+    }
+
+    .nav-jp {
+      font-family: var(--font-jp);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.15em;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-lang {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .nav-lang:hover, .nav-lang.active {
+      color: var(--accent-gold);
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      filter: brightness(0.45) contrast(1.1) saturate(0.9);
+      transform: scale(1.05);
+      animation: heroZoom 20s ease-out forwards;
+    }
+
+    @keyframes heroZoom {
+      to { transform: scale(1); }
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, var(--bg-primary) 0%, transparent 50%),
+        linear-gradient(to right, rgba(10,13,20,0.8) 0%, transparent 60%),
+        linear-gradient(135deg, rgba(10,13,20,0.4) 0%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 3rem 6rem;
+      max-width: 900px;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-jp-sans);
+      font-size: 0.8rem;
+      font-weight: 300;
+      letter-spacing: 0.5em;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s 0.5s ease-out forwards;
+    }
+
+    .hero-title {
+      font-family: var(--font-stencil);
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.15em;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 1s 0.7s ease-out forwards;
+    }
+
+    .hero-title .japan {
+      display: block;
+      color: var(--accent-gold);
+      font-size: 1.15em;
+      margin-top: -0.05em;
+    }
+
+    .hero-subtitle-jp {
+      font-family: var(--font-jp);
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      font-weight: 400;
+      color: var(--text-secondary);
+      letter-spacing: 0.25em;
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s 1s ease-out forwards;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      letter-spacing: 0.08em;
+      line-height: 1.7;
+      max-width: 480px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s 1.2s ease-out forwards;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      right: 3rem;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 1.8s ease-out forwards;
+    }
+
+    .hero-scroll span {
+      font-family: var(--font-jp-sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--text-muted);
+      writing-mode: vertical-rl;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, var(--accent-gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 1; transform: scaleY(1); }
+      50% { opacity: 0.4; transform: scaleY(0.6); }
+    }
+
+    /* ========== KANJI WATERMARK ========== */
+    .kanji-watermark {
+      position: absolute;
+      top: 50%;
+      right: -5%;
+      transform: translateY(-50%);
+      font-family: var(--font-jp);
+      font-size: clamp(10rem, 30vw, 25rem);
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.02);
+      line-height: 1;
+      writing-mode: vertical-rl;
+      z-index: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ========== SECTION COMMON ========== */
+    .section {
+      padding: 8rem 3rem;
+      position: relative;
+    }
+
+    .section-label {
+      font-family: var(--font-stencil);
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-label-jp {
+      font-family: var(--font-jp);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.3em;
+      margin-bottom: 3rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== OFFERINGS ========== */
+    .offerings {
+      background: var(--bg-secondary);
+    }
+
+    .offerings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin-top: 1rem;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .offering-card {
+      background: var(--bg-secondary);
+      padding: 3.5rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.5s;
+      cursor: default;
+    }
+
+    .offering-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent-gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .offering-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .offering-card:hover {
+      background: var(--bg-tertiary);
+    }
+
+    .offering-number {
+      font-family: var(--font-stencil);
+      font-size: 3.5rem;
+      color: rgba(236, 231, 17, 0.08);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .offering-title {
+      font-family: var(--font-stencil);
+      font-size: 1.3rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .offering-title-jp {
+      font-family: var(--font-jp);
+      font-size: 0.85rem;
+      color: var(--accent-gold);
+      letter-spacing: 0.2em;
+      margin-bottom: 1.5rem;
+    }
+
+    .offering-desc {
+      font-family: var(--font-jp-sans);
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.9;
+      letter-spacing: 0.03em;
+    }
+
+    /* ========== HERITAGE ========== */
+    .heritage {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .heritage-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .heritage-image {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+
+    .heritage-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: contrast(1.05) saturate(0.95);
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .heritage-image:hover img {
+      transform: scale(1.05);
+    }
+
+    .heritage-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(236, 231, 17, 0.15);
+      pointer-events: none;
+    }
+
+    .heritage-text h2 {
+      font-family: var(--font-stencil);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .heritage-text h2 span {
+      color: var(--accent-gold);
+    }
+
+    .heritage-text .jp-heading {
+      font-family: var(--font-jp);
+      font-size: 1rem;
+      color: var(--text-muted);
+      letter-spacing: 0.2em;
+      margin-bottom: 2rem;
+    }
+
+    .heritage-text p {
+      font-family: var(--font-jp-sans);
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 2;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.03em;
+    }
+
+    /* ========== STATS ========== */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.03);
+      margin: 4rem 0 0;
+    }
+
+    .stat-item {
+      padding: 2.5rem 2rem;
+      text-align: center;
+      background: var(--bg-primary);
+    }
+
+    .stat-number {
+      font-family: var(--font-stencil);
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--accent-gold);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-family: var(--font-jp-sans);
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    /* ========== GALLERY ========== */
+    .gallery {
+      background: var(--bg-secondary);
+      overflow: hidden;
+    }
+
+    .gallery-strip {
+      display: flex;
+      gap: 1px;
+      margin: 0 -3rem;
+      animation: gallerySlide 40s linear infinite;
+    }
+
+    .gallery-strip img {
+      height: 320px;
+      width: auto;
+      min-width: 480px;
+      object-fit: cover;
+      filter: brightness(0.7) contrast(1.05) saturate(0.9);
+      transition: filter 0.5s;
+      flex-shrink: 0;
+    }
+
+    .gallery-strip img:hover {
+      filter: brightness(0.9) contrast(1.05) saturate(1.1);
+    }
+
+    @keyframes gallerySlide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ========== LOCATION ========== */
+    .location {
+      text-align: center;
+      padding: 10rem 3rem;
+      position: relative;
+    }
+
+    .location-kanji {
+      font-family: var(--font-jp);
+      font-size: clamp(6rem, 18vw, 14rem);
+      font-weight: 800;
+      color: rgba(255,255,255,0.025);
+      line-height: 1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .location-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .location-pre {
+      font-family: var(--font-jp);
+      font-size: 0.85rem;
+      letter-spacing: 0.4em;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .location h2 {
+      font-family: var(--font-stencil);
+      font-size: clamp(3rem, 8vw, 7rem);
+      line-height: 0.95;
+      letter-spacing: 0.05em;
+    }
+
+    .location h2 .accent {
+      color: var(--accent-gold);
+    }
+
+    .location-sub {
+      font-family: var(--font-jp-sans);
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      letter-spacing: 0.15em;
+      margin-top: 1.5rem;
+    }
+
+    /* ========== CTA ========== */
+    .cta {
+      background: var(--bg-secondary);
+      text-align: center;
+      padding: 8rem 3rem;
+      position: relative;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 80px;
+      background: linear-gradient(to bottom, transparent, var(--accent-gold));
+    }
+
+    .cta h2 {
+      font-family: var(--font-stencil);
+      font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .cta .jp-sub {
+      font-family: var(--font-jp);
+      font-size: 1rem;
+      color: var(--text-muted);
+      letter-spacing: 0.3em;
+      margin-bottom: 3rem;
+    }
+
+    .email-form {
+      display: flex;
+      max-width: 520px;
+      margin: 0 auto;
+      gap: 0;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: border-color 0.3s;
+    }
+
+    .email-form:focus-within {
+      border-color: var(--accent-gold);
+    }
+
+    .email-form input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 1.1rem 1.5rem;
+      font-family: var(--font-jp-sans);
+      font-size: 0.85rem;
+      color: var(--text-primary);
+      letter-spacing: 0.05em;
+      outline: none;
+    }
+
+    .email-form input::placeholder {
+      color: var(--text-muted);
+      font-family: var(--font-jp-sans);
+      font-weight: 300;
+    }
+
+    .email-form button {
+      background: var(--accent-gold);
+      border: none;
+      padding: 1.1rem 2rem;
+      font-family: var(--font-stencil);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--bg-primary);
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      white-space: nowrap;
+    }
+
+    .email-form button:hover {
+      background: #fff;
+    }
+
+    .email-form button:active {
+      transform: scale(0.97);
+    }
+
+    .cta-note {
+      font-family: var(--font-jp-sans);
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      margin-top: 1.5rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      padding: 4rem 3rem 3rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      height: 28px;
+      opacity: 0.5;
+    }
+
+    .footer-divider {
+      width: 1px;
+      height: 28px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .footer-brand {
+      font-family: var(--font-stencil);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+
+    .footer-right {
+      text-align: right;
+    }
+
+    .footer-right a {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .footer-right a:hover {
+      color: var(--accent-gold);
+    }
+
+    .footer-copy {
+      font-family: var(--font-jp-sans);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ========== JAPAN HOME ========== */
+    .japan-home {
+      background: var(--bg-secondary);
+      overflow: hidden;
+    }
+
+    .japan-home-header {
+      max-width: 700px;
+      margin-bottom: 3.5rem;
+    }
+
+    .japan-home-header h2 {
+      font-family: var(--font-stencil);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .japan-home-header h2 span {
+      color: var(--accent-gold);
+    }
+
+    .japan-home-header .jp-heading {
+      font-family: var(--font-jp);
+      font-size: 1rem;
+      color: var(--text-muted);
+      letter-spacing: 0.2em;
+      margin-bottom: 1.5rem;
+    }
+
+    .japan-home-header p {
+      font-family: var(--font-jp-sans);
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 2;
+      letter-spacing: 0.03em;
+    }
+
+    .japan-races {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .race-card {
+      position: relative;
+      overflow: hidden;
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      aspect-ratio: 3/4;
+    }
+
+    .race-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.55) contrast(1.05) saturate(0.9);
+      transition: filter 0.6s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .race-card:hover img {
+      filter: brightness(0.7) contrast(1.05) saturate(1.1);
+      transform: scale(1.05);
+    }
+
+    .race-card-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+      background: linear-gradient(to top, rgba(10,13,20,0.9) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .race-card-circuit {
+      font-family: var(--font-stencil);
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.2rem;
+    }
+
+    .race-card-circuit-jp {
+      font-family: var(--font-jp);
+      font-size: 0.85rem;
+      color: var(--accent-gold);
+      letter-spacing: 0.2em;
+      margin-bottom: 0.75rem;
+    }
+
+    .race-card-date {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .race-card-arrow {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      transition: border-color 0.3s, color 0.3s, transform 0.3s;
+      pointer-events: none;
+    }
+
+    .race-card:hover .race-card-arrow {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+      transform: translate(3px, -3px);
+    }
+
+    @media (max-width: 768px) {
+      .japan-races {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .race-card {
+        aspect-ratio: 16/9;
+      }
+    }
+
+    /* ========== RED ACCENT STRIPE ========== */
+    .accent-stripe {
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-red), var(--accent-gold));
+    }
+
+    /* ========== NOISE OVERLAY ========== */
+    .noise {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
+
+    /* ========== ANIMATIONS ========== */
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+      .offerings-grid {
+        grid-template-columns: 1fr;
+      }
+      .heritage-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-jp { display: none; }
+      .section { padding: 5rem 1.5rem; }
+      .hero-content { padding: 0 1.5rem 4rem; }
+      .hero-scroll { right: 1.5rem; }
+      .stats-bar { grid-template-columns: 1fr 1fr; }
+      .gallery-strip img { height: 220px; min-width: 330px; }
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+      }
+      .footer-right { text-align: left; }
+      .email-form {
+        flex-direction: column;
+      }
+      .email-form button {
+        padding: 1rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Noise overlay -->
+  <div class="noise"></div>
+
+  <!-- Nav -->
+  <nav id="nav">
+    <div class="footer-left">
+      <img src="https://absoluteracing.net/images/assets/ar-logo.png" alt="Absolute Racing" class="nav-logo">
+      <div class="footer-divider"></div>
+      <span class="nav-jp">ジャパン</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-lang active">JP</span>
+      <span class="nav-lang">EN</span>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="https://absoluteracing.net/images/slide/lamborghini-2025.jpg" alt="Absolute Racing Lamborghini">
+    </div>
+    <div class="kanji-watermark">絶対</div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Since 2010 — Racing Heritage</div>
+      <h1 class="hero-title">
+        ABSOLUTE
+        <span class="japan">JAPAN</span>
+      </h1>
+      <p class="hero-subtitle-jp">アブソリュート・ジャパン</p>
+      <p class="hero-tagline">
+        レースで培った情熱と技術を、ストリートへ。<br>
+        東京近郊に、クルマを愛する方のための特別な場所が誕生します。
+      </p>
+    </div>
+    <div class="hero-scroll">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Accent stripe -->
+  <div class="accent-stripe"></div>
+
+  <!-- Offerings -->
+  <section class="offerings section">
+    <div class="section-label reveal">What We're Building</div>
+    <div class="section-label-jp reveal">事業内容</div>
+    <div class="offerings-grid reveal">
+      <div class="offering-card">
+        <div class="offering-number">01</div>
+        <h3 class="offering-title">DEALERSHIP</h3>
+        <p class="offering-title-jp">ディーラーシップ</p>
+        <p class="offering-desc">
+          厳選されたハイパフォーマンスカーを取り扱います。ポルシェ、ランボルギーニ、フェラーリなど、レースの血統を持つ車両を中心に、最高の一台をお届けします。
+        </p>
+      </div>
+      <div class="offering-card">
+        <div class="offering-number">02</div>
+        <h3 class="offering-title">SERVICE CENTER</h3>
+        <p class="offering-title-jp">サービスセンター</p>
+        <p class="offering-desc">
+          レースチームと同じ基準のメンテナンス。エンジニアリングの精度と情熱で、あなたの愛車を最高のコンディションに保ちます。
+        </p>
+      </div>
+      <div class="offering-card">
+        <div class="offering-number">03</div>
+        <h3 class="offering-title">AN ELEVATED EXPERIENCE</h3>
+        <p class="offering-title-jp">特別なつながり</p>
+        <p class="offering-desc">
+          厳選された最高の車両、レーシングチーム直結のサービス、そしてオーナーだけが体験できる限定イベント。Absolute Japanは、お客様を特別なモータースポーツの世界へお招きします。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Heritage -->
+  <section class="heritage section">
+    <div class="heritage-grid">
+      <div class="heritage-image reveal">
+        <img src="absolute.jpg" alt="Absolute Racing">
+      </div>
+      <div class="heritage-text reveal">
+        <div class="section-label">Heritage</div>
+        <div class="section-label-jp" style="margin-bottom: 1.5rem;">レーシングの血統</div>
+        <h2>BORN ON <span>THE TRACK</span></h2>
+        <p class="jp-heading">サーキットで生まれた技術と情熱</p>
+        <p>
+          2010年の設立以来、Absolute Racingはアジアのモータースポーツシーンを牽引してきました。GT World Challenge Asia、ル・マン24時間、鈴鹿10時間 — 世界最高峰のレースで培った経験が、私たちの全てのサービスの基盤です。
+        </p>
+        <p>
+          上海、珠海、バンコク、セパンに拠点を持つ私たちが、次の挑戦の地として選んだのが日本です。
+        </p>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-bar reveal">
+      <div class="stat-item">
+        <div class="stat-number" data-target="15">0</div>
+        <div class="stat-label">Years of Racing</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="100">0</div>
+        <div class="stat-label">Race Victories</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="4">0</div>
+        <div class="stat-label">Asian Bases</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="3">0</div>
+        <div class="stat-label">Championships</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Japan is Home -->
+  <section class="japan-home section">
+    <div class="japan-home-header reveal">
+      <div class="section-label">Our Story in Japan</div>
+      <div class="section-label-jp" style="margin-bottom: 1.5rem;">日本との歩み</div>
+      <h2>JAPAN IS <span>HOME</span></h2>
+      <p class="jp-heading">日本は、私たちのホームです</p>
+      <p>
+        毎年、日本の名門サーキットで戦い続けてきたAbsolute Racing。富士、鈴鹿、岡山 — この地で築いた絆とファンの皆様への感謝が、次の拠点を日本に置くという決断を、自然なものにしました。
+      </p>
+    </div>
+    <div class="japan-races reveal">
+      <a href="https://absoluteracing.net/gallery/202508-okayama-japan.html" target="_blank" rel="noopener" class="race-card">
+        <img src="okayama 2.jpg" alt="Okayama International Circuit" style="object-position: 65% 30%;">
+        <div class="race-card-overlay">
+          <div class="race-card-circuit">OKAYAMA</div>
+          <div class="race-card-circuit-jp">岡山国際サーキット</div>
+          <div class="race-card-date">August 2025</div>
+        </div>
+        <div class="race-card-arrow">&#8599;</div>
+      </a>
+      <a href="https://absoluteracing.net/gallery/202507-fuji-japan.html" target="_blank" rel="noopener" class="race-card">
+        <img src="fuji.jpg" alt="Fuji Speedway" style="object-position: 75% 80%;">
+        <div class="race-card-overlay">
+          <div class="race-card-circuit">FUJI</div>
+          <div class="race-card-circuit-jp">富士スピードウェイ</div>
+          <div class="race-card-date">July 2025</div>
+        </div>
+        <div class="race-card-arrow">&#8599;</div>
+      </a>
+      <a href="https://absoluteracing.net/gallery/202407-suzuka-japan.html" target="_blank" rel="noopener" class="race-card">
+        <img src="https://absoluteracing.net/images/gallery/202407-suzuka-japan/01.jpg" alt="Suzuka Circuit">
+        <div class="race-card-overlay">
+          <div class="race-card-circuit">SUZUKA</div>
+          <div class="race-card-circuit-jp">鈴鹿サーキット</div>
+          <div class="race-card-date">July 2024</div>
+        </div>
+        <div class="race-card-arrow">&#8599;</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section class="location section reveal">
+    <div class="location-kanji">東京</div>
+    <div class="location-content">
+      <p class="location-pre">ロケーション / Location</p>
+      <h2>NEAR <span class="accent">TOKYO</span></h2>
+      <p class="location-sub">首都圏に新拠点オープン予定 — 詳細は近日発表</p>
+    </div>
+  </section>
+
+  <!-- Gallery strip -->
+  <section class="gallery section" style="padding-left: 0; padding-right: 0;">
+    <div style="padding: 0 3rem;">
+      <div class="section-label reveal">Gallery</div>
+      <div class="section-label-jp reveal">ギャラリー</div>
+    </div>
+    <div class="gallery-strip">
+      <img src="https://absoluteracing.net/images/gallery/202507-fuji-japan/05.jpg" alt="Fuji Speedway">
+      <img src="https://absoluteracing.net/images/gallery/202407-suzuka-japan/03.jpg" alt="Suzuka Circuit">
+      <img src="https://absoluteracing.net/images/gallery/202508-okayama-japan/07.jpg" alt="Okayama International Circuit">
+      <img src="https://absoluteracing.net/images/gallery/202507-fuji-japan/12.jpg" alt="Fuji Speedway">
+      <img src="https://absoluteracing.net/images/gallery/202408-okayama-japan/04.jpg" alt="Okayama International Circuit">
+      <img src="https://absoluteracing.net/images/gallery/202407-suzuka-japan/10.jpg" alt="Suzuka Circuit">
+      <img src="https://absoluteracing.net/images/gallery/202508-okayama-japan/15.jpg" alt="Okayama International Circuit">
+      <img src="https://absoluteracing.net/images/gallery/202507-fuji-japan/20.jpg" alt="Fuji Speedway">
+      <!-- Duplicate for infinite scroll -->
+      <img src="https://absoluteracing.net/images/gallery/202507-fuji-japan/05.jpg" alt="Fuji Speedway">
+      <img src="https://absoluteracing.net/images/gallery/202407-suzuka-japan/03.jpg" alt="Suzuka Circuit">
+      <img src="https://absoluteracing.net/images/gallery/202508-okayama-japan/07.jpg" alt="Okayama International Circuit">
+      <img src="https://absoluteracing.net/images/gallery/202507-fuji-japan/12.jpg" alt="Fuji Speedway">
+      <img src="https://absoluteracing.net/images/gallery/202408-okayama-japan/04.jpg" alt="Okayama International Circuit">
+      <img src="https://absoluteracing.net/images/gallery/202407-suzuka-japan/10.jpg" alt="Suzuka Circuit">
+      <img src="https://absoluteracing.net/images/gallery/202508-okayama-japan/15.jpg" alt="Okayama International Circuit">
+      <img src="https://absoluteracing.net/images/gallery/202507-fuji-japan/20.jpg" alt="Fuji Speedway">
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta reveal">
+    <h2>BE THE FIRST TO KNOW</h2>
+    <p class="jp-sub">最新情報を受け取る</p>
+    <form class="email-form" onsubmit="handleSubmit(event)">
+      <input type="email" placeholder="メールアドレスを入力 / Enter your email" required>
+      <button type="submit">NOTIFY ME</button>
+    </form>
+    <p class="cta-note">スパムは送信しません。オープン情報のみをお届けします。</p>
+  </section>
+
+  <!-- Accent stripe -->
+  <div class="accent-stripe"></div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-left">
+      <img src="https://absoluteracing.net/images/assets/ar-logo.png" alt="Absolute Racing" class="footer-logo">
+      <div class="footer-divider"></div>
+      <span class="footer-brand">ABSOLUTE JAPAN</span>
+    </div>
+    <div class="footer-right">
+      <a href="https://absoluteracing.net" target="_blank" rel="noopener">absoluteracing.net</a>
+      <p class="footer-copy">&copy; 2026 Absolute Racing. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 100);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // Counter animation
+    const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.target);
+          const duration = 2000;
+          const start = performance.now();
+
+          function update(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.round(eased * target) + '+';
+            if (progress < 1) requestAnimationFrame(update);
+          }
+          requestAnimationFrame(update);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    statNumbers.forEach(el => counterObserver.observe(el));
+
+    // Email form
+    function handleSubmit(e) {
+      e.preventDefault();
+      const input = e.target.querySelector('input');
+      const btn = e.target.querySelector('button');
+      btn.textContent = '登録完了 ✓';
+      btn.style.background = '#22c55e';
+      input.value = '';
+      setTimeout(() => {
+        btn.textContent = 'NOTIFY ME';
+        btn.style.background = '';
+      }, 3000);
+    }
+
+    // Pause gallery on hover
+    const galleryStrip = document.querySelector('.gallery-strip');
+    galleryStrip.addEventListener('mouseenter', () => {
+      galleryStrip.style.animationPlayState = 'paused';
+    });
+    galleryStrip.addEventListener('mouseleave', () => {
+      galleryStrip.style.animationPlayState = 'running';
+    });
+  </script>
+
+</body>
+</html>
