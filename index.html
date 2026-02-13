@@ -273,8 +273,8 @@
 
     .section-label {
       font-family: var(--font-stencil);
-      font-size: 0.7rem;
-      letter-spacing: 0.4em;
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      letter-spacing: 0.2em;
       color: var(--accent-gold);
       text-transform: uppercase;
       margin-bottom: 0.5rem;
@@ -282,7 +282,7 @@
 
     .section-label-jp {
       font-family: var(--font-jp);
-      font-size: 0.75rem;
+      font-size: clamp(1rem, 2vw, 1.3rem);
       color: var(--text-muted);
       letter-spacing: 0.3em;
       margin-bottom: 3rem;
@@ -359,7 +359,7 @@
 
     .offering-title-jp {
       font-family: var(--font-jp);
-      font-size: 0.85rem;
+      font-size: 1.1rem;
       color: var(--accent-gold);
       letter-spacing: 0.2em;
       margin-bottom: 1.5rem;
@@ -367,7 +367,7 @@
 
     .offering-desc {
       font-family: var(--font-jp-sans);
-      font-size: 0.85rem;
+      font-size: 1.05rem;
       font-weight: 300;
       color: var(--text-secondary);
       line-height: 1.9;
@@ -534,7 +534,7 @@
 
     .location-pre {
       font-family: var(--font-jp);
-      font-size: 0.85rem;
+      font-size: 1.15rem;
       letter-spacing: 0.4em;
       color: var(--text-muted);
       margin-bottom: 1.5rem;
@@ -553,7 +553,7 @@
 
     .location-sub {
       font-family: var(--font-jp-sans);
-      font-size: 0.9rem;
+      font-size: 1.2rem;
       font-weight: 300;
       color: var(--text-secondary);
       letter-spacing: 0.15em;
@@ -588,7 +588,7 @@
 
     .cta .jp-sub {
       font-family: var(--font-jp);
-      font-size: 1rem;
+      font-size: 1.3rem;
       color: var(--text-muted);
       letter-spacing: 0.3em;
       margin-bottom: 3rem;
@@ -648,7 +648,7 @@
 
     .cta-note {
       font-family: var(--font-jp-sans);
-      font-size: 0.7rem;
+      font-size: 1rem;
       font-weight: 300;
       color: var(--text-muted);
       margin-top: 1.5rem;
@@ -976,7 +976,7 @@
   <!-- Offerings -->
   <section class="offerings section">
     <div class="section-label reveal">What We're Building</div>
-    <div class="section-label-jp reveal">事業内容</div>
+    <div class="section-label-jp reveal">プロジェクト概要</div>
     <div class="offerings-grid reveal">
       <div class="offering-card">
         <div class="offering-number">01</div>
