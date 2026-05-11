@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vehicle Sourcing &amp; Export — Absolute Japan</title>
+<meta name="description" content="Vehicle sourcing and export from Japan for international dealers, importers, collectors and serious buyers. Inspected in Japan. Condition guaranteed. Shipped with care." />
+
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="shortcut icon" href="favicon.ico">
+
+<!-- Open Graph / Link Preview -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vehicle Sourcing &amp; Export — Absolute Japan">
+<meta property="og:description" content="For international dealers, importers, collectors and serious buyers. Inspected in Japan. Condition guaranteed. Shipped with care.">
+<meta property="og:image" content="https://www.absoluteracing.jp/og-image.png">
+<meta property="og:url" content="https://www.absoluteracing.jp/exports.html">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vehicle Sourcing &amp; Export — Absolute Japan">
+<meta name="twitter:description" content="For international dealers, importers, collectors and serious buyers. Inspected in Japan. Condition guaranteed. Shipped with care.">
+<meta name="twitter:image" content="https://www.absoluteracing.jp/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&family=Saira+Stencil+One&family=Saira:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg-primary:    #0a0d14;
+    --bg-secondary:  #151a25;
+    --bg-tertiary:   #1d2330;
+    --accent-gold:   #ece711;
+    --accent-red:    #e2001a;
+    --text-primary:  #ffffff;
+    --text-secondary:#b8bfcc;
+    --text-muted:    #8a92a0;
+    --line:          rgba(255,255,255,0.10);
+    --line-2:        rgba(255,255,255,0.28);
+
+    --font-stencil: 'Saira Stencil One', sans-serif;
+    --font-body:    'Saira', sans-serif;
+    --font-display: 'Inter', 'Saira', sans-serif;
+
+    --maxw: 1320px;
+  }
+
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+  /* === SKIP LINK (a11y) === */
+  .skip-link {
+    position: absolute; top: -100px; left: 0;
+    background: var(--accent-gold); color: var(--bg-primary);
+    font-family: var(--font-body); font-weight: 700;
+    font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.9rem 1.4rem; z-index: 10000;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 0; outline: none; }
+
+  /* === NOISE OVERLAY === */
+  .noise {
+    position: fixed; inset: 0; z-index: 9999; pointer-events: none;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px;
+  }
+
+  /* === NAV === */
+  nav {
+    position: fixed; top: 0; left: 0; width: 100%;
+    z-index: 100;
+    padding: 1.5rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: background 0.4s, backdrop-filter 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(10,13,20,0.9);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .nav-left { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-logo { height: 38px; filter: brightness(1.1); }
+  .nav-divider { width: 1px; height: 28px; background: rgba(255,255,255,0.1); }
+  .nav-wordmark {
+    font-family: var(--font-stencil);
+    font-size: 0.85rem; letter-spacing: 0.18em;
+    color: var(--text-secondary);
+  }
+  .nav-right { display: flex; align-items: center; gap: 2rem; }
+  .nav-lang {
+    font-family: var(--font-body);
+    font-size: 0.78rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.2em;
+    color: var(--text-secondary); cursor: pointer;
+    transition: color 0.3s;
+    background: none; border: none;
+    padding: 0.5rem 0.4rem;
+  }
+  .nav-lang.active { color: var(--accent-gold); }
+  .nav-lang:hover, .nav-lang:focus-visible { color: var(--accent-gold); outline: none; }
+  .nav-lang:focus-visible { box-shadow: 0 0 0 2px rgba(236,231,17,0.4); }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-wordmark, .nav-divider { display: none; }
+  }
+
+  /* === HERO === */
+  .hero {
+    position: relative; height: 100vh; min-height: 700px;
+    display: flex; align-items: flex-end;
+    overflow: hidden;
+  }
+  .hero-bg { position: absolute; inset: 0; z-index: 0; }
+  .hero-bg img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center 50%;
+    filter: brightness(0.45) contrast(1.1) saturate(0.9);
+    transform: scale(1.05);
+    animation: heroZoom 20s ease-out forwards;
+  }
+  @keyframes heroZoom { to { transform: scale(1); } }
+  .hero-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background:
+      linear-gradient(to top, var(--bg-primary) 0%, transparent 50%),
+      linear-gradient(to right, rgba(10,13,20,0.8) 0%, transparent 60%),
+      linear-gradient(135deg, rgba(10,13,20,0.4) 0%, transparent 100%);
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 3rem 6rem;
+    max-width: 1100px;
+    width: 100%;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.8rem; font-weight: 300;
+    letter-spacing: 0.5em; color: var(--accent-gold);
+    text-transform: uppercase; margin-bottom: 1.8rem;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.8s 0.4s ease-out forwards;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.2rem, 5vw, 4.5rem);
+    line-height: 1.05; letter-spacing: -0.025em;
+    margin-bottom: 0.5rem;
+    opacity: 0; transform: translateY(40px);
+    animation: fadeUp 1s 0.6s ease-out forwards;
+  }
+  .hero-title .accent { color: var(--accent-gold); }
+  .hero-tagline {
+    font-family: var(--font-body);
+    font-size: 1.05rem; font-weight: 300;
+    color: var(--text-secondary);
+    letter-spacing: 0.06em; line-height: 1.7;
+    max-width: 620px; margin-top: 1.5rem; margin-bottom: 2.5rem;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.8s 0.9s ease-out forwards;
+  }
+  .hero-ctas {
+    display: flex; gap: 2.5rem; flex-wrap: wrap; align-items: center;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.8s 1.1s ease-out forwards;
+  }
+  .cta-primary {
+    background: var(--accent-gold); color: var(--bg-primary);
+    font-family: var(--font-body);
+    font-size: 0.85rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 1.15rem 2.4rem;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .cta-primary:hover { background: #fff; }
+  .cta-primary:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(236,231,17,0.4); }
+  .cta-primary:active { transform: scale(0.97); }
+  .cta-email {
+    font-family: var(--font-body);
+    font-size: 0.9rem; font-weight: 500;
+    letter-spacing: 0.06em; color: var(--text-primary);
+    padding: 1.15rem 0; border-bottom: 1px solid var(--line-2);
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: color 0.3s, border-color 0.3s;
+  }
+  .cta-email:hover, .cta-email:focus-visible { color: var(--accent-gold); border-color: var(--accent-gold); outline: none; }
+
+  .hero-scroll {
+    position: absolute; bottom: 2rem; right: 3rem;
+    z-index: 2;
+    display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
+    opacity: 0; animation: fadeUp 0.8s 1.5s ease-out forwards;
+  }
+  .hero-scroll span {
+    font-family: var(--font-body);
+    font-size: 0.65rem; letter-spacing: 0.3em;
+    color: var(--text-muted); writing-mode: vertical-rl;
+  }
+  .scroll-line {
+    width: 1px; height: 60px;
+    background: linear-gradient(to bottom, var(--accent-gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 1; transform: scaleY(1); }
+    50%      { opacity: 0.4; transform: scaleY(0.6); }
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (max-width: 768px) {
+    .hero-content { padding: 0 1.5rem 4rem; }
+    .hero-scroll { right: 1.5rem; }
+  }
+
+  /* === ACCENT STRIPE === */
+  .accent-stripe {
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-red), var(--accent-gold));
+  }
+
+  /* === CREDIBILITY STRIP === */
+  .strip {
+    background: var(--bg-secondary);
+    padding: 1.8rem 3rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .strip-inner {
+    max-width: var(--maxw); margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1.5rem;
+  }
+  .strip-item {
+    font-family: var(--font-body);
+    font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--text-secondary);
+    display: flex; align-items: center; gap: 0.7rem;
+  }
+  .strip-item .dot { width: 4px; height: 4px; background: var(--accent-gold); border-radius: 50%; }
+
+  /* === SECTION SHELL === */
+  section.block { padding: 8rem 3rem; position: relative; }
+  @media (max-width: 768px) { section.block { padding: 5rem 1.5rem; } }
+
+  .section-inner { max-width: var(--maxw); margin: 0 auto; }
+
+  .section-label {
+    font-family: var(--font-stencil);
+    font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+    letter-spacing: 0.18em; color: var(--accent-gold);
+    text-transform: uppercase; margin-bottom: 0.4rem;
+  }
+  .section-sub {
+    font-family: var(--font-body);
+    font-size: 0.75rem; font-weight: 400;
+    letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 3rem;
+  }
+
+  .section-head h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2rem, 4.5vw, 3.8rem);
+    line-height: 1.05; letter-spacing: -0.025em;
+    margin-bottom: 1.4rem;
+  }
+  .section-head h2 .accent { color: var(--accent-gold); }
+  .section-head h2 .muted { color: var(--text-muted); }
+  .section-head p.lede {
+    font-family: var(--font-body); font-weight: 300;
+    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+    color: var(--text-secondary); line-height: 1.8;
+    max-width: 720px;
+  }
+
+  /* === THE GAP === */
+  .compare {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin: 3rem 0 2.5rem;
+  }
+  .compare-col { padding: 3rem 3rem 3.5rem; position: relative; }
+  .compare-col + .compare-col { border-left: 1px solid var(--line); }
+  .compare-col h4 {
+    font-family: var(--font-stencil);
+    font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 2rem; font-weight: 400;
+  }
+  .compare-col.left h4  { color: var(--text-muted); }
+  .compare-col.right h4 { color: var(--accent-gold); }
+  .compare-list { list-style: none; padding: 0; }
+  .compare-list li {
+    padding: 1rem 0;
+    font-family: var(--font-body); font-weight: 400;
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    line-height: 1.4;
+    border-bottom: 1px solid var(--line);
+    letter-spacing: 0.02em;
+  }
+  .compare-list li:last-child { border-bottom: none; }
+  .compare-col.left li { color: var(--text-secondary); }
+  .compare-col.right li { color: var(--text-primary); font-weight: 500; }
+
+  .gap-close {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 1.4vw, 1.3rem);
+    font-weight: 400; line-height: 1.55;
+    max-width: 940px;
+    color: var(--text-primary);
+  }
+  .gap-close .muted { color: var(--text-secondary); }
+
+  @media (max-width: 800px) {
+    .compare { grid-template-columns: 1fr; }
+    .compare-col + .compare-col { border-left: none; border-top: 1px solid var(--line); }
+    .compare-col { padding: 2.5rem 1.5rem; }
+  }
+
+  /* === WHAT WE DO === */
+  .offerings { background: var(--bg-secondary); }
+  .offerings-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: rgba(255,255,255,0.05);
+    margin-top: 2.5rem;
+  }
+  .offering-card {
+    background: var(--bg-secondary);
+    padding: 3.5rem 2.5rem;
+    position: relative; overflow: hidden;
+    transition: background 0.5s;
+  }
+  .offering-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: var(--accent-gold);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .offering-card:hover::before { transform: scaleX(1); }
+  .offering-card:hover { background: var(--bg-tertiary); }
+  .offering-number {
+    font-family: var(--font-stencil);
+    font-size: 3.5rem; line-height: 1;
+    color: rgba(236, 231, 17, 0.08);
+    margin-bottom: 1.2rem;
+  }
+  .offering-title {
+    font-family: var(--font-stencil);
+    font-size: 1.3rem; letter-spacing: 0.05em;
+    margin-bottom: 0.4rem;
+  }
+  .offering-kicker {
+    font-family: var(--font-body); font-weight: 500;
+    font-size: 0.7rem; letter-spacing: 0.28em;
+    text-transform: uppercase; color: var(--accent-gold);
+    margin-bottom: 1.6rem;
+  }
+  .offering-desc {
+    font-family: var(--font-body); font-weight: 300;
+    font-size: 1rem; color: var(--text-secondary);
+    line-height: 1.9; letter-spacing: 0.02em;
+  }
+  @media (max-width: 1024px) {
+    .offerings-grid { grid-template-columns: 1fr; }
+  }
+
+  /* === VEHICLE COVERAGE === */
+  .coverage-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: rgba(255,255,255,0.05);
+    margin-top: 3rem;
+  }
+  .cov-card {
+    position: relative; aspect-ratio: 4/5; overflow: hidden;
+    background: var(--bg-tertiary);
+  }
+  .cov-card .img {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s;
+    filter: brightness(0.55) contrast(1.05) saturate(0.95);
+  }
+  .cov-card:hover .img { transform: scale(1.06); filter: brightness(0.8) saturate(1.05); }
+  .cov-card .body {
+    position: relative; z-index: 2;
+    padding: 1.8rem 1.6rem;
+    height: 100%;
+    display: flex; flex-direction: column; justify-content: space-between;
+    background: linear-gradient(180deg, transparent 30%, rgba(10,13,20,0.92) 100%);
+  }
+  .cov-card .num {
+    align-self: flex-start;
+    font-family: var(--font-stencil);
+    font-size: 0.75rem; letter-spacing: 0.22em; color: var(--text-primary);
+    padding: 0.3rem 0.6rem;
+    border: 1px solid var(--line-2);
+    background: rgba(10,13,20,0.45);
+    backdrop-filter: blur(8px);
+  }
+  .cov-card h3 {
+    font-family: var(--font-stencil);
+    font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+    letter-spacing: 0.04em; line-height: 1.15;
+    text-transform: uppercase;
+  }
+  @media (max-width: 1100px) { .coverage-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 700px)  { .coverage-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  .coverage-close {
+    margin-top: 3rem; padding-top: 2rem;
+    border-top: 1px solid var(--line);
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 1.4vw, 1.25rem);
+    color: var(--text-secondary); line-height: 1.55;
+    max-width: 940px;
+  }
+  .coverage-close strong { color: var(--text-primary); font-weight: 600; }
+
+  /* === HOW WE WORK === */
+  .process {
+    margin-top: 3rem;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: rgba(255,255,255,0.05);
+  }
+  .step {
+    background: var(--bg-secondary);
+    padding: 2.5rem 2rem 3rem;
+    transition: background 0.4s;
+  }
+  .step:hover { background: var(--bg-tertiary); }
+  .step .num {
+    font-family: var(--font-stencil);
+    font-size: 0.85rem; letter-spacing: 0.22em;
+    color: var(--accent-gold);
+    margin-bottom: 2.5rem;
+  }
+  .step h3 {
+    font-family: var(--font-stencil);
+    font-size: 1.15rem; letter-spacing: 0.04em;
+    text-transform: uppercase; line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .step p {
+    font-family: var(--font-body); font-weight: 300;
+    font-size: 0.92rem; color: var(--text-secondary);
+    line-height: 1.85;
+  }
+  @media (max-width: 900px) {
+    .process { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 500px) {
+    .process { grid-template-columns: 1fr; }
+  }
+
+  /* === HERITAGE / WHY ABSOLUTE === */
+  .heritage {
+    position: relative; overflow: hidden;
+    background: var(--bg-primary);
+  }
+  .heritage-grid {
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  .heritage-image {
+    position: relative; overflow: hidden;
+    aspect-ratio: 4/3;
+  }
+  .heritage-image img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: contrast(1.05) saturate(0.95);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .heritage-image:hover img { transform: scale(1.05); }
+  .heritage-image::after {
+    content: ''; position: absolute; inset: 0;
+    border: 1px solid rgba(236,231,17,0.15);
+    pointer-events: none;
+  }
+  .heritage-text h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.9rem, 3.6vw, 3rem); line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin-bottom: 1.5rem;
+  }
+  .heritage-text h2 .accent { color: var(--accent-gold); }
+  .heritage-text p {
+    font-family: var(--font-body); font-weight: 300;
+    font-size: 0.95rem; color: var(--text-secondary);
+    line-height: 2; margin-bottom: 1.5rem; letter-spacing: 0.02em;
+  }
+  .heritage-text p.lede {
+    color: var(--text-primary); font-weight: 400;
+    font-size: 1.1rem; line-height: 1.7;
+  }
+  @media (max-width: 1024px) {
+    .heritage-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .heritage-image { aspect-ratio: 16/9; }
+  }
+
+  /* === CONTACT === */
+  .contact {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--line);
+  }
+  .contact-head { text-align: center; margin-bottom: 3.5rem; }
+  .contact-head h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.1; letter-spacing: -0.025em;
+    margin-bottom: 1rem;
+  }
+  .contact-head p {
+    font-family: var(--font-body); font-weight: 300;
+    font-size: 1rem; color: var(--text-secondary);
+    line-height: 1.7; max-width: 620px;
+    margin: 0 auto;
+  }
+
+  .contact-email-row {
+    text-align: center; margin-bottom: 3.5rem;
+    padding: 1.6rem 2rem;
+    border-top: 1px solid var(--line-2);
+    border-bottom: 1px solid var(--line-2);
+    max-width: 720px; margin-left: auto; margin-right: auto;
+  }
+  .contact-email-row .label {
+    font-family: var(--font-body);
+    font-size: 0.7rem; letter-spacing: 0.32em;
+    color: var(--text-muted); text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .contact-email-row a {
+    font-family: var(--font-stencil);
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    letter-spacing: 0.05em; color: var(--accent-gold);
+    transition: color 0.3s;
+  }
+  .contact-email-row a:hover { color: #fff; }
+  .contact-email-row .note {
+    font-family: var(--font-body); font-weight: 400;
+    font-size: 0.82rem; color: var(--text-secondary);
+    margin-top: 0.5rem; letter-spacing: 0.03em;
+  }
+
+  .form-wrap { max-width: 720px; margin: 0 auto; }
+  .form-section { margin-bottom: 2.5rem; }
+  .form-section-title {
+    font-family: var(--font-stencil);
+    font-size: 0.85rem; letter-spacing: 0.2em;
+    color: var(--accent-gold); text-transform: uppercase;
+    margin-bottom: 1.4rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid var(--line-2);
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .form-section-title .num {
+    color: var(--text-secondary); font-size: 0.75rem;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.4rem; }
+  .form-row.single { grid-template-columns: 1fr; }
+  .field { display: flex; flex-direction: column; position: relative; }
+  .field label {
+    font-family: var(--font-body); font-weight: 600;
+    font-size: 0.72rem; letter-spacing: 0.16em;
+    color: var(--text-secondary); margin-bottom: 0.7rem;
+    text-transform: uppercase;
+  }
+  .field label .req { color: var(--accent-red); margin-left: 4px; }
+  .field input, .field select, .field textarea {
+    background: var(--bg-primary);
+    border: 1px solid var(--line-2);
+    color: var(--text-primary);
+    padding: 0.95rem 1.1rem;
+    font-family: var(--font-body); font-size: 0.95rem;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  }
+  .field input::placeholder, .field textarea::placeholder { color: var(--text-muted); }
+  .field input:focus, .field select:focus, .field textarea:focus,
+  .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible {
+    outline: none; border-color: var(--accent-gold); background: var(--bg-tertiary);
+    box-shadow: 0 0 0 2px rgba(236,231,17,0.25);
+  }
+  .field textarea { resize: vertical; min-height: 110px; }
+  .field select option { background: var(--bg-primary); color: var(--text-primary); }
+  @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
+  .checks {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem 1.5rem;
+  }
+  .check {
+    display: flex; align-items: center; gap: 0.7rem;
+    font-family: var(--font-body); font-size: 0.9rem;
+    color: var(--text-secondary); cursor: pointer;
+    padding: 0.55rem 0;
+    min-height: 44px;
+  }
+  .check input { accent-color: var(--accent-gold); width: 16px; height: 16px; cursor: pointer; }
+  .check input:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 2px; }
+  @media (max-width: 600px) { .checks { grid-template-columns: 1fr; } }
+
+  .form-submit { margin-top: 1.5rem; text-align: center; }
+  .submit-btn {
+    background: var(--accent-gold); color: var(--bg-primary);
+    font-family: var(--font-body);
+    font-size: 0.85rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 1.15rem 3rem;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .submit-btn:hover { background: #fff; }
+  .submit-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(236,231,17,0.4); }
+  .submit-btn:active { transform: scale(0.97); }
+  .submit-btn[disabled] { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .form-disclaimer {
+    margin-top: 1.2rem;
+    font-family: var(--font-body); font-weight: 400;
+    font-size: 0.78rem; color: var(--text-secondary);
+    letter-spacing: 0.03em; line-height: 1.5;
+  }
+  .form-status {
+    margin-top: 1rem;
+    font-family: var(--font-body); font-size: 0.85rem;
+    letter-spacing: 0.04em;
+  }
+  .form-status.ok { color: var(--accent-gold); }
+  .form-status.err { color: var(--accent-red); }
+
+  /* sr-only utility */
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  /* === FOOTER === */
+  footer {
+    padding: 4rem 3rem 3rem;
+    display: flex; align-items: flex-end; justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .footer-left { display: flex; align-items: center; gap: 1.5rem; }
+  .footer-logo { height: 28px; opacity: 0.5; }
+  .footer-divider { width: 1px; height: 28px; background: rgba(255,255,255,0.1); }
+  .footer-brand {
+    font-family: var(--font-stencil);
+    font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text-muted);
+  }
+  .footer-right { text-align: right; }
+  .footer-right a {
+    font-family: var(--font-body);
+    font-size: 0.78rem; font-weight: 500;
+    letter-spacing: 0.15em; color: var(--text-secondary);
+    text-transform: uppercase; transition: color 0.3s;
+  }
+  .footer-right a:hover, .footer-right a:focus-visible { color: var(--accent-gold); outline: none; }
+  .footer-copy {
+    font-family: var(--font-body); font-weight: 400;
+    font-size: 0.72rem; color: var(--text-secondary);
+    margin-top: 0.5rem; letter-spacing: 0.05em;
+  }
+  @media (max-width: 768px) {
+    footer { flex-direction: column; align-items: flex-start; gap: 2rem; }
+    .footer-right { text-align: left; }
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Skip link for keyboard nav -->
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- Noise overlay -->
+<div class="noise" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-left">
+    <a href="/" aria-label="Absolute Racing — home">
+      <img src="https://absoluteracing.net/images/assets/ar-logo.png" alt="Absolute Racing" class="nav-logo">
+    </a>
+  </div>
+  <div class="nav-right">
+    <button type="button" class="nav-lang active" aria-pressed="true" aria-label="English (current language)">EN</button>
+    <button type="button" class="nav-lang" aria-pressed="false" aria-label="Switch to Japanese" title="日本語版近日公開 — Japanese version coming soon">JP</button>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-bg">
+    <img src="images/exports/hero.jpg" alt="Absolute Japan dealer showroom — premium vehicles arranged in a curated display">
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Vehicle Sourcing &amp; Export</p>
+    <h1 class="hero-title" id="hero-title">
+      Inspected In Japan.<br/>
+      <span class="accent">Condition Guaranteed.</span><br/>
+      Shipped With Care.
+    </h1>
+    <p class="hero-tagline">
+      For international dealers, importers, collectors and serious buyers. Backed by Absolute Racing's 15+ years operating across Asia — and on the ground in Japan.
+    </p>
+    <div class="hero-ctas">
+      <a class="cta-primary" href="#contact">Submit an Inquiry →</a>
+      <a class="cta-email" href="mailto:exports@absoluteracing.jp">exports@absoluteracing.jp</a>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ACCENT STRIPE -->
+<div class="accent-stripe" aria-hidden="true"></div>
+
+<!-- CREDIBILITY STRIP -->
+<div class="strip">
+  <div class="strip-inner">
+    <div class="strip-item"><span class="dot" aria-hidden="true"></span>Since 2010</div>
+    <div class="strip-item"><span class="dot" aria-hidden="true"></span>Le Mans 24h</div>
+    <div class="strip-item"><span class="dot" aria-hidden="true"></span>GT World Challenge Asia</div>
+    <div class="strip-item"><span class="dot" aria-hidden="true"></span>Suzuka 10 Hours</div>
+    <div class="strip-item"><span class="dot" aria-hidden="true"></span>Tokyo · Shanghai · Bangkok · Sepang</div>
+  </div>
+</div>
+
+<!-- THE GAP -->
+<section class="block" aria-labelledby="gap-title">
+  <div class="section-inner">
+    <p class="section-label">01 · The Market vs. Absolute</p>
+    <div class="section-head">
+      <h2 id="gap-title"><span class="muted">Access To Japan Is Easy.</span><br/>Buying Well Is Not.</h2>
+    </div>
+    <div class="compare">
+      <div class="compare-col left">
+        <h4>What most exporters give you</h4>
+        <ul class="compare-list">
+          <li>Auction listings</li>
+          <li>FOB pricing</li>
+          <li>Documents</li>
+          <li>Shipping</li>
+        </ul>
+      </div>
+      <div class="compare-col right">
+        <h4>What you actually need</h4>
+        <ul class="compare-list">
+          <li>Pre-auction inspection</li>
+          <li>Post-auction inspection</li>
+          <li>Cure-or-refund guarantee</li>
+          <li>End-to-end accountability</li>
+        </ul>
+      </div>
+    </div>
+    <p class="gap-close">
+      <span class="muted">Auction sheets, photos and faster inspections leave too many blind spots after shipping.</span>
+      Absolute is built for the part of the market that other exporters don't cover.
+    </p>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="block offerings" aria-labelledby="offerings-title">
+  <div class="section-inner">
+    <p class="section-label">02 · What We Do</p>
+    <div class="section-head">
+      <h2 id="offerings-title">Three Things,<br/><span class="accent">Done Properly.</span></h2>
+      <p class="lede">The expertise and judgment in premium vehicles that most exporters don't have.</p>
+    </div>
+    <div class="offerings-grid">
+      <article class="offering-card">
+        <div class="offering-number" aria-hidden="true">01</div>
+        <h3 class="offering-title">LOCAL INSPECTION</h3>
+        <p class="offering-kicker">On-the-ground verification</p>
+        <p class="offering-desc">Japan-side specialists verify each vehicle before and after auction — beyond what auction sheets and photos can show.</p>
+      </article>
+      <article class="offering-card">
+        <div class="offering-number" aria-hidden="true">02</div>
+        <h3 class="offering-title">CONDITION GUARANTEE</h3>
+        <p class="offering-kicker">Cure or refund</p>
+        <p class="offering-desc">If our post-auction inspection finds the car isn't as represented, we cure the issue at our cost — or refund your money. The risk of what listings can't show sits with us, not you.</p>
+      </article>
+      <article class="offering-card">
+        <div class="offering-number" aria-hidden="true">03</div>
+        <h3 class="offering-title">EXPORT EXECUTION</h3>
+        <p class="offering-kicker">End to end, delivered</p>
+        <p class="offering-desc">Documentation, export paperwork, shipping, and clear communication coordinated through to delivery.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- VEHICLE COVERAGE -->
+<section class="block" aria-labelledby="coverage-title">
+  <div class="section-inner">
+    <p class="section-label">03 · Vehicle Coverage</p>
+    <div class="section-head">
+      <h2 id="coverage-title">Different Lanes.<br/><span class="accent">Same Standard.</span></h2>
+      <p class="lede">We don't try to cover everything. These are the categories where we deliver real value because we know the cars, the market, and the buyer.</p>
+    </div>
+    <div class="coverage-grid">
+      <article class="cov-card">
+        <div class="img" role="img" aria-label="Dealer Supply" style="background-image:url('images/exports/coverage-01-dealer.jpg');"></div>
+        <div class="body">
+          <span class="num">01</span>
+          <h3>Dealer Supply</h3>
+        </div>
+      </article>
+      <article class="cov-card">
+        <div class="img" role="img" aria-label="JDM and Performance" style="background-image:url('images/exports/coverage-02-jdm.jpg');"></div>
+        <div class="body">
+          <span class="num">02</span>
+          <h3>JDM &amp; Performance</h3>
+        </div>
+      </article>
+      <article class="cov-card">
+        <div class="img" role="img" aria-label="European Luxury" style="background-image:url('images/exports/coverage-03-european.jpg');"></div>
+        <div class="body">
+          <span class="num">03</span>
+          <h3>European Luxury</h3>
+        </div>
+      </article>
+      <article class="cov-card">
+        <div class="img" role="img" aria-label="Supercars and Hypercars" style="background-image:url('images/exports/coverage-04-supercars.jpg');"></div>
+        <div class="body">
+          <span class="num">04</span>
+          <h3>Supercars &amp; Hypercars</h3>
+        </div>
+      </article>
+      <article class="cov-card">
+        <div class="img" role="img" aria-label="Classics and Antiques" style="background-image:url('images/exports/coverage-05-classics.jpg');"></div>
+        <div class="body">
+          <span class="num">05</span>
+          <h3>Classics &amp; Antiques</h3>
+        </div>
+      </article>
+      <article class="cov-card">
+        <div class="img" role="img" aria-label="Motorcycles" style="background-image:url('images/exports/coverage-06-motorcycles.jpg');"></div>
+        <div class="body">
+          <span class="num">06</span>
+          <h3>Motorcycles</h3>
+        </div>
+      </article>
+      <article class="cov-card">
+        <div class="img" role="img" aria-label="Race Cars" style="background-image:url('images/exports/coverage-07-race.jpg');"></div>
+        <div class="body">
+          <span class="num">07</span>
+          <h3>Race Cars</h3>
+        </div>
+      </article>
+      <article class="cov-card">
+        <div class="img" role="img" aria-label="Special Requests" style="background-image:url('images/exports/coverage-08-special.jpg');"></div>
+        <div class="body">
+          <span class="num">08</span>
+          <h3>Special Requests</h3>
+        </div>
+      </article>
+    </div>
+    <p class="coverage-close">
+      <strong>We don't sell everything to everyone.</strong> The goal is to be the trusted Japan source for a limited number of selected partners.
+    </p>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section class="block" style="background: var(--bg-secondary);" aria-labelledby="process-title">
+  <div class="section-inner">
+    <p class="section-label">04 · How We Work</p>
+    <div class="section-head">
+      <h2 id="process-title">A Clear <span class="accent">Six-Step</span> Process.</h2>
+      <p class="lede">Built to reduce risk for our partners. No surprises, no scope creep, no theatre.</p>
+    </div>
+    <ol class="process">
+      <li class="step">
+        <div class="num">01 — BRIEF</div>
+        <h3>Understand the goal</h3>
+        <p>We confirm your target vehicles, market, destination, budget, and timing.</p>
+      </li>
+      <li class="step">
+        <div class="num">02 — SOURCE</div>
+        <h3>Identify the right cars</h3>
+        <p>Auction access, dealer networks, and private listings — filtered by fit, not volume.</p>
+      </li>
+      <li class="step">
+        <div class="num">03 — PRE-AUCTION</div>
+        <h3>Inspect before bidding</h3>
+        <p>Japan-side inspection on shortlisted cars before any bid is placed.</p>
+      </li>
+      <li class="step">
+        <div class="num">04 — POST-AUCTION</div>
+        <h3>Verify after winning</h3>
+        <p>Full condition inspection after the auction and before purchase is confirmed.</p>
+      </li>
+      <li class="step">
+        <div class="num">05 — GUARANTEE</div>
+        <h3>Cure or refund</h3>
+        <p>If anything material is off versus what was represented, we cure it at our cost or refund.</p>
+      </li>
+      <li class="step">
+        <div class="num">06 — DELIVERY</div>
+        <h3>End to end</h3>
+        <p>Documentation, export paperwork, shipping, and communication through to delivery.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- HERITAGE / WHY ABSOLUTE -->
+<section class="block heritage" aria-labelledby="heritage-title">
+  <div class="section-inner">
+    <p class="section-label">05 · Backed by Absolute Racing</p>
+    <div class="heritage-grid">
+      <div class="heritage-text">
+        <h2 id="heritage-title">Motorsport Discipline,<br/><span class="accent">Applied To Trading.</span></h2>
+        <p class="lede">Not just access to Japan — accountability on the ground in Japan.</p>
+        <p>After 15+ years handling high-value automotive assets through Absolute Racing, we're formalizing that experience into a dedicated trading business — beginning with exports from Japan.</p>
+        <p>The same precision and honesty that runs our race operations runs how we handle every car: detail, trust, and execution from purchase through to delivery.</p>
+      </div>
+      <div class="heritage-image">
+        <img src="images/exports/heritage.jpg" alt="Motorsport paddock — Absolute Racing context">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="block contact" id="contact" aria-labelledby="contact-title">
+  <div class="section-inner">
+    <div style="text-align: center;">
+      <p class="section-label">06 · Get in Touch</p>
+    </div>
+    <div class="contact-head">
+      <h2 id="contact-title">Tell Us What You're <span style="color: var(--accent-gold);">Looking For.</span></h2>
+      <p>The more specific your brief, the more useful our first reply. We respond personally within one business day.</p>
+    </div>
+
+    <div class="contact-email-row">
+      <p class="label">Email Us Directly</p>
+      <a href="mailto:exports@absoluteracing.jp">exports@absoluteracing.jp</a>
+      <p class="note">Or use the form below — we'll route it straight to the Japan team.</p>
+    </div>
+
+    <div class="form-wrap">
+      <form id="inquiry-form" novalidate>
+
+        <div class="form-section">
+          <p class="form-section-title"><span class="num">01</span> About You</p>
+          <div class="form-row">
+            <div class="field">
+              <label for="f-name">Full Name <span class="req" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+              <input type="text" id="f-name" name="name" required placeholder="Your full name" autocomplete="name" />
+            </div>
+            <div class="field">
+              <label for="f-company">Company</label>
+              <input type="text" id="f-company" name="company" placeholder="Optional" autocomplete="organization" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="f-role">I am a <span class="req" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+              <select id="f-role" name="role" required>
+                <option value="">— Select —</option>
+                <option>Dealer</option>
+                <option>Importer</option>
+                <option>Collector / Enthusiast</option>
+                <option>Trading Partner</option>
+                <option>Motorbike Specialist</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-destination">Destination Market <span class="req" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+              <input type="text" id="f-destination" name="destination" required placeholder="e.g. Singapore, UAE, Germany" autocomplete="country-name" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="f-email">Email <span class="req" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+              <input type="email" id="f-email" name="email" required placeholder="you@company.com" autocomplete="email" />
+            </div>
+            <div class="field">
+              <label for="f-phone">Phone / WhatsApp</label>
+              <input type="tel" id="f-phone" name="phone" placeholder="+ country code" autocomplete="tel" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <p class="form-section-title"><span class="num">02</span> What You're Looking For</p>
+          <fieldset class="form-row single" style="border:0;padding:0;">
+            <legend class="sr-only">Vehicle Interest</legend>
+            <div class="field">
+              <p style="font-family:var(--font-body);font-weight:600;font-size:0.72rem;letter-spacing:0.16em;color:var(--text-secondary);margin-bottom:0.7rem;text-transform:uppercase;">Vehicle Interest</p>
+              <div class="checks">
+                <label class="check"><input type="checkbox" name="interest" value="jdm" /> JDM &amp; Performance</label>
+                <label class="check"><input type="checkbox" name="interest" value="european" /> European Luxury</label>
+                <label class="check"><input type="checkbox" name="interest" value="supercars" /> Supercars &amp; Hypercars</label>
+                <label class="check"><input type="checkbox" name="interest" value="classics" /> Classics &amp; Antiques</label>
+                <label class="check"><input type="checkbox" name="interest" value="motorcycles" /> Motorcycles</label>
+                <label class="check"><input type="checkbox" name="interest" value="race" /> Race Cars</label>
+                <label class="check"><input type="checkbox" name="interest" value="dealer" /> Dealer Supply (volume)</label>
+                <label class="check"><input type="checkbox" name="interest" value="special" /> Special Request</label>
+              </div>
+            </div>
+          </fieldset>
+          <div class="form-row">
+            <div class="field">
+              <label for="f-budget">Indicative Budget per Vehicle</label>
+              <select id="f-budget" name="budget">
+                <option value="">— Select —</option>
+                <option>Under $50k</option>
+                <option>$50k – $150k</option>
+                <option>$150k – $500k</option>
+                <option>$500k+</option>
+                <option>Prefer not to say</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-timing">Timing <span class="req" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+              <select id="f-timing" name="timing" required>
+                <option value="">— Select —</option>
+                <option>Immediate / actively buying</option>
+                <option>1 – 3 months</option>
+                <option>Exploratory</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row single">
+            <div class="field">
+              <label for="f-brief">Specific Vehicles or Brief</label>
+              <textarea id="f-brief" name="brief" placeholder="Make · model · year · spec · volume · condition requirements..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Honeypot -->
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;" />
+
+        <div class="form-submit">
+          <button type="submit" class="submit-btn" id="submit-btn">Send Inquiry →</button>
+          <p class="form-disclaimer">We respond personally within 1 business day (Japan time, GMT+9).</p>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ACCENT STRIPE -->
+<div class="accent-stripe" aria-hidden="true"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <img src="https://absoluteracing.net/images/assets/ar-logo.png" alt="Absolute Racing" class="footer-logo">
+    <div class="footer-divider"></div>
+    <span class="footer-brand">ABSOLUTE JAPAN</span>
+  </div>
+  <div class="footer-right">
+    <a href="https://absoluteracing.net" target="_blank" rel="noopener">absoluteracing.net</a>
+    <p class="footer-copy">© 2026 Absolute Racing. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll background
+  const nav = document.getElementById('nav');
+  function onScroll() {
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Form: mailto fallback (no backend yet)
+  const form = document.getElementById('inquiry-form');
+  const statusEl = document.getElementById('form-status');
+  const submitBtn = document.getElementById('submit-btn');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Honeypot
+    if (form.elements['website'].value) {
+      statusEl.textContent = '';
+      return;
+    }
+
+    // Native validation
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const data = new FormData(form);
+    const interests = data.getAll('interest').join(', ') || '—';
+
+    const subject = encodeURIComponent('Vehicle Inquiry — ' + (data.get('name') || ''));
+    const bodyLines = [
+      'Name: ' + (data.get('name') || ''),
+      'Company: ' + (data.get('company') || '—'),
+      'Role: ' + (data.get('role') || ''),
+      'Destination: ' + (data.get('destination') || ''),
+      'Email: ' + (data.get('email') || ''),
+      'Phone: ' + (data.get('phone') || '—'),
+      '',
+      'Interest: ' + interests,
+      'Budget: ' + (data.get('budget') || '—'),
+      'Timing: ' + (data.get('timing') || ''),
+      '',
+      'Brief:',
+      (data.get('brief') || '—')
+    ];
+    const body = encodeURIComponent(bodyLines.join('\n'));
+
+    submitBtn.disabled = true;
+    statusEl.className = 'form-status ok';
+    statusEl.textContent = 'Opening your email client…';
+
+    window.location.href = 'mailto:exports@absoluteracing.jp?subject=' + subject + '&body=' + body;
+
+    setTimeout(function () {
+      submitBtn.disabled = false;
+      statusEl.textContent = "If your email client didn't open, write to exports@absoluteracing.jp directly.";
+    }, 1500);
+  });
+</script>
+
+</body>
+</html>
