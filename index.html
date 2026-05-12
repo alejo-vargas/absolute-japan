@@ -109,8 +109,10 @@
       color: var(--accent-gold);
     }
 
-    /* Nav-resident Exports link — sits inside .footer-left after
-       the JP wordmark, reading as Absolute · Japan · Exports. */
+    /* Nav-resident Exports link — sits inside .nav-left (rendered
+       via .footer-left in the markup; class name is a holdover from
+       the earlier nav structure but the container is the left rail).
+       Reading order: Absolute · Japan · Exports. */
     .nav-link {
       font-family: var(--font-stencil);
       font-size: 0.85rem; letter-spacing: 0.15em;
