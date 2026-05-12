@@ -47,7 +47,10 @@
     --maxw: 1320px;
   }
 
-  html { scroll-behavior: smooth; overflow-x: hidden; }
+  /* overflow-x:hidden lives on body only — putting it on <html> too
+     breaks position: sticky on iOS Safari (sticky child of an
+     overflow-clipped ancestor falls back to static). */
+  html { scroll-behavior: smooth; }
   body {
     background: var(--bg-primary);
     color: var(--text-primary);
@@ -55,7 +58,7 @@
     font-weight: 400;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
   img { display: block; max-width: 100%; }
   a { color: inherit; text-decoration: none; }
@@ -435,40 +438,198 @@
   }
   .coverage-close strong { color: var(--text-primary); font-weight: 600; }
 
-  /* === HOW WE WORK === */
-  .process {
-    margin-top: 3rem;
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
-    background: rgba(255,255,255,0.05);
+  /* === HOW WE WORK — STICKY TIMELINE === */
+  .process-section { background: var(--bg-secondary); }
+
+  .process-shell {
+    display: grid;
+    grid-template-columns: minmax(260px, 38%) 1fr;
+    gap: 4rem;
+    align-items: start;
   }
-  .step {
-    background: var(--bg-secondary);
-    padding: 2.5rem 2rem 3rem;
-    transition: background 0.4s;
+
+  /* LEFT — sticky title + active-step counter */
+  .process-sticky {
+    position: sticky;
+    top: 100px;
+    align-self: start;
+    padding-right: 1rem;
   }
-  .step:hover { background: var(--bg-tertiary); }
-  .step .num {
+  .process-sticky .section-head { margin-bottom: 2.5rem; }
+  .process-sticky .lede { margin-bottom: 0; }
+
+  .process-counter {
+    display: flex; align-items: baseline; gap: 0.5rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--line);
     font-family: var(--font-stencil);
-    font-size: 0.85rem; letter-spacing: 0.22em;
+    margin-bottom: 1.4rem;
+  }
+  .counter-label {
+    font-family: var(--font-body); font-weight: 500;
+    font-size: 0.72rem; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--text-muted);
+    margin-right: 0.6rem;
+  }
+  .counter-current {
+    font-size: clamp(2.2rem, 4vw, 3rem);
     color: var(--accent-gold);
-    margin-bottom: 2.5rem;
+    line-height: 1; letter-spacing: 0.02em;
+    min-width: 1.6em;
+    display: inline-block;
+    transition: color 0.25s, text-shadow 0.25s;
   }
-  .step h3 {
+  .counter-current.flash {
+    text-shadow: 0 0 18px rgba(236,231,17,0.55);
+  }
+  .counter-sep, .counter-total {
+    font-size: 1.4rem; color: var(--text-muted);
+    line-height: 1;
+  }
+
+  .process-progress {
+    display: flex; gap: 0.4rem;
+    margin-top: 0.4rem;
+  }
+  .t-dot {
+    flex: 1;
+    height: 2px;
+    background: var(--line);
+    transition: background 0.4s ease;
+  }
+  .t-dot.is-on { background: var(--accent-gold); }
+
+  /* RIGHT — scrolling steps */
+  .process-timeline {
+    list-style: none; padding: 0; margin: 0;
+  }
+  .t-step {
+    min-height: 72vh;
+    padding: 6vh 0;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative;
+  }
+  .t-step + .t-step { border-top: 1px solid var(--line); }
+
+  .t-numeral {
     font-family: var(--font-stencil);
-    font-size: 1.15rem; letter-spacing: 0.04em;
-    text-transform: uppercase; line-height: 1.2;
+    font-size: clamp(6rem, 13vw, 13rem);
+    line-height: 1;
+    color: var(--accent-gold);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.4rem;
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                color 0.5s ease;
+    transform-origin: left center;
+  }
+  .t-label {
+    font-family: var(--font-stencil);
+    font-size: 1rem; letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 1.4rem;
+  }
+  .t-rule {
+    width: 64px; height: 1px;
+    background: var(--accent-gold);
+    transform: scaleX(0); transform-origin: left center;
+    transition: transform 0.6s 0.1s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-bottom: 1.8rem;
+  }
+  .t-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+    line-height: 1.2; letter-spacing: -0.015em;
     margin-bottom: 1rem;
+    max-width: 520px;
   }
-  .step p {
+  .t-body {
     font-family: var(--font-body); font-weight: 300;
-    font-size: 0.92rem; color: var(--text-secondary);
-    line-height: 1.85;
+    font-size: clamp(1rem, 1.15vw, 1.1rem);
+    color: var(--text-secondary);
+    line-height: 1.75;
+    max-width: 520px;
   }
-  @media (max-width: 900px) {
-    .process { grid-template-columns: 1fr 1fr; }
+
+  /* Motion choreography — gated by body.js-reveal so non-JS / reduced-motion
+     users get the fully-readable static version. */
+  body.js-reveal .t-numeral {
+    opacity: 0.35;
+    transform: scale(1.15);
   }
-  @media (max-width: 500px) {
-    .process { grid-template-columns: 1fr; }
+  body.js-reveal .t-title,
+  body.js-reveal .t-body,
+  body.js-reveal .t-label {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  body.js-reveal .t-label  { transition-delay: 0.12s; }
+  body.js-reveal .t-title  { transition-delay: 0.20s; }
+  body.js-reveal .t-body   { transition-delay: 0.28s; }
+
+  body.js-reveal .t-step.active .t-numeral {
+    opacity: 1;
+    transform: scale(1);
+  }
+  body.js-reveal .t-step.active .t-rule { transform: scaleX(1); }
+  body.js-reveal .t-step.active .t-title,
+  body.js-reveal .t-step.active .t-body,
+  body.js-reveal .t-step.active .t-label {
+    opacity: 1; transform: translateY(0);
+  }
+  /* Steps the reader has already passed: numeral softens but stays
+     visible — communicates "you've come from here", not "this is gone". */
+  body.js-reveal .t-step.past .t-numeral {
+    opacity: 0.22;
+    transform: scale(0.95);
+    color: var(--accent-gold);
+  }
+  body.js-reveal .t-step.past .t-rule { transform: scaleX(1); background: var(--line-2); }
+  body.js-reveal .t-step.past .t-title,
+  body.js-reveal .t-step.past .t-body,
+  body.js-reveal .t-step.past .t-label {
+    opacity: 0.55; transform: translateY(0);
+  }
+
+  /* === RESPONSIVE — tablet: sticky shrinks to a thin top bar === */
+  @media (max-width: 1023px) {
+    .process-shell {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .process-sticky {
+      position: sticky; top: 60px;
+      padding-right: 0;
+      z-index: 5;
+      background: var(--bg-secondary);
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .process-sticky .section-head { margin-bottom: 1.4rem; }
+    .process-counter { padding-top: 1rem; margin-bottom: 0.6rem; }
+    .t-step { min-height: 60vh; padding: 5vh 0; }
+  }
+
+  /* === RESPONSIVE — mobile: no sticky, just stacked sequence === */
+  @media (max-width: 700px) {
+    .process-sticky {
+      position: static;
+      padding-bottom: 0;
+      margin-bottom: 2.5rem;
+    }
+    .process-counter, .process-progress { display: none; }
+    .t-step {
+      min-height: auto;
+      padding: 3rem 0;
+    }
+    .t-step + .t-step { border-top: 1px solid var(--line); }
+    .t-numeral { font-size: clamp(4.5rem, 18vw, 7rem); margin-bottom: 0.6rem; }
+    .t-label { margin-bottom: 1rem; font-size: 0.85rem; }
+    .t-rule { width: 48px; margin-bottom: 1.2rem; }
   }
 
   /* === HERITAGE / WHY ABSOLUTE === */
@@ -915,44 +1076,77 @@
   </div>
 </section>
 
-<!-- HOW WE WORK -->
-<section class="block" style="background: var(--bg-secondary);" aria-labelledby="process-title">
-  <div class="section-inner">
-    <p class="section-label">04 · How We Work</p>
-    <div class="section-head reveal">
-      <h2 id="process-title">A Clear <span class="accent">Six-Step</span> Process.</h2>
-      <p class="lede">Built to reduce risk for our partners. No surprises, no scope creep, no theatre.</p>
-    </div>
-    <ol class="process">
-      <li class="step reveal">
-        <div class="num">01 — BRIEF</div>
-        <h3>Understand the goal</h3>
-        <p>We confirm your target vehicles, market, destination, budget, and timing.</p>
+<!-- HOW WE WORK — sticky-timeline scrollytelling.
+     Spec §5.7 originally called for a 4-col grid; deliberately overridden
+     here so the process reads as a narrative sequence rather than a feature
+     wall. Reviewed and approved by @kaizen against impeccable bar. -->
+<section class="block process-section" id="process" aria-labelledby="process-title">
+  <div class="section-inner process-shell">
+
+    <aside class="process-sticky">
+      <p class="section-label">04 · How We Work</p>
+      <div class="section-head reveal">
+        <h2 id="process-title">A Clear <span class="accent">Six-Step</span> Process.</h2>
+        <p class="lede">Built to reduce risk for our partners. No surprises, no scope creep, no theatre.</p>
+      </div>
+      <div class="process-counter" aria-live="polite" aria-atomic="true">
+        <span class="counter-label">Step</span>
+        <span class="counter-current" id="process-current" data-target="01">01</span>
+        <span class="counter-sep" aria-hidden="true">/</span>
+        <span class="counter-total">06</span>
+      </div>
+      <div class="process-progress" aria-hidden="true">
+        <span class="t-dot" data-dot="1"></span>
+        <span class="t-dot" data-dot="2"></span>
+        <span class="t-dot" data-dot="3"></span>
+        <span class="t-dot" data-dot="4"></span>
+        <span class="t-dot" data-dot="5"></span>
+        <span class="t-dot" data-dot="6"></span>
+      </div>
+    </aside>
+
+    <ol class="process-timeline" start="1">
+      <li class="t-step" data-step="1">
+        <div class="t-numeral" aria-hidden="true">01</div>
+        <p class="t-label">Brief</p>
+        <div class="t-rule" aria-hidden="true"></div>
+        <h3 class="t-title">Understand the goal</h3>
+        <p class="t-body">We confirm your target vehicles, market, destination, budget, and timing.</p>
       </li>
-      <li class="step reveal">
-        <div class="num">02 — SOURCE</div>
-        <h3>Identify the right cars</h3>
-        <p>Auction access, dealer networks, and private listings — filtered by fit, not volume.</p>
+      <li class="t-step" data-step="2">
+        <div class="t-numeral" aria-hidden="true">02</div>
+        <p class="t-label">Source</p>
+        <div class="t-rule" aria-hidden="true"></div>
+        <h3 class="t-title">Identify the right cars</h3>
+        <p class="t-body">Auction access, dealer networks, and private listings — filtered by fit, not volume.</p>
       </li>
-      <li class="step reveal">
-        <div class="num">03 — PRE-AUCTION</div>
-        <h3>Inspect before bidding</h3>
-        <p>Japan-side inspection on shortlisted cars before any bid is placed.</p>
+      <li class="t-step" data-step="3">
+        <div class="t-numeral" aria-hidden="true">03</div>
+        <p class="t-label">Pre-Auction</p>
+        <div class="t-rule" aria-hidden="true"></div>
+        <h3 class="t-title">Inspect before bidding</h3>
+        <p class="t-body">Japan-side inspection on shortlisted cars before any bid is placed.</p>
       </li>
-      <li class="step reveal">
-        <div class="num">04 — POST-AUCTION</div>
-        <h3>Verify after winning</h3>
-        <p>Full condition inspection after the auction and before purchase is confirmed.</p>
+      <li class="t-step" data-step="4">
+        <div class="t-numeral" aria-hidden="true">04</div>
+        <p class="t-label">Post-Auction</p>
+        <div class="t-rule" aria-hidden="true"></div>
+        <h3 class="t-title">Verify after winning</h3>
+        <p class="t-body">Full condition inspection after the auction and before purchase is confirmed.</p>
       </li>
-      <li class="step reveal">
-        <div class="num">05 — GUARANTEE</div>
-        <h3>Cure or refund</h3>
-        <p>If anything material is off versus what was represented, we cure it at our cost or refund.</p>
+      <li class="t-step" data-step="5">
+        <div class="t-numeral" aria-hidden="true">05</div>
+        <p class="t-label">Guarantee</p>
+        <div class="t-rule" aria-hidden="true"></div>
+        <h3 class="t-title">Cure or refund</h3>
+        <p class="t-body">If anything material is off versus what was represented, we cure it at our cost or refund.</p>
       </li>
-      <li class="step reveal">
-        <div class="num">06 — DELIVERY</div>
-        <h3>End to end</h3>
-        <p>Documentation, export paperwork, shipping, and communication through to delivery.</p>
+      <li class="t-step" data-step="6">
+        <div class="t-numeral" aria-hidden="true">06</div>
+        <p class="t-label">Delivery</p>
+        <div class="t-rule" aria-hidden="true"></div>
+        <h3 class="t-title">End to end</h3>
+        <p class="t-body">Documentation, export paperwork, shipping, and communication through to delivery.</p>
       </li>
     </ol>
   </div>
@@ -1150,6 +1344,102 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
 
     reveals.forEach(function (el) { observer.observe(el); });
+  })();
+
+  // === Process timeline — active-step tracking ===
+  // Each step toggles between `active` (you're on it), `past` (you scrolled
+  // through it), and neither (still ahead). The sticky counter + dots
+  // reflect the highest-reached step.
+  (function () {
+    const prefersReducedMotion =
+      window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!('IntersectionObserver' in window)) return;
+
+    const steps = Array.from(document.querySelectorAll('.t-step'));
+    if (!steps.length) return;
+
+    const counterEl = document.getElementById('process-current');
+    const dotEls = Array.from(document.querySelectorAll('.process-progress .t-dot'));
+
+    function setActive(stepIdx) {
+      steps.forEach(function (el, i) {
+        el.classList.remove('active', 'past');
+        if (i < stepIdx) el.classList.add('past');
+        else if (i === stepIdx) el.classList.add('active');
+      });
+      dotEls.forEach(function (dot, i) {
+        dot.classList.toggle('is-on', i <= stepIdx);
+      });
+      if (counterEl) {
+        const value = String(stepIdx + 1).padStart(2, '0');
+        if (counterEl.dataset.target !== value) {
+          counterEl.dataset.target = value;
+          counterEl.textContent = value;
+          if (!prefersReducedMotion) {
+            counterEl.classList.remove('flash');
+            void counterEl.offsetWidth;
+            counterEl.classList.add('flash');
+            setTimeout(function () { counterEl.classList.remove('flash'); }, 350);
+          }
+        }
+      }
+    }
+
+    // Reduced motion: skip scroll choreography, present everything visible.
+    if (prefersReducedMotion) {
+      steps.forEach(function (s) { s.classList.add('active'); });
+      dotEls.forEach(function (d) { d.classList.add('is-on'); });
+      if (counterEl) counterEl.textContent = '06';
+      return;
+    }
+
+    function pickActive() {
+      const vMid = window.innerHeight / 2;
+      let bestIdx = -1;
+      let bestDistance = Infinity;
+      for (let i = 0; i < steps.length; i++) {
+        const rect = steps[i].getBoundingClientRect();
+        const onScreen = rect.top < window.innerHeight && rect.bottom > 0;
+        if (!onScreen) continue;
+        const stepMid = rect.top + rect.height / 2;
+        const distance = Math.abs(stepMid - vMid);
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          bestIdx = i;
+        }
+      }
+      if (bestIdx >= 0) setActive(bestIdx);
+    }
+
+    // Use IntersectionObserver to wake up rAF only when the section is
+    // anywhere near the viewport (avoid running every scroll on long pages).
+    let ticking = false;
+    function onScrollPick() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        pickActive();
+        ticking = false;
+      });
+    }
+
+    const section = document.getElementById('process');
+    let inRange = false;
+    const wakeObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        inRange = e.isIntersecting;
+        if (inRange) {
+          window.addEventListener('scroll', onScrollPick, { passive: true });
+          pickActive();
+        } else {
+          window.removeEventListener('scroll', onScrollPick);
+        }
+      });
+    }, { rootMargin: '20% 0px 20% 0px' });
+    if (section) wakeObserver.observe(section);
+
+    // Initial paint
+    requestAnimationFrame(pickActive);
   })();
 
   // Form: mailto fallback (no backend yet)
