@@ -686,6 +686,23 @@
     .footer-right { text-align: left; }
   }
 
+  /* === SCROLL REVEAL ===
+     Defaults to visible so content is never hidden without JS or for
+     users who prefer reduced motion. JS adds `body.js-reveal` only when
+     it's safe to animate; CSS then hides `.reveal` items until they
+     enter the viewport. */
+  body.js-reveal .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  body.js-reveal .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   /* Respect reduced motion */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -694,6 +711,7 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
+    body.js-reveal .reveal { opacity: 1; transform: none; }
   }
 </style>
 </head>
@@ -751,7 +769,7 @@
 
 <!-- CREDIBILITY STRIP -->
 <div class="strip">
-  <div class="strip-inner">
+  <div class="strip-inner reveal">
     <div class="strip-item"><span class="dot" aria-hidden="true"></span>Since 2010</div>
     <div class="strip-item"><span class="dot" aria-hidden="true"></span>Le Mans 24h</div>
     <div class="strip-item"><span class="dot" aria-hidden="true"></span>GT World Challenge Asia</div>
@@ -764,10 +782,10 @@
 <section class="block" aria-labelledby="gap-title">
   <div class="section-inner">
     <p class="section-label">01 · The Market vs. Absolute</p>
-    <div class="section-head">
+    <div class="section-head reveal">
       <h2 id="gap-title"><span class="muted">Access To Japan Is Easy.</span><br/>Buying Well Is Not.</h2>
     </div>
-    <div class="compare">
+    <div class="compare reveal">
       <div class="compare-col left">
         <h4>What most exporters give you</h4>
         <ul class="compare-list">
@@ -787,7 +805,7 @@
         </ul>
       </div>
     </div>
-    <p class="gap-close">
+    <p class="gap-close reveal">
       <span class="muted">Auction sheets, photos and faster inspections leave too many blind spots after shipping.</span>
       Absolute is built for the part of the market that other exporters don't cover.
     </p>
@@ -798,24 +816,24 @@
 <section class="block offerings" aria-labelledby="offerings-title">
   <div class="section-inner">
     <p class="section-label">02 · What We Do</p>
-    <div class="section-head">
+    <div class="section-head reveal">
       <h2 id="offerings-title">Three Things,<br/><span class="accent">Done Properly.</span></h2>
       <p class="lede">The expertise and judgment in premium vehicles that most exporters don't have.</p>
     </div>
     <div class="offerings-grid">
-      <article class="offering-card">
+      <article class="offering-card reveal">
         <div class="offering-number" aria-hidden="true">01</div>
         <h3 class="offering-title">LOCAL INSPECTION</h3>
         <p class="offering-kicker">On-the-ground verification</p>
         <p class="offering-desc">Japan-side specialists verify each vehicle before and after auction — beyond what auction sheets and photos can show.</p>
       </article>
-      <article class="offering-card">
+      <article class="offering-card reveal">
         <div class="offering-number" aria-hidden="true">02</div>
         <h3 class="offering-title">CONDITION GUARANTEE</h3>
         <p class="offering-kicker">Cure or refund</p>
         <p class="offering-desc">If our post-auction inspection finds the car isn't as represented, we cure the issue at our cost — or refund your money. The risk of what listings can't show sits with us, not you.</p>
       </article>
-      <article class="offering-card">
+      <article class="offering-card reveal">
         <div class="offering-number" aria-hidden="true">03</div>
         <h3 class="offering-title">EXPORT EXECUTION</h3>
         <p class="offering-kicker">End to end, delivered</p>
@@ -829,61 +847,61 @@
 <section class="block" aria-labelledby="coverage-title">
   <div class="section-inner">
     <p class="section-label">03 · Vehicle Coverage</p>
-    <div class="section-head">
+    <div class="section-head reveal">
       <h2 id="coverage-title">Different Lanes.<br/><span class="accent">Same Standard.</span></h2>
       <p class="lede">We don't try to cover everything. These are the categories where we deliver real value because we know the cars, the market, and the buyer.</p>
     </div>
     <div class="coverage-grid">
-      <article class="cov-card">
+      <article class="cov-card reveal">
         <div class="img" role="img" aria-label="Dealer Supply" style="background-image:url('images/exports/coverage-01-dealer.jpg');"></div>
         <div class="body">
           <span class="num">01</span>
           <h3>Dealer Supply</h3>
         </div>
       </article>
-      <article class="cov-card">
+      <article class="cov-card reveal">
         <div class="img" role="img" aria-label="JDM and Performance" style="background-image:url('images/exports/coverage-02-jdm.jpg');"></div>
         <div class="body">
           <span class="num">02</span>
           <h3>JDM &amp; Performance</h3>
         </div>
       </article>
-      <article class="cov-card">
+      <article class="cov-card reveal">
         <div class="img" role="img" aria-label="European Luxury" style="background-image:url('images/exports/coverage-03-european.jpg');"></div>
         <div class="body">
           <span class="num">03</span>
           <h3>European Luxury</h3>
         </div>
       </article>
-      <article class="cov-card">
+      <article class="cov-card reveal">
         <div class="img" role="img" aria-label="Supercars and Hypercars" style="background-image:url('images/exports/coverage-04-supercars.jpg');"></div>
         <div class="body">
           <span class="num">04</span>
           <h3>Supercars &amp; Hypercars</h3>
         </div>
       </article>
-      <article class="cov-card">
+      <article class="cov-card reveal">
         <div class="img" role="img" aria-label="Classics and Antiques" style="background-image:url('images/exports/coverage-05-classics.jpg');"></div>
         <div class="body">
           <span class="num">05</span>
           <h3>Classics &amp; Antiques</h3>
         </div>
       </article>
-      <article class="cov-card">
+      <article class="cov-card reveal">
         <div class="img" role="img" aria-label="Motorcycles" style="background-image:url('images/exports/coverage-06-motorcycles.jpg');"></div>
         <div class="body">
           <span class="num">06</span>
           <h3>Motorcycles</h3>
         </div>
       </article>
-      <article class="cov-card">
+      <article class="cov-card reveal">
         <div class="img" role="img" aria-label="Race Cars" style="background-image:url('images/exports/coverage-07-race.jpg');"></div>
         <div class="body">
           <span class="num">07</span>
           <h3>Race Cars</h3>
         </div>
       </article>
-      <article class="cov-card">
+      <article class="cov-card reveal">
         <div class="img" role="img" aria-label="Special Requests" style="background-image:url('images/exports/coverage-08-special.jpg');"></div>
         <div class="body">
           <span class="num">08</span>
@@ -891,7 +909,7 @@
         </div>
       </article>
     </div>
-    <p class="coverage-close">
+    <p class="coverage-close reveal">
       <strong>We don't sell everything to everyone.</strong> The goal is to be the trusted Japan source for a limited number of selected partners.
     </p>
   </div>
@@ -901,37 +919,37 @@
 <section class="block" style="background: var(--bg-secondary);" aria-labelledby="process-title">
   <div class="section-inner">
     <p class="section-label">04 · How We Work</p>
-    <div class="section-head">
+    <div class="section-head reveal">
       <h2 id="process-title">A Clear <span class="accent">Six-Step</span> Process.</h2>
       <p class="lede">Built to reduce risk for our partners. No surprises, no scope creep, no theatre.</p>
     </div>
     <ol class="process">
-      <li class="step">
+      <li class="step reveal">
         <div class="num">01 — BRIEF</div>
         <h3>Understand the goal</h3>
         <p>We confirm your target vehicles, market, destination, budget, and timing.</p>
       </li>
-      <li class="step">
+      <li class="step reveal">
         <div class="num">02 — SOURCE</div>
         <h3>Identify the right cars</h3>
         <p>Auction access, dealer networks, and private listings — filtered by fit, not volume.</p>
       </li>
-      <li class="step">
+      <li class="step reveal">
         <div class="num">03 — PRE-AUCTION</div>
         <h3>Inspect before bidding</h3>
         <p>Japan-side inspection on shortlisted cars before any bid is placed.</p>
       </li>
-      <li class="step">
+      <li class="step reveal">
         <div class="num">04 — POST-AUCTION</div>
         <h3>Verify after winning</h3>
         <p>Full condition inspection after the auction and before purchase is confirmed.</p>
       </li>
-      <li class="step">
+      <li class="step reveal">
         <div class="num">05 — GUARANTEE</div>
         <h3>Cure or refund</h3>
         <p>If anything material is off versus what was represented, we cure it at our cost or refund.</p>
       </li>
-      <li class="step">
+      <li class="step reveal">
         <div class="num">06 — DELIVERY</div>
         <h3>End to end</h3>
         <p>Documentation, export paperwork, shipping, and communication through to delivery.</p>
@@ -944,7 +962,7 @@
 <section class="block heritage" aria-labelledby="heritage-title">
   <div class="section-inner">
     <p class="section-label">05 · Backed by Absolute Racing</p>
-    <div class="heritage-grid">
+    <div class="heritage-grid reveal">
       <div class="heritage-text">
         <h2 id="heritage-title">Motorsport Discipline,<br/><span class="accent">Applied To Trading.</span></h2>
         <p class="lede">Not just access to Japan — accountability on the ground in Japan.</p>
@@ -964,12 +982,12 @@
     <div style="text-align: center;">
       <p class="section-label">06 · Get in Touch</p>
     </div>
-    <div class="contact-head">
+    <div class="contact-head reveal">
       <h2 id="contact-title">Tell Us What You're <span style="color: var(--accent-gold);">Looking For.</span></h2>
       <p>The more specific your brief, the more useful our first reply. We respond personally within one business day.</p>
     </div>
 
-    <div class="contact-email-row">
+    <div class="contact-email-row reveal">
       <p class="label">Email Us Directly</p>
       <a href="mailto:exports@absoluteracing.jp">exports@absoluteracing.jp</a>
       <p class="note">Or use the form below — we'll route it straight to the Japan team.</p>
@@ -978,7 +996,7 @@
     <div class="form-wrap">
       <form id="inquiry-form" novalidate>
 
-        <div class="form-section">
+        <div class="form-section reveal">
           <p class="form-section-title"><span class="num">01</span> About You</p>
           <div class="form-row">
             <div class="field">
@@ -1020,7 +1038,7 @@
           </div>
         </div>
 
-        <div class="form-section">
+        <div class="form-section reveal">
           <p class="form-section-title"><span class="num">02</span> What You're Looking For</p>
           <fieldset class="form-row single" style="border:0;padding:0;">
             <legend class="sr-only">Vehicle Interest</legend>
@@ -1108,6 +1126,31 @@
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  // Scroll reveal — only when supported and motion is not reduced.
+  // Items default to visible in CSS until we opt-in by adding `js-reveal` on body.
+  (function () {
+    const prefersReducedMotion =
+      window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) return;
+
+    document.body.classList.add('js-reveal');
+
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry, i) {
+        if (!entry.isIntersecting) return;
+        // Stagger items intersecting in the same batch for a gentle cascade.
+        const delay = Math.min(i * 90, 360);
+        setTimeout(function () {
+          entry.target.classList.add('visible');
+        }, delay);
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+    reveals.forEach(function (el) { observer.observe(el); });
+  })();
 
   // Form: mailto fallback (no backend yet)
   const form = document.getElementById('inquiry-form');
