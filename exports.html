@@ -157,8 +157,8 @@
     .nav-cta { padding: 0.55rem 1rem; font-size: 0.72rem; letter-spacing: 0.12em; }
   }
   @media (max-width: 420px) {
-    /* Tightest mobile: hide the secondary language button to make
-       room for the Inquire CTA when it appears. */
+    /* Tightest mobile: trim the nav gap and CTA padding so EN / JP /
+       Inquire all fit comfortably in the right rail. */
     .nav-right { gap: 0.9rem; }
     .nav-cta { padding: 0.5rem 0.85rem; font-size: 0.68rem; }
   }
@@ -932,7 +932,7 @@
   <div class="nav-right">
     <button type="button" class="nav-lang active" aria-pressed="true" aria-label="English (current language)">EN</button>
     <button type="button" class="nav-lang" aria-pressed="false" aria-label="Switch to Japanese" title="日本語版近日公開 — Japanese version coming soon">JP</button>
-    <a href="#contact" class="nav-cta" id="nav-cta" aria-label="Jump to inquiry form">Inquire →</a>
+    <a href="#contact" class="nav-cta" id="nav-cta" aria-label="Jump to inquiry form" tabindex="-1" aria-hidden="true">Inquire →</a>
   </div>
 </nav>
 
@@ -1353,17 +1353,39 @@
 
 <script>
   // Nav scroll background + nav-resident Inquire CTA visibility.
-  // The CTA fades in once the user has scrolled ~70vh, so it never
-  // competes with the giant hero CTA above the fold.
+  // The CTA fades in once the user has scrolled ~70vh and fades out
+  // again when the contact section is in view. We track both signals
+  // and sync visibility + focus-management in one place — opacity 0
+  // alone doesn't remove a link from tab order, so we also toggle
+  // tabindex and aria-hidden to keep keyboard users from landing on
+  // an invisible jump-to-#contact.
   const nav = document.getElementById('nav');
   const navCta = document.getElementById('nav-cta');
+  let pastHero = false;
+  let contactVisible = false;
+
+  function syncNavCta() {
+    if (!navCta) return;
+    const effectivelyVisible = pastHero && !contactVisible;
+    navCta.classList.toggle('is-visible', pastHero);
+    navCta.classList.toggle('is-hidden-by-contact', contactVisible);
+    if (effectivelyVisible) {
+      navCta.removeAttribute('tabindex');
+      navCta.removeAttribute('aria-hidden');
+    } else {
+      navCta.setAttribute('tabindex', '-1');
+      navCta.setAttribute('aria-hidden', 'true');
+    }
+  }
+
   function onScroll() {
     const y = window.scrollY;
     if (y > 40) nav.classList.add('scrolled');
     else nav.classList.remove('scrolled');
-    if (navCta) {
-      if (y > window.innerHeight * 0.7) navCta.classList.add('is-visible');
-      else navCta.classList.remove('is-visible');
+    const next = y > window.innerHeight * 0.7;
+    if (next !== pastHero) {
+      pastHero = next;
+      syncNavCta();
     }
   }
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -1377,7 +1399,8 @@
     if (!contact) return;
     const contactObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        navCta.classList.toggle('is-hidden-by-contact', e.isIntersecting);
+        contactVisible = e.isIntersecting;
+        syncNavCta();
       });
     }, { rootMargin: '-20% 0px -20% 0px' });
     contactObserver.observe(contact);
