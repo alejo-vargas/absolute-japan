@@ -519,8 +519,7 @@
     letter-spacing: -0.02em;
     margin-bottom: 0.4rem;
     transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                color 0.5s ease;
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     transform-origin: left center;
   }
   .t-label {
@@ -586,7 +585,6 @@
   body.js-reveal .t-step.past .t-numeral {
     opacity: 0.22;
     transform: scale(0.95);
-    color: var(--accent-gold);
   }
   body.js-reveal .t-step.past .t-rule { transform: scaleX(1); background: var(--line-2); }
   body.js-reveal .t-step.past .t-title,
@@ -1089,9 +1087,10 @@
         <h2 id="process-title">A Clear <span class="accent">Six-Step</span> Process.</h2>
         <p class="lede">Built to reduce risk for our partners. No surprises, no scope creep, no theatre.</p>
       </div>
-      <div class="process-counter" aria-live="polite" aria-atomic="true">
+      <div class="process-counter">
         <span class="counter-label">Step</span>
-        <span class="counter-current" id="process-current" data-target="01">01</span>
+        <span class="counter-current" id="process-current" data-target="01"
+              aria-live="polite" aria-atomic="true">01</span>
         <span class="counter-sep" aria-hidden="true">/</span>
         <span class="counter-total">06</span>
       </div>
