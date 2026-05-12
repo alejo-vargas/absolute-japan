@@ -1393,19 +1393,22 @@
     }
 
     function pickActive() {
-      const vMid = window.innerHeight / 2;
-      // Activation band: only count a step as "active" once its midpoint
-      // is within ~38% of viewport center. Steps merely entering the
-      // viewport's bottom edge stay in pre-active state, so the user
-      // gets the full big→smaller shrink on step 01 just like the rest.
-      const tolerance = window.innerHeight * 0.38;
+      const vh = window.innerHeight;
+      const vMid = vh / 2;
+      // Reading band: a step is only eligible for `.active` once its
+      // midpoint enters the central 25–75% of the viewport. This is
+      // what makes step 01 shrink visibly — without the band, step 01
+      // activates the instant its top edge enters from below, and the
+      // pre-active → active transition happens off-screen.
       let bestIdx = -1;
       let bestDistance = Infinity;
       for (let i = 0; i < steps.length; i++) {
         const rect = steps[i].getBoundingClientRect();
         const stepMid = rect.top + rect.height / 2;
+        const inReadingBand = stepMid > vh * 0.25 && stepMid < vh * 0.75;
+        if (!inReadingBand) continue;
         const distance = Math.abs(stepMid - vMid);
-        if (distance < tolerance && distance < bestDistance) {
+        if (distance < bestDistance) {
           bestDistance = distance;
           bestIdx = i;
         }
