@@ -118,9 +118,49 @@
   .nav-lang:hover, .nav-lang:focus-visible { color: var(--accent-gold); outline: none; }
   .nav-lang:focus-visible { box-shadow: 0 0 0 2px rgba(236,231,17,0.4); }
 
+  /* Nav-resident Inquire CTA — secondary to hero CTA.
+     Hidden until the user scrolls ~70vh past the top (so it doesn't
+     compete with the hero CTA), then fades in. Fades out again when
+     the contact section is in view — never sits over its own target. */
+  .nav-cta {
+    background: var(--accent-gold);
+    color: var(--bg-primary);
+    font-family: var(--font-body);
+    font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 0.6rem 1.2rem;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    opacity: 0; pointer-events: none;
+    transform: translateY(-2px);
+    transition: opacity 0.4s ease, transform 0.4s ease, background 0.25s ease;
+  }
+  .nav-cta:hover { background: #fff; }
+  .nav-cta:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(236,231,17,0.4);
+  }
+  .nav-cta.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  .nav-cta.is-hidden-by-contact {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-2px);
+  }
+
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     .nav-wordmark, .nav-divider { display: none; }
+    .nav-right { gap: 1.2rem; }
+    .nav-cta { padding: 0.55rem 1rem; font-size: 0.72rem; letter-spacing: 0.12em; }
+  }
+  @media (max-width: 420px) {
+    /* Tightest mobile: hide the secondary language button to make
+       room for the Inquire CTA when it appears. */
+    .nav-right { gap: 0.9rem; }
+    .nav-cta { padding: 0.5rem 0.85rem; font-size: 0.68rem; }
   }
 
   /* === HERO === */
@@ -892,6 +932,7 @@
   <div class="nav-right">
     <button type="button" class="nav-lang active" aria-pressed="true" aria-label="English (current language)">EN</button>
     <button type="button" class="nav-lang" aria-pressed="false" aria-label="Switch to Japanese" title="日本語版近日公開 — Japanese version coming soon">JP</button>
+    <a href="#contact" class="nav-cta" id="nav-cta" aria-label="Jump to inquiry form">Inquire →</a>
   </div>
 </nav>
 
@@ -1311,14 +1352,36 @@
 </footer>
 
 <script>
-  // Nav scroll background
+  // Nav scroll background + nav-resident Inquire CTA visibility.
+  // The CTA fades in once the user has scrolled ~70vh, so it never
+  // competes with the giant hero CTA above the fold.
   const nav = document.getElementById('nav');
+  const navCta = document.getElementById('nav-cta');
   function onScroll() {
-    if (window.scrollY > 40) nav.classList.add('scrolled');
+    const y = window.scrollY;
+    if (y > 40) nav.classList.add('scrolled');
     else nav.classList.remove('scrolled');
+    if (navCta) {
+      if (y > window.innerHeight * 0.7) navCta.classList.add('is-visible');
+      else navCta.classList.remove('is-visible');
+    }
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  // Hide the nav CTA when the contact section is in view — it
+  // shouldn't sit over its own destination.
+  (function () {
+    if (!navCta || !('IntersectionObserver' in window)) return;
+    const contact = document.getElementById('contact');
+    if (!contact) return;
+    const contactObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        navCta.classList.toggle('is-hidden-by-contact', e.isIntersecting);
+      });
+    }, { rootMargin: '-20% 0px -20% 0px' });
+    contactObserver.observe(contact);
+  })();
 
   // Scroll reveal — only when supported and motion is not reduced.
   // Items default to visible in CSS until we opt-in by adding `js-reveal` on body.
