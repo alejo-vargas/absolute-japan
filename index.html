@@ -109,6 +109,163 @@
       color: var(--accent-gold);
     }
 
+    /* Nav-resident Exports link — sits inside .footer-left after
+       the JP wordmark, reading as Absolute · Japan · Exports. */
+    .nav-link {
+      font-family: var(--font-stencil);
+      font-size: 0.85rem; letter-spacing: 0.15em;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.4rem 0;
+      transition: color 0.3s;
+      display: inline-flex; align-items: baseline; gap: 0.5rem;
+    }
+    .nav-link:hover, .nav-link:focus-visible {
+      color: var(--accent-gold); outline: none;
+    }
+    .nav-link-jp {
+      font-family: var(--font-jp);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.18em;
+    }
+    .nav-link:hover .nav-link-jp,
+    .nav-link:focus-visible .nav-link-jp {
+      color: var(--text-secondary);
+    }
+    @media (max-width: 768px) {
+      /* Mobile: keep the EN word, drop the JP companion so the
+         compact nav doesn't bunch up. */
+      .nav-link-jp { display: none; }
+      .nav-link { font-size: 0.78rem; letter-spacing: 0.12em; }
+    }
+
+    /* ========== EXPORTS BEAT (live business) ========== */
+    .exports-beat {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--line, rgba(255,255,255,0.08));
+      border-bottom: 1px solid var(--line, rgba(255,255,255,0.08));
+    }
+    .exports-beat-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .exports-beat-image {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .exports-beat-image img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: contrast(1.05) saturate(0.95);
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .exports-beat-image:hover img { transform: scale(1.04); }
+    .exports-beat-image::after {
+      content: ''; position: absolute; inset: 0;
+      border: 1px solid rgba(236,231,17,0.18);
+      pointer-events: none;
+    }
+    .exports-beat-content {
+      display: flex; flex-direction: column;
+      gap: 1.3rem;
+      padding-right: 0.5rem;
+    }
+    .status-pill {
+      align-self: flex-start;
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 0.4rem 0.85rem;
+      border: 1px solid rgba(236,231,17,0.35);
+      background: rgba(236,231,17,0.06);
+      font-family: var(--font-body);
+      font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent-gold);
+    }
+    .status-pill .dot {
+      width: 7px; height: 7px;
+      background: var(--accent-gold);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(236,231,17,0.5);
+    }
+    .status-pill .jp {
+      font-family: var(--font-jp);
+      letter-spacing: 0.18em;
+      color: rgba(236,231,17,0.7);
+    }
+    .exports-beat h2 {
+      font-family: var(--font-stencil);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.05; letter-spacing: 0.02em;
+      margin-bottom: 0.2rem;
+    }
+    .exports-beat-heading-jp {
+      font-family: var(--font-jp);
+      font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+      color: var(--accent-gold);
+      letter-spacing: 0.18em;
+      margin-bottom: 0.4rem;
+    }
+    .exports-beat-body {
+      font-family: var(--font-body); font-weight: 300;
+      font-size: 1rem; color: var(--text-secondary);
+      line-height: 1.85; letter-spacing: 0.02em;
+      max-width: 480px;
+    }
+    .exports-beat-body-jp {
+      font-family: var(--font-jp-sans); font-weight: 300;
+      font-size: 0.95rem; color: var(--text-secondary);
+      line-height: 1.95; letter-spacing: 0.03em;
+      max-width: 480px;
+    }
+    .exports-beat-cta {
+      align-self: flex-start;
+      margin-top: 0.8rem;
+      background: var(--accent-gold);
+      color: var(--bg-primary);
+      font-family: var(--font-body);
+      font-size: 0.82rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 1.05rem 2rem;
+      display: inline-flex; align-items: center; gap: 12px;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .exports-beat-cta:hover { background: #fff; }
+    .exports-beat-cta:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(236,231,17,0.4);
+    }
+    .exports-beat-cta:active { transform: scale(0.97); }
+
+    @media (max-width: 900px) {
+      .exports-beat-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .exports-beat-image { aspect-ratio: 16/9; }
+      .exports-beat-content { padding-right: 0; }
+    }
+
+    /* Coming-soon pill — applied to each offering card header to
+       differentiate from the live Exports beat above. */
+    .opening-pill {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      margin-bottom: 1rem;
+      padding: 0.32rem 0.7rem;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.03);
+      font-family: var(--font-body); font-weight: 600;
+      font-size: 0.62rem; letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .opening-pill .jp {
+      font-family: var(--font-jp);
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+    }
+
     /* ========== HERO ========== */
     .hero {
       position: relative;
@@ -655,6 +812,26 @@
       letter-spacing: 0.08em;
     }
 
+    /* Cross-link to /exports.html under the dealership signup form. */
+    .cta-exports-link {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-family: var(--font-jp-sans);
+      font-size: 0.95rem; font-weight: 300;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+    }
+    .cta-exports-link a {
+      color: var(--accent-gold);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(236,231,17,0.25);
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .cta-exports-link a:hover, .cta-exports-link a:focus-visible {
+      color: #fff; border-color: var(--accent-gold); outline: none;
+    }
+
     /* ========== FOOTER ========== */
     footer {
       padding: 4rem 3rem 3rem;
@@ -935,6 +1112,7 @@
       <img src="https://absoluteracing.net/images/assets/ar-logo.png" alt="Absolute Racing" class="nav-logo">
       <div class="footer-divider"></div>
       <span class="nav-jp">ジャパン</span>
+      <a href="/exports.html" class="nav-link">Exports <span class="nav-link-jp">輸出</span></a>
     </div>
     <div class="nav-right">
       <span class="nav-lang active">JP</span>
@@ -957,11 +1135,11 @@
       </h1>
       <p class="hero-subtitle-jp">
         <span class="jp-only">アブソリュート・ジャパン</span>
-        <span class="en-only">Coming Soon</span>
+        <span class="en-only">Now Operating · More to Come</span>
       </p>
       <p class="hero-tagline">
-        <span class="jp-only">レースで培った情熱と技術を、ストリートへ。<br>東京近郊に、クルマを愛する方のための特別な場所が誕生します。</span>
-        <span class="en-only">Bringing the passion and precision of racing to the street.<br>A destination for those who love cars is coming to Tokyo.</span>
+        <span class="jp-only">レースで培った情熱と技術を、ストリートへ。<br>車両輸出はすでに稼働中。ディーラーシップとサービスセンターも近日開業。</span>
+        <span class="en-only">Bringing the passion and precision of racing to the street.<br>Vehicle exports already operational. Dealership and service center coming soon.</span>
       </p>
     </div>
     <div class="hero-scroll">
@@ -973,13 +1151,44 @@
   <!-- Accent stripe -->
   <div class="accent-stripe"></div>
 
-  <!-- Offerings -->
+  <!-- Exports beat — the live business -->
+  <section class="exports-beat section" aria-labelledby="exports-beat-title">
+    <div class="exports-beat-inner">
+      <div class="exports-beat-image reveal">
+        <a href="/exports.html" aria-label="View the Exports service">
+          <img src="images/exports/hero.jpg" alt="Absolute Japan dealer showroom — premium vehicles arranged in a curated display">
+        </a>
+      </div>
+      <div class="exports-beat-content reveal">
+        <span class="status-pill"><span class="dot" aria-hidden="true"></span>Now Live<span class="jp">営業中</span></span>
+        <h2 id="exports-beat-title">VEHICLE EXPORTS</h2>
+        <p class="exports-beat-heading-jp">
+          <span class="jp-only">日本からの車両調達・輸出</span>
+          <span class="en-only">Vehicle Sourcing & Export from Japan</span>
+        </p>
+        <p class="exports-beat-body">
+          <span class="jp-only">国際バイヤー向けの本格的な車両調達・輸出サービス。アブソリュート・レーシングが15年以上にわたり培ったアジア全域での実績と、日本国内の現地検査体制が支えます。</span>
+          <span class="en-only">Built for international dealers, importers, collectors, and serious buyers. Backed by Absolute Racing's 15+ years operating across Asia — and on the ground in Japan.</span>
+        </p>
+        <a href="/exports.html" class="exports-beat-cta">View the Exports Service →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Offerings — Coming Soon -->
   <section class="offerings section">
-    <div class="section-label reveal">What We're Building</div>
-    <div class="section-label-jp reveal">プロジェクト概要</div>
+    <div class="section-label reveal">
+      <span class="jp-only">ディーラーシップ &amp; サービス · 近日開業</span>
+      <span class="en-only">Dealership &amp; Service · Coming Soon</span>
+    </div>
+    <div class="section-label-jp reveal">
+      <span class="jp-only">プロジェクト概要</span>
+      <span class="en-only">What's Coming</span>
+    </div>
     <div class="offerings-grid reveal">
       <div class="offering-card">
         <div class="offering-number">01</div>
+        <span class="opening-pill">Opening Soon<span class="jp">近日</span></span>
         <h3 class="offering-title">DEALERSHIP</h3>
         <p class="offering-title-jp">
           <span class="jp-only">ディーラーシップ</span>
@@ -992,6 +1201,7 @@
       </div>
       <div class="offering-card">
         <div class="offering-number">02</div>
+        <span class="opening-pill">Opening Soon<span class="jp">近日</span></span>
         <h3 class="offering-title">SERVICE CENTER</h3>
         <p class="offering-title-jp">
           <span class="jp-only">サービスセンター</span>
@@ -1004,6 +1214,7 @@
       </div>
       <div class="offering-card">
         <div class="offering-number">03</div>
+        <span class="opening-pill">Opening Soon<span class="jp">近日</span></span>
         <h3 class="offering-title">AN ELEVATED EXPERIENCE</h3>
         <p class="offering-title-jp">
           <span class="jp-only">特別なつながり</span>
@@ -1153,8 +1364,8 @@
   <section class="cta reveal">
     <h2>BE THE FIRST TO KNOW</h2>
     <p class="jp-sub">
-      <span class="jp-only">最新情報を受け取る</span>
-      <span class="en-only">Stay in the loop</span>
+      <span class="jp-only">ディーラーシップ・サービスセンター開業情報</span>
+      <span class="en-only">Updates on dealership &amp; service center opening</span>
     </p>
     <form class="email-form" onsubmit="handleSubmit(event)">
       <input type="email" placeholder="メールアドレスを入力 / Enter your email" required>
@@ -1163,6 +1374,10 @@
     <p class="cta-note">
       <span class="jp-only">スパムは送信しません。オープン情報のみをお届けします。</span>
       <span class="en-only">No spam — only opening updates.</span>
+    </p>
+    <p class="cta-exports-link">
+      <span class="jp-only">今すぐ車両調達・輸出をご希望の方は <a href="/exports.html">こちらへ →</a></span>
+      <span class="en-only">Looking to source or export a vehicle now? <a href="/exports.html">Visit our exports service →</a></span>
     </p>
   </section>
 
