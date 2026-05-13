@@ -233,6 +233,7 @@ body.drawer-open .nav-drawer {
   display: flex; align-items: center; justify-content: space-between;
   padding: 1.6rem 1.8rem 0.6rem;
   min-height: 72px;
+  flex-shrink: 0;       /* lock the head height so iOS Safari can't collapse it */
 }
 .nav-drawer-eyebrow {
   font-family: var(--font-stencil);
@@ -260,7 +261,11 @@ body.drawer-open .nav-drawer {
 .nav-drawer-links {
   display: flex; flex-direction: column;
   padding: 2rem 1.8rem 1.4rem;
-  flex: 1;
+  /* No flex: 1 here — iOS Safari mishandles flex:1 on a <nav>
+     child of a fixed-height flex parent and lets the bottom
+     blocks float up into the middle. Use margin-top:auto on the
+     lang block below to push it (and the foot block) to the
+     bottom instead. */
 }
 .nav-drawer-links a {
   display: flex; align-items: baseline; justify-content: space-between;
@@ -311,6 +316,8 @@ body.drawer-open .nav-drawer-links a:nth-child(5) { transition-delay: 0.36s; }
   display: flex; gap: 0.4rem;
   padding: 1.2rem 1.8rem;
   border-top: 1px solid var(--line);
+  margin-top: auto;     /* push to bottom of column-flex drawer */
+  flex-shrink: 0;       /* never collapse, even if drawer overflows */
 }
 .nav-drawer-lang .nav-lang {
   display: inline-flex; padding: 0.55rem 1rem;
@@ -326,6 +333,7 @@ body.drawer-open .nav-drawer-links a:nth-child(5) { transition-delay: 0.36s; }
   border-top: 1px solid var(--line);
   font-family: var(--font-body); font-size: 0.78rem;
   color: var(--text-muted); letter-spacing: 0.04em; line-height: 1.7;
+  flex-shrink: 0;       /* keep footer from being squeezed on short viewports */
 }
 .nav-drawer-foot a {
   color: var(--accent-gold);
