@@ -1,1483 +1,1447 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ABSOLUTE JAPAN — アブソリュート・ジャパン | Coming Soon</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="shortcut icon" href="favicon.ico">
-
-  <!-- Open Graph / Link Preview -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="ABSOLUTE JAPAN — アブソリュート・ジャパン">
-  <meta property="og:description" content="レースで培った情熱と技術を、ストリートへ。東京近郊に、クルマを愛する方のための特別な場所が誕生します。">
-  <meta property="og:image" content="https://www.absoluteracing.jp/og-image.png">
-  <meta property="og:url" content="https://www.absoluteracing.jp/">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ABSOLUTE JAPAN — アブソリュート・ジャパン">
-  <meta name="twitter:description" content="レースで培った情熱と技術を、ストリートへ。東京近郊に、クルマを愛する方のための特別な場所が誕生します。">
-  <meta name="twitter:image" content="https://www.absoluteracing.jp/og-image.png">
-
-  <meta name="description" content="Absolute Japan — Dealership, Service Center & Elevated Experience. Coming soon near Tokyo.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&family=Saira:wght@300;400;500;600;700&family=Shippori+Mincho:wght@400;500;600;700;800&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --bg-primary: #0a0d14;
-      --bg-secondary: #151a25;
-      --bg-tertiary: #1d2330;
-      --accent-gold: #ece711;
-      --accent-red: #e2001a;
-      --text-primary: #ffffff;
-      --text-secondary: #a0a8b8;
-      --text-muted: #5a6275;
-      --font-stencil: 'Saira Stencil One', sans-serif;
-      --font-body: 'Saira', sans-serif;
-      --font-jp: 'Shippori Mincho', serif;
-      --font-jp-sans: 'Zen Kaku Gothic New', sans-serif;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
-
-    body {
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      font-family: var(--font-body);
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ========== NAV ========== */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 100;
-      padding: 1.5rem 3rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: background 0.4s, backdrop-filter 0.4s;
-    }
-
-    nav.scrolled {
-      background: rgba(10, 13, 20, 0.9);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-    }
-
-    .nav-logo {
-      height: 38px;
-      filter: brightness(1.1);
-    }
-
-    .nav-jp {
-      font-family: var(--font-jp);
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      letter-spacing: 0.15em;
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    .nav-lang {
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: color 0.3s;
-    }
-
-    .nav-lang:hover, .nav-lang.active {
-      color: var(--accent-gold);
-    }
-
-    /* Nav-resident Exports link — sits inside .nav-left (rendered
-       via .footer-left in the markup; class name is a holdover from
-       the earlier nav structure but the container is the left rail).
-       Reading order: Absolute · Japan · Exports. */
-    .nav-link {
-      font-family: var(--font-stencil);
-      font-size: 0.85rem; letter-spacing: 0.15em;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      text-decoration: none;
-      padding: 0.4rem 0;
-      transition: color 0.3s;
-      display: inline-flex; align-items: baseline; gap: 0.5rem;
-    }
-    .nav-link:hover, .nav-link:focus-visible {
-      color: var(--accent-gold); outline: none;
-    }
-    .nav-link-jp {
-      font-family: var(--font-jp);
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      letter-spacing: 0.18em;
-    }
-    .nav-link:hover .nav-link-jp,
-    .nav-link:focus-visible .nav-link-jp {
-      color: var(--text-secondary);
-    }
-    @media (max-width: 768px) {
-      /* Mobile: keep the EN word, drop the JP companion so the
-         compact nav doesn't bunch up. */
-      .nav-link-jp { display: none; }
-      .nav-link { font-size: 0.78rem; letter-spacing: 0.12em; }
-    }
-
-    /* ========== EXPORTS BEAT (live business) ========== */
-    .exports-beat {
-      background: var(--bg-secondary);
-      border-top: 1px solid var(--line, rgba(255,255,255,0.08));
-      border-bottom: 1px solid var(--line, rgba(255,255,255,0.08));
-    }
-    .exports-beat-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-    .exports-beat-image {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 4/3;
-    }
-    .exports-beat-image img {
-      width: 100%; height: 100%; object-fit: cover;
-      filter: contrast(1.05) saturate(0.95);
-      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .exports-beat-image:hover img { transform: scale(1.04); }
-    .exports-beat-image::after {
-      content: ''; position: absolute; inset: 0;
-      border: 1px solid rgba(236,231,17,0.18);
-      pointer-events: none;
-    }
-    .exports-beat-content {
-      display: flex; flex-direction: column;
-      gap: 1.3rem;
-      padding-right: 0.5rem;
-    }
-    .status-pill {
-      align-self: flex-start;
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      padding: 0.4rem 0.85rem;
-      border: 1px solid rgba(236,231,17,0.35);
-      background: rgba(236,231,17,0.06);
-      font-family: var(--font-body);
-      font-size: 0.7rem; font-weight: 600;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--accent-gold);
-    }
-    .status-pill .dot {
-      width: 7px; height: 7px;
-      background: var(--accent-gold);
-      border-radius: 50%;
-      box-shadow: 0 0 10px rgba(236,231,17,0.5);
-    }
-    .status-pill .jp {
-      font-family: var(--font-jp);
-      letter-spacing: 0.18em;
-      color: rgba(236,231,17,0.7);
-    }
-    .exports-beat h2 {
-      font-family: var(--font-stencil);
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.05; letter-spacing: 0.02em;
-      margin-bottom: 0.2rem;
-    }
-    .exports-beat-heading-jp {
-      font-family: var(--font-jp);
-      font-size: clamp(0.95rem, 1.3vw, 1.1rem);
-      color: var(--accent-gold);
-      letter-spacing: 0.18em;
-      margin-bottom: 0.4rem;
-    }
-    .exports-beat-body {
-      font-family: var(--font-body); font-weight: 300;
-      font-size: 1rem; color: var(--text-secondary);
-      line-height: 1.85; letter-spacing: 0.02em;
-      max-width: 480px;
-    }
-    .exports-beat-body-jp {
-      font-family: var(--font-jp-sans); font-weight: 300;
-      font-size: 0.95rem; color: var(--text-secondary);
-      line-height: 1.95; letter-spacing: 0.03em;
-      max-width: 480px;
-    }
-    .exports-beat-cta {
-      align-self: flex-start;
-      margin-top: 0.8rem;
-      background: var(--accent-gold);
-      color: var(--bg-primary);
-      font-family: var(--font-body);
-      font-size: 0.82rem; font-weight: 600;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      padding: 1.05rem 2rem;
-      display: inline-flex; align-items: center; gap: 12px;
-      transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
-      text-decoration: none;
-    }
-    .exports-beat-cta:hover { background: #fff; }
-    .exports-beat-cta:focus-visible {
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(236,231,17,0.4);
-    }
-    .exports-beat-cta:active { transform: scale(0.97); }
-
-    @media (max-width: 900px) {
-      .exports-beat-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-      .exports-beat-image { aspect-ratio: 16/9; }
-      .exports-beat-content { padding-right: 0; }
-    }
-
-    /* Coming-soon pill — applied to each offering card header to
-       differentiate from the live Exports beat above. */
-    .opening-pill {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      margin-bottom: 1rem;
-      padding: 0.32rem 0.7rem;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.03);
-      font-family: var(--font-body); font-weight: 600;
-      font-size: 0.62rem; letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-    .opening-pill .jp {
-      font-family: var(--font-jp);
-      letter-spacing: 0.18em;
-      color: var(--text-muted);
-    }
-
-    /* ========== HERO ========== */
-    .hero {
-      position: relative;
-      height: 100vh;
-      min-height: 700px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-
-    .hero-bg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 40%;
-      filter: brightness(0.45) contrast(1.1) saturate(0.9);
-      transform: scale(1.05);
-      animation: heroZoom 20s ease-out forwards;
-    }
-
-    .hero-img-mobile { display: none; }
-
-    @keyframes heroZoom {
-      to { transform: scale(1); }
-    }
-
-    .hero-bg::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(to top, var(--bg-primary) 0%, transparent 50%),
-        linear-gradient(to right, rgba(10,13,20,0.8) 0%, transparent 60%),
-        linear-gradient(135deg, rgba(10,13,20,0.4) 0%, transparent 100%);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 0 3rem 6rem;
-      max-width: 900px;
-    }
-
-    .hero-eyebrow {
-      font-family: var(--font-jp-sans);
-      font-size: 0.8rem;
-      font-weight: 300;
-      letter-spacing: 0.5em;
-      color: var(--accent-gold);
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.8s 0.5s ease-out forwards;
-    }
-
-    .hero-title {
-      font-family: var(--font-stencil);
-      font-size: clamp(3.5rem, 10vw, 8rem);
-      line-height: 0.9;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.15em;
-      opacity: 0;
-      transform: translateY(40px);
-      animation: fadeUp 1s 0.7s ease-out forwards;
-    }
-
-    .hero-title .japan {
-      display: block;
-      color: var(--accent-gold);
-      font-size: 1.15em;
-      margin-top: -0.05em;
-    }
-
-    .hero-subtitle-jp {
-      font-family: var(--font-jp);
-      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-      font-weight: 400;
-      color: var(--text-secondary);
-      letter-spacing: 0.25em;
-      margin-bottom: 2rem;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.8s 1s ease-out forwards;
-    }
-
-    .hero-tagline {
-      font-family: var(--font-body);
-      font-size: 1rem;
-      font-weight: 300;
-      color: var(--text-secondary);
-      letter-spacing: 0.08em;
-      line-height: 1.7;
-      max-width: 480px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.8s 1.2s ease-out forwards;
-    }
-
-    .hero-scroll {
-      position: absolute;
-      bottom: 2rem;
-      right: 3rem;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.8rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 1.8s ease-out forwards;
-    }
-
-    .hero-scroll span {
-      font-family: var(--font-jp-sans);
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      color: var(--text-muted);
-      writing-mode: vertical-rl;
-    }
-
-    .scroll-line {
-      width: 1px;
-      height: 60px;
-      background: linear-gradient(to bottom, var(--accent-gold), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 1; transform: scaleY(1); }
-      50% { opacity: 0.4; transform: scaleY(0.6); }
-    }
-
-    /* ========== KANJI WATERMARK ========== */
-    .kanji-watermark {
-      position: absolute;
-      top: 50%;
-      right: -5%;
-      transform: translateY(-50%);
-      font-family: var(--font-jp);
-      font-size: clamp(10rem, 30vw, 25rem);
-      font-weight: 800;
-      color: rgba(255, 255, 255, 0.02);
-      line-height: 1;
-      writing-mode: vertical-rl;
-      z-index: 1;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    /* ========== SECTION COMMON ========== */
-    .section {
-      padding: 8rem 3rem;
-      position: relative;
-    }
-
-    .section-label {
-      font-family: var(--font-stencil);
-      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-      letter-spacing: 0.2em;
-      color: var(--accent-gold);
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    .section-label-jp {
-      font-family: var(--font-jp);
-      font-size: clamp(1rem, 2vw, 1.3rem);
-      color: var(--text-muted);
-      letter-spacing: 0.3em;
-      margin-bottom: 3rem;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ========== OFFERINGS ========== */
-    .offerings {
-      background: var(--bg-secondary);
-    }
-
-    .offerings-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      margin-top: 1rem;
-      background: rgba(255,255,255,0.05);
-    }
-
-    .offering-card {
-      background: var(--bg-secondary);
-      padding: 3.5rem 2.5rem;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.5s;
-      cursor: default;
-    }
-
-    .offering-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: var(--accent-gold);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .offering-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .offering-card:hover {
-      background: var(--bg-tertiary);
-    }
-
-    .offering-number {
-      font-family: var(--font-stencil);
-      font-size: 3.5rem;
-      color: rgba(236, 231, 17, 0.08);
-      line-height: 1;
-      margin-bottom: 1.5rem;
-    }
-
-    .offering-title {
-      font-family: var(--font-stencil);
-      font-size: 1.3rem;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.5rem;
-    }
-
-    .offering-title-jp {
-      font-family: var(--font-jp);
-      font-size: 1.1rem;
-      color: var(--accent-gold);
-      letter-spacing: 0.2em;
-      margin-bottom: 1.5rem;
-    }
-
-    .offering-desc {
-      font-family: var(--font-jp-sans);
-      font-size: 1.05rem;
-      font-weight: 300;
-      color: var(--text-secondary);
-      line-height: 1.9;
-      letter-spacing: 0.03em;
-    }
-
-    /* ========== HERITAGE ========== */
-    .heritage {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .heritage-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .heritage-image {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 4/3;
-    }
-
-    .heritage-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: contrast(1.05) saturate(0.95);
-      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .heritage-image:hover img {
-      transform: scale(1.05);
-    }
-
-    .heritage-image::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border: 1px solid rgba(236, 231, 17, 0.15);
-      pointer-events: none;
-    }
-
-    .heritage-text h2 {
-      font-family: var(--font-stencil);
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      line-height: 1.1;
-      margin-bottom: 0.5rem;
-    }
-
-    .heritage-text h2 span {
-      color: var(--accent-gold);
-    }
-
-    .heritage-text .jp-heading {
-      font-family: var(--font-jp);
-      font-size: 1rem;
-      color: var(--text-muted);
-      letter-spacing: 0.2em;
-      margin-bottom: 2rem;
-    }
-
-    .heritage-text p {
-      font-family: var(--font-jp-sans);
-      font-size: 0.9rem;
-      font-weight: 300;
-      color: var(--text-secondary);
-      line-height: 2;
-      margin-bottom: 1.5rem;
-      letter-spacing: 0.03em;
-    }
-
-    /* ========== STATS ========== */
-    .stats-bar {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: rgba(255,255,255,0.03);
-      margin: 4rem 0 0;
-    }
-
-    .stat-item {
-      padding: 2.5rem 2rem;
-      text-align: center;
-      background: var(--bg-primary);
-    }
-
-    .stat-number {
-      font-family: var(--font-stencil);
-      font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--accent-gold);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-
-    .stat-label {
-      font-family: var(--font-jp-sans);
-      font-size: 0.7rem;
-      font-weight: 300;
-      letter-spacing: 0.2em;
-      color: var(--text-muted);
-      text-transform: uppercase;
-    }
-
-    /* ========== GALLERY ========== */
-    .gallery {
-      background: var(--bg-secondary);
-      overflow: hidden;
-    }
-
-    .gallery-strip {
-      display: flex;
-      gap: 1px;
-      margin: 0 -3rem;
-      animation: gallerySlide 40s linear infinite;
-    }
-
-    .gallery-strip img {
-      height: 320px;
-      width: auto;
-      min-width: 480px;
-      object-fit: cover;
-      filter: brightness(0.7) contrast(1.05) saturate(0.9);
-      transition: filter 0.5s;
-      flex-shrink: 0;
-    }
-
-    .gallery-strip img:hover {
-      filter: brightness(0.9) contrast(1.05) saturate(1.1);
-    }
-
-    @keyframes gallerySlide {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* ========== LOCATION ========== */
-    .location {
-      text-align: center;
-      padding: 10rem 3rem;
-      position: relative;
-    }
-
-    .location-kanji {
-      font-family: var(--font-jp);
-      font-size: clamp(6rem, 18vw, 14rem);
-      font-weight: 800;
-      color: rgba(255,255,255,0.025);
-      line-height: 1;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      white-space: nowrap;
-    }
-
-    .location-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .location-pre {
-      font-family: var(--font-jp);
-      font-size: 1.15rem;
-      letter-spacing: 0.4em;
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-    }
-
-    .location h2 {
-      font-family: var(--font-stencil);
-      font-size: clamp(3rem, 8vw, 7rem);
-      line-height: 0.95;
-      letter-spacing: 0.05em;
-    }
-
-    .location h2 .accent {
-      color: var(--accent-gold);
-    }
-
-    .location-sub {
-      font-family: var(--font-jp-sans);
-      font-size: 1.2rem;
-      font-weight: 300;
-      color: var(--text-secondary);
-      letter-spacing: 0.15em;
-      margin-top: 1.5rem;
-    }
-
-    /* ========== CTA ========== */
-    .cta {
-      background: var(--bg-secondary);
-      text-align: center;
-      padding: 8rem 3rem;
-      position: relative;
-    }
-
-    .cta::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 1px;
-      height: 80px;
-      background: linear-gradient(to bottom, transparent, var(--accent-gold));
-    }
-
-    .cta h2 {
-      font-family: var(--font-stencil);
-      font-size: clamp(1.5rem, 3.5vw, 2.5rem);
-      letter-spacing: 0.05em;
-      margin-bottom: 0.5rem;
-    }
-
-    .cta .jp-sub {
-      font-family: var(--font-jp);
-      font-size: 1.3rem;
-      color: var(--text-muted);
-      letter-spacing: 0.3em;
-      margin-bottom: 3rem;
-    }
-
-    .email-form {
-      display: flex;
-      max-width: 520px;
-      margin: 0 auto;
-      gap: 0;
-      border: 1px solid rgba(255,255,255,0.1);
-      transition: border-color 0.3s;
-    }
-
-    .email-form:focus-within {
-      border-color: var(--accent-gold);
-    }
-
-    .email-form input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      padding: 1.1rem 1.5rem;
-      font-family: var(--font-jp-sans);
-      font-size: 0.85rem;
-      color: var(--text-primary);
-      letter-spacing: 0.05em;
-      outline: none;
-    }
-
-    .email-form input::placeholder {
-      color: var(--text-muted);
-      font-family: var(--font-jp-sans);
-      font-weight: 300;
-    }
-
-    .email-form button {
-      background: var(--accent-gold);
-      border: none;
-      padding: 1.1rem 2rem;
-      font-family: var(--font-stencil);
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      color: var(--bg-primary);
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-      white-space: nowrap;
-    }
-
-    .email-form button:hover {
-      background: #fff;
-    }
-
-    .email-form button:active {
-      transform: scale(0.97);
-    }
-
-    .cta-note {
-      font-family: var(--font-jp-sans);
-      font-size: 1rem;
-      font-weight: 300;
-      color: var(--text-muted);
-      margin-top: 1.5rem;
-      letter-spacing: 0.08em;
-    }
-
-    /* Cross-link to /exports.html under the dealership signup form. */
-    .cta-exports-link {
-      margin-top: 2.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      font-family: var(--font-jp-sans);
-      font-size: 0.95rem; font-weight: 300;
-      color: var(--text-secondary);
-      letter-spacing: 0.06em;
-    }
-    .cta-exports-link a {
-      color: var(--accent-gold);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(236,231,17,0.25);
-      transition: border-color 0.3s, color 0.3s;
-    }
-    .cta-exports-link a:hover, .cta-exports-link a:focus-visible {
-      color: #fff; border-color: var(--accent-gold); outline: none;
-    }
-
-    /* ========== FOOTER ========== */
-    footer {
-      padding: 4rem 3rem 3rem;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      border-top: 1px solid rgba(255,255,255,0.04);
-    }
-
-    .footer-left {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .footer-logo {
-      height: 28px;
-      opacity: 0.5;
-    }
-
-    .footer-divider {
-      width: 1px;
-      height: 28px;
-      background: rgba(255,255,255,0.1);
-    }
-
-    .footer-brand {
-      font-family: var(--font-stencil);
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      color: var(--text-muted);
-    }
-
-    .footer-right {
-      text-align: right;
-    }
-
-    .footer-right a {
-      font-family: var(--font-body);
-      font-size: 0.7rem;
-      font-weight: 400;
-      letter-spacing: 0.15em;
-      color: var(--text-muted);
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: color 0.3s;
-    }
-
-    .footer-right a:hover {
-      color: var(--accent-gold);
-    }
-
-    .footer-copy {
-      font-family: var(--font-jp-sans);
-      font-size: 0.65rem;
-      color: var(--text-muted);
-      margin-top: 0.5rem;
-      letter-spacing: 0.05em;
-    }
-
-    /* ========== JAPAN HOME ========== */
-    .japan-home {
-      background: var(--bg-secondary);
-      overflow: hidden;
-    }
-
-    .japan-home-header {
-      max-width: 700px;
-      margin-bottom: 3.5rem;
-    }
-
-    .japan-home-header h2 {
-      font-family: var(--font-stencil);
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.1;
-      margin-bottom: 0.5rem;
-    }
-
-    .japan-home-header h2 span {
-      color: var(--accent-gold);
-    }
-
-    .japan-home-header .jp-heading {
-      font-family: var(--font-jp);
-      font-size: 1rem;
-      color: var(--text-muted);
-      letter-spacing: 0.2em;
-      margin-bottom: 1.5rem;
-    }
-
-    .japan-home-header p {
-      font-family: var(--font-jp-sans);
-      font-size: 0.9rem;
-      font-weight: 300;
-      color: var(--text-secondary);
-      line-height: 2;
-      letter-spacing: 0.03em;
-    }
-
-    .japan-races {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-
-    .race-card {
-      position: relative;
-      overflow: hidden;
-      display: block;
-      text-decoration: none;
-      color: inherit;
-      aspect-ratio: 3/4;
-    }
-
-    .race-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: brightness(0.55) contrast(1.05) saturate(0.9);
-      transition: filter 0.6s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .race-card:hover img {
-      filter: brightness(0.7) contrast(1.05) saturate(1.1);
-      transform: scale(1.05);
-    }
-
-    .race-card-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 2rem;
-      background: linear-gradient(to top, rgba(10,13,20,0.9) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .race-card-circuit {
-      font-family: var(--font-stencil);
-      font-size: clamp(1.2rem, 2vw, 1.6rem);
-      letter-spacing: 0.05em;
-      margin-bottom: 0.2rem;
-    }
-
-    .race-card-circuit-jp {
-      font-family: var(--font-jp);
-      font-size: 0.85rem;
-      color: var(--accent-gold);
-      letter-spacing: 0.2em;
-      margin-bottom: 0.75rem;
-    }
-
-    .race-card-date {
-      font-family: var(--font-body);
-      font-size: 0.7rem;
-      font-weight: 400;
-      letter-spacing: 0.15em;
-      color: var(--text-muted);
-      text-transform: uppercase;
-    }
-
-    .race-card-arrow {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      width: 36px;
-      height: 36px;
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-secondary);
-      font-size: 0.85rem;
-      transition: border-color 0.3s, color 0.3s, transform 0.3s;
-      pointer-events: none;
-    }
-
-    .race-card:hover .race-card-arrow {
-      border-color: var(--accent-gold);
-      color: var(--accent-gold);
-      transform: translate(3px, -3px);
-    }
-
-    @media (max-width: 768px) {
-      .japan-races {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-      .race-card {
-        aspect-ratio: 16/9;
-      }
-    }
-
-    /* ========== RED ACCENT STRIPE ========== */
-    .accent-stripe {
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent-red), var(--accent-gold));
-    }
-
-    /* ========== NOISE OVERLAY ========== */
-    .noise {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      pointer-events: none;
-      opacity: 0.025;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-size: 200px;
-    }
-
-    /* ========== ANIMATIONS ========== */
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* ========== RESPONSIVE ========== */
-    @media (max-width: 1024px) {
-      .offerings-grid {
-        grid-template-columns: 1fr;
-      }
-      .heritage-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-      .stats-bar {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-jp { display: none; }
-      .hero { align-items: center; }
-      .hero-content { padding: 0 1.5rem; margin-top: -14vh; }
-      .hero-bg .hero-img-desktop { display: none; }
-      .hero-bg .hero-img-mobile { display: block; }
-      .hero-bg::after {
-        background:
-          linear-gradient(to bottom, var(--bg-primary) 0%, transparent 35%),
-          linear-gradient(to top, var(--bg-primary) 0%, transparent 40%);
-      }
-      .section { padding: 5rem 1.5rem; }
-      .hero-content { padding: 0 1.5rem 4rem; }
-      .hero-scroll { right: 1.5rem; }
-      .stats-bar { grid-template-columns: 1fr 1fr; }
-      .gallery-strip img { height: 220px; min-width: 330px; }
-      footer {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 2rem;
-      }
-      .footer-right { text-align: left; }
-      .email-form {
-        flex-direction: column;
-      }
-      .email-form button {
-        padding: 1rem 2rem;
-      }
-    }
-    /* ========== LANGUAGE TOGGLE ========== */
-    body.lang-en .jp-only { display: none; }
-    body.lang-jp .en-only { display: none; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Absolute Japan — Vehicle Export · Dealership · Service · Community</title>
+<meta name="description" content="Absolute Japan — the automotive group from one of Asia's most successful motorsport operations. International vehicle export live worldwide today; Tokyo dealership, service center, garden and café opening 2027.">
+
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="shortcut icon" href="favicon.ico">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Absolute Japan — Vehicle Export · Dealership · Service · Community">
+<meta property="og:description" content="Vehicle export from Japan, live worldwide today. Tokyo dealership, service center, garden & café opening 2027. From the team behind Absolute Racing.">
+<meta property="og:image" content="https://www.absoluteracing.jp/og-image.png">
+<meta property="og:url" content="https://www.absoluteracing.jp/">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Absolute Japan — Vehicle Export · Dealership · Service · Community">
+<meta name="twitter:description" content="Vehicle export from Japan, live worldwide today. Tokyo dealership, service center, garden & café opening 2027.">
+<meta name="twitter:image" content="https://www.absoluteracing.jp/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&family=Saira:wght@300;400;500;600;700&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Inter:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg-primary:    #0a0d14;
+  --bg-secondary:  #131826;
+  --bg-tertiary:   #1d2330;
+  --accent-gold:   #ece711;
+  --accent-red:    #e2001a;
+  --text-primary:  #ffffff;
+  --text-secondary:#b8bfcc;
+  --text-muted:    #8a92a0;
+  --line:          rgba(255,255,255,0.10);
+  --line-2:        rgba(255,255,255,0.22);
+
+  --font-stencil:  'Saira Stencil One', sans-serif;
+  --font-body:     'Saira', sans-serif;
+  --font-display:  'Inter', sans-serif;
+  --font-jp:       'Shippori Mincho', serif;
+  --font-jp-sans:  'Zen Kaku Gothic New', sans-serif;
+
+  --maxw: 1320px;
+}
+
+/* overflow-x:hidden on <html> breaks position:sticky on iOS Safari.
+   Body uses overflow-x:clip — clip doesn't create a scrollport. */
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+.skip-link {
+  position: absolute; top: -100px; left: 0;
+  background: var(--accent-gold); color: var(--bg-primary);
+  font-family: var(--font-body); font-weight: 700;
+  font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.9rem 1.4rem; z-index: 10000;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; outline: none; }
+
+/* ===== NOISE ===== */
+.noise {
+  position: fixed; inset: 0; z-index: 9999; pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+  padding: 1.4rem 3rem;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background 0.4s, backdrop-filter 0.4s;
+}
+nav.scrolled {
+  background: rgba(10,13,20,0.92);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-left { display: flex; align-items: center; gap: 1.4rem; }
+.nav-logo { height: 36px; filter: brightness(1.1); }
+.nav-divider { width: 1px; height: 26px; background: rgba(255,255,255,0.1); }
+.nav-jp {
+  font-family: var(--font-jp);
+  font-size: 0.82rem; color: var(--text-secondary); letter-spacing: 0.15em;
+}
+.nav-links {
+  display: flex; gap: 2rem;
+  font-family: var(--font-body); font-weight: 500;
+  font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+}
+.nav-links a {
+  color: var(--text-secondary);
+  transition: color 0.2s;
+  padding: 0.4rem 0;
+  position: relative;
+}
+.nav-links a:hover, .nav-links a:focus-visible { color: var(--accent-gold); outline: none; }
+.nav-links a.live::after {
+  content: ''; position: absolute; top: 6px; right: -10px;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent-gold);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+.nav-right { display: flex; align-items: center; gap: 1.5rem; }
+.nav-lang {
+  font-family: var(--font-body); font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-secondary); padding: 0.4rem 0.4rem;
+  transition: color 0.2s;
+}
+.nav-lang.active, .nav-lang:hover, .nav-lang:focus-visible {
+  color: var(--accent-gold); outline: none;
+}
+.nav-lang:focus-visible { box-shadow: 0 0 0 2px rgba(236,231,17,0.4); }
+@media (max-width: 1024px) { .nav-links { display: none; } }
+@media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .nav-jp, .nav-divider { display: none; } }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* ===== HERO ===== */
+.hero {
+  position: relative; height: 100vh; min-height: 720px;
+  display: flex; align-items: flex-end; overflow: hidden;
+}
+.hero-bg { position: absolute; inset: 0; z-index: 0; }
+.hero-bg img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center 40%;
+  filter: brightness(0.45) contrast(1.1) saturate(0.9);
+  transform: scale(1.05);
+  animation: heroZoom 20s ease-out forwards;
+}
+.hero-bg .hero-img-mobile { display: none; }
+@keyframes heroZoom { to { transform: scale(1); } }
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background:
+    linear-gradient(to top, var(--bg-primary) 0%, transparent 50%),
+    linear-gradient(to right, rgba(10,13,20,0.8) 0%, transparent 60%);
+}
+.kanji-watermark {
+  position: absolute; top: 50%; right: -5%; transform: translateY(-50%);
+  font-family: var(--font-jp); font-size: clamp(10rem, 30vw, 25rem);
+  font-weight: 800; color: rgba(255,255,255,0.025); line-height: 1;
+  writing-mode: vertical-rl; z-index: 1; pointer-events: none; user-select: none;
+}
+.hero-content { position: relative; z-index: 2; padding: 0 3rem 6rem; max-width: 1000px; }
+.hero-eyebrow {
+  font-family: var(--font-body); font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.42em; color: var(--accent-gold);
+  text-transform: uppercase; margin-bottom: 1.4rem;
+  opacity: 0; transform: translateY(20px);
+  animation: fadeUp 0.8s 0.3s ease-out forwards;
+}
+.hero-title {
+  font-family: var(--font-stencil);
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  line-height: 0.9; letter-spacing: -0.02em;
+  margin-bottom: 0.15em;
+  opacity: 0; transform: translateY(40px);
+  animation: fadeUp 1s 0.5s ease-out forwards;
+}
+.hero-title .japan { display: block; color: var(--accent-gold); font-size: 1.15em; margin-top: -0.05em; }
+.hero-subline {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  color: var(--text-primary); letter-spacing: 0.02em;
+  margin-top: 1.2rem; margin-bottom: 1rem;
+  opacity: 0; transform: translateY(20px);
+  animation: fadeUp 0.8s 0.9s ease-out forwards;
+}
+.hero-tagline {
+  font-family: var(--font-body); font-weight: 300;
+  font-size: 1rem; color: var(--text-secondary);
+  letter-spacing: 0.04em; line-height: 1.75;
+  max-width: 620px; margin-bottom: 2.4rem;
+  opacity: 0; transform: translateY(20px);
+  animation: fadeUp 0.8s 1.1s ease-out forwards;
+}
+.hero-ctas {
+  display: flex; gap: 1.8rem; flex-wrap: wrap; align-items: center;
+  opacity: 0; transform: translateY(20px);
+  animation: fadeUp 0.8s 1.3s ease-out forwards;
+}
+.btn-primary {
+  background: var(--accent-gold); color: var(--bg-primary);
+  font-family: var(--font-body); font-weight: 600;
+  font-size: 0.82rem; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 1.1rem 2.2rem;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+  display: inline-flex; align-items: center; gap: 12px;
+}
+.btn-primary:hover { background: #fff; }
+.btn-primary:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(236,231,17,0.4); }
+.btn-primary:active { transform: scale(0.97); }
+.btn-secondary {
+  font-family: var(--font-body); font-weight: 500;
+  font-size: 0.82rem; letter-spacing: 0.12em;
+  color: var(--text-primary);
+  padding: 1.1rem 0; border-bottom: 1px solid var(--line-2);
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.btn-secondary:hover, .btn-secondary:focus-visible { color: var(--accent-gold); border-color: var(--accent-gold); outline: none; }
+
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 768px) {
+  .hero { align-items: center; }
+  .hero-content { padding: 0 1.5rem 4rem; }
+}
+
+/* ===== ACCENT STRIPE ===== */
+.accent-stripe { height: 3px; background: linear-gradient(90deg, var(--accent-red), var(--accent-gold)); }
+
+/* ===== SECTION SHELL ===== */
+.section { padding: 8rem 3rem; position: relative; }
+.section-inner { max-width: var(--maxw); margin: 0 auto; }
+.section-label {
+  font-family: var(--font-stencil);
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  letter-spacing: 0.18em; color: var(--accent-gold);
+  text-transform: uppercase; margin-bottom: 0.5rem;
+}
+.section-label-jp {
+  font-family: var(--font-jp);
+  font-size: 0.95rem; color: var(--text-muted);
+  letter-spacing: 0.28em; margin-bottom: 2.6rem;
+}
+.section-head h2 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  line-height: 1.05; letter-spacing: -0.025em;
+  margin-bottom: 1.4rem; max-width: 1000px;
+}
+.section-head h2 .accent { color: var(--accent-gold); }
+.section-head p.lede {
+  font-family: var(--font-body); font-weight: 300;
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  color: var(--text-secondary); line-height: 1.75;
+  max-width: 720px;
+}
+@media (max-width: 768px) { .section { padding: 5rem 1.5rem; } }
+
+/* ===== SCROLL REVEAL — js-reveal gate so non-JS / reduced-motion
+   users get the fully-readable static version. ===== */
+body.js-reveal .reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+body.js-reveal .reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== SECTION 01 — WHO WE ARE / 3 BUSINESSES ===== */
+.who-we-are { background: var(--bg-primary); }
+.businesses-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  margin-top: 3.5rem;
+}
+.business-card {
+  position: relative; overflow: hidden;
+  background: var(--bg-secondary);
+  min-height: 460px;
+  display: flex; flex-direction: column;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.business-card .img-wrap { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.business-card .img-wrap::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,13,20,0.4) 0%, rgba(10,13,20,0.6) 50%, rgba(10,13,20,0.95) 100%);
+}
+.business-card .img-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(0.7) saturate(0.95);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.business-card:hover .img-wrap img { transform: scale(1.06); }
+.business-card .content {
+  position: relative; z-index: 2;
+  padding: 2.5rem 2.2rem;
+  display: flex; flex-direction: column; justify-content: space-between;
+  height: 100%; flex: 1;
+}
+.business-card .top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+.business-card .num {
+  font-family: var(--font-stencil); font-size: 0.95rem;
+  color: var(--text-secondary); letter-spacing: 0.22em;
+}
+.status-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-body); font-weight: 700;
+  font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid;
+}
+.status-badge.live { color: var(--accent-gold); border-color: var(--accent-gold); }
+.status-badge.live .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent-gold);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+.status-badge.soon { color: var(--text-muted); border-color: rgba(255,255,255,0.18); }
+.business-card .bottom { display: flex; flex-direction: column; gap: 0.6rem; }
+.business-card h3 {
+  font-family: var(--font-stencil);
+  font-size: clamp(1.4rem, 2vw, 1.8rem); letter-spacing: 0.04em;
+  text-transform: uppercase; line-height: 1.1;
+}
+.business-card .desc {
+  font-family: var(--font-body); font-weight: 300;
+  font-size: 0.94rem; color: var(--text-secondary);
+  line-height: 1.7; margin-bottom: 0.6rem;
+}
+.business-card .learn-more {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-body); font-weight: 600;
+  font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--text-primary); align-self: flex-start;
+  padding: 0.6rem 0; border-bottom: 1px solid var(--text-primary);
+  transition: color 0.2s, border-color 0.2s, gap 0.2s;
+}
+.business-card .learn-more:hover, .business-card:focus-visible .learn-more {
+  color: var(--accent-gold); border-color: var(--accent-gold); gap: 16px;
+}
+.business-card.live-card { outline: 1px solid rgba(236,231,17,0.25); }
+.business-card:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 2px; }
+
+@media (max-width: 1024px) {
+  .businesses-grid { grid-template-columns: 1fr; }
+  .business-card { min-height: 360px; }
+}
+
+/* ===== SECTION 02 — EXPORTS DEEP DIVE ===== */
+.exports-feature { background: var(--bg-secondary); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.exports-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+  align-items: center;
+}
+.live-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-body); font-weight: 700;
+  font-size: 0.7rem; letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--accent-gold);
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--accent-gold);
+  margin-bottom: 1.6rem;
+}
+.live-tag .dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--accent-gold);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+.exports-text h2 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.05; letter-spacing: -0.025em;
+  margin-bottom: 1.4rem;
+}
+.exports-text h2 .accent { color: var(--accent-gold); }
+.exports-text .lede {
+  font-family: var(--font-body); font-weight: 300;
+  font-size: 1.05rem; color: var(--text-secondary);
+  line-height: 1.8; margin-bottom: 2rem;
+}
+.exports-pillars {
+  display: flex; flex-direction: column; gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  border-top: 1px solid var(--line);
+}
+.exports-pillar {
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--line);
+  display: grid; grid-template-columns: 28px 1fr; gap: 1rem; align-items: center;
+}
+.exports-pillar .check {
+  font-family: var(--font-body); font-weight: 700;
+  font-size: 0.85rem; color: var(--accent-gold);
+  text-align: center;
+}
+.exports-pillar .text {
+  font-family: var(--font-body); font-weight: 500;
+  font-size: 0.98rem; color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+.exports-pillar .text span {
+  display: block; font-weight: 300; font-size: 0.85rem;
+  color: var(--text-secondary); margin-top: 2px;
+}
+.exports-ctas { display: flex; gap: 1.6rem; flex-wrap: wrap; align-items: center; }
+
+.exports-image-wrap {
+  position: relative; aspect-ratio: 4/5; overflow: hidden;
+}
+.exports-image-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: contrast(1.05) saturate(0.95);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.exports-image-wrap:hover img { transform: scale(1.05); }
+.exports-image-wrap::after {
+  content: ''; position: absolute; inset: 0;
+  border: 1px solid rgba(236,231,17,0.15); pointer-events: none;
+}
+.exports-image-overlay {
+  position: absolute; bottom: 1.6rem; left: 1.6rem; right: 1.6rem;
+  font-family: var(--font-body); font-weight: 500;
+  font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--text-secondary);
+  display: flex; justify-content: space-between; align-items: baseline;
+}
+.exports-image-overlay .right { color: var(--accent-gold); }
+
+@media (max-width: 1024px) {
+  .exports-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .exports-image-wrap { aspect-ratio: 16/9; }
+}
+
+/* ===== SECTION 03 — COMING TO TOKYO ===== */
+.tokyo { background: var(--bg-primary); position: relative; overflow: hidden; }
+.tokyo .section-inner { position: relative; z-index: 2; }
+.tokyo::before {
+  content: '東京'; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-jp); font-weight: 800;
+  font-size: clamp(10rem, 28vw, 24rem);
+  color: rgba(255,255,255,0.018); line-height: 1;
+  white-space: nowrap; z-index: 1; pointer-events: none; user-select: none;
+}
+
+.tokyo-image-wrap {
+  position: relative; overflow: hidden;
+  aspect-ratio: 16/10;
+  margin-top: 3rem;
+}
+.tokyo-image-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: contrast(1.05) saturate(0.95);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tokyo-image-wrap:hover img { transform: scale(1.03); }
+.tokyo-image-wrap::after {
+  content: ''; position: absolute; inset: 0;
+  border: 1px solid rgba(236,231,17,0.15);
+  pointer-events: none;
+}
+.tokyo-image-overlay {
+  position: absolute; left: 1.6rem; bottom: 1.6rem; right: 1.6rem;
+  display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem;
+  font-family: var(--font-body); font-weight: 500;
+  font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text-secondary);
+}
+.tokyo-image-overlay .right { color: var(--accent-gold); }
+
+.first-in-japan {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-body); font-weight: 700;
+  font-size: 0.68rem; letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--accent-gold);
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--accent-gold);
+  margin-bottom: 1.6rem;
+}
+
+.tokyo-offerings {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+  background: rgba(255,255,255,0.05);
+  margin-top: 3rem;
+}
+.tokyo-offering {
+  background: var(--bg-secondary);
+  padding: 2.6rem 2.2rem 2.8rem;
+  position: relative;
+  transition: background 0.4s;
+}
+.tokyo-offering:hover { background: var(--bg-tertiary); }
+.tokyo-offering .num {
+  font-family: var(--font-stencil);
+  font-size: 2.6rem; line-height: 1;
+  color: rgba(236,231,17,0.1);
+  margin-bottom: 1rem;
+}
+.tokyo-offering h3 {
+  font-family: var(--font-stencil);
+  font-size: 1.2rem; letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.tokyo-offering .kicker {
+  font-family: var(--font-body); font-weight: 600;
+  font-size: 0.7rem; letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 1.4rem;
+}
+.tokyo-offering p {
+  font-family: var(--font-body); font-weight: 300;
+  font-size: 0.92rem; color: var(--text-secondary);
+  line-height: 1.85;
+}
+.tokyo-cta-row {
+  margin-top: 3.5rem;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;
+  align-items: center;
+  padding-top: 2rem; border-top: 1px solid var(--line);
+}
+.tokyo-cta-row .left {
+  font-family: var(--font-body); font-weight: 400;
+  font-size: 0.92rem; color: var(--text-secondary);
+  max-width: 480px; line-height: 1.6;
+}
+
+@media (max-width: 900px) { .tokyo-offerings { grid-template-columns: 1fr; } }
+
+/* ===== SECTION 04 — INNER CIRCLE ===== */
+.inner-circle { background: var(--bg-secondary); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.inner-grid {
+  display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem;
+  align-items: center;
+}
+.inner-image-wrap {
+  position: relative; aspect-ratio: 5/4; overflow: hidden;
+}
+.inner-image-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: contrast(1.05) saturate(0.95);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.inner-image-wrap:hover img { transform: scale(1.05); }
+.inner-image-wrap::after {
+  content: ''; position: absolute; inset: 0;
+  border: 1px solid rgba(236,231,17,0.15); pointer-events: none;
+}
+.inner-text h2 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.05; letter-spacing: -0.025em;
+  margin-bottom: 1.2rem;
+}
+.inner-text h2 .accent { color: var(--accent-gold); }
+.inner-text .lede {
+  font-family: var(--font-body); font-weight: 300;
+  font-size: 1.05rem; color: var(--text-secondary);
+  line-height: 1.8; margin-bottom: 2rem;
+}
+.inner-benefits {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem 2rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1.6rem; margin-top: 1.6rem;
+}
+.inner-benefit { padding: 0.4rem 0 1rem; }
+.inner-benefit .num {
+  font-family: var(--font-stencil);
+  font-size: 0.78rem; letter-spacing: 0.22em;
+  color: var(--accent-gold); margin-bottom: 0.6rem;
+}
+.inner-benefit h4 {
+  font-family: var(--font-stencil);
+  font-size: 1.02rem; letter-spacing: 0.05em;
+  text-transform: uppercase; line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+.inner-benefit p {
+  font-family: var(--font-body); font-weight: 300;
+  font-size: 0.88rem; color: var(--text-secondary);
+  line-height: 1.75;
+}
+@media (max-width: 1024px) { .inner-grid { grid-template-columns: 1fr; gap: 3rem; } }
+@media (max-width: 600px) { .inner-benefits { grid-template-columns: 1fr; } }
+
+/* ===== SECTION 05 — ABOUT ABSOLUTE RACING ===== */
+.about-racing { background: var(--bg-secondary); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.racing-grid {
+  display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem;
+  align-items: center;
+}
+.racing-text h2 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.05; letter-spacing: -0.025em;
+  margin-bottom: 1.4rem;
+}
+.racing-text h2 .accent { color: var(--accent-gold); }
+.racing-text .lede {
+  font-family: var(--font-body); font-weight: 300;
+  font-size: 1.02rem; color: var(--text-secondary);
+  line-height: 1.85; margin-bottom: 1.4rem;
+}
+.racing-text .lede.primary {
+  color: var(--text-primary); font-weight: 400; font-size: 1.15rem;
+  margin-bottom: 1.6rem;
+}
+
+.racing-image-wrap {
+  position: relative; aspect-ratio: 5/4; overflow: hidden;
+}
+.racing-image-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.racing-image-wrap:hover img { transform: scale(1.05); }
+.racing-image-wrap::after {
+  content: ''; position: absolute; inset: 0;
+  border: 1px solid rgba(236,231,17,0.15); pointer-events: none;
+}
+
+.stats-bar {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  margin-top: 5rem;
+  border-top: 1px solid var(--line);
+}
+.stat-item {
+  padding: 2.2rem 1rem;
+  text-align: left;
+  border-right: 1px solid var(--line);
+}
+.stat-item:last-child { border-right: none; }
+.stat-number {
+  font-family: var(--font-stencil);
+  font-size: clamp(2rem, 3.6vw, 2.8rem); color: var(--accent-gold);
+  line-height: 1; margin-bottom: 0.5rem; letter-spacing: -0.01em;
+}
+.stat-label {
+  font-family: var(--font-body); font-weight: 500;
+  font-size: 0.7rem; letter-spacing: 0.22em;
+  color: var(--text-secondary); text-transform: uppercase;
+}
+
+.racing-link-out {
+  margin-top: 2.5rem;
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-body); font-weight: 600;
+  font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--text-primary);
+  padding: 0.6rem 0; border-bottom: 1px solid var(--text-primary);
+  transition: color 0.2s, border-color 0.2s, gap 0.2s;
+}
+.racing-link-out:hover, .racing-link-out:focus-visible {
+  color: var(--accent-gold); border-color: var(--accent-gold); gap: 16px; outline: none;
+}
+
+@media (max-width: 1024px) {
+  .racing-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  .stat-item:nth-child(2) { border-right: none; }
+  .stat-item:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+}
+
+/* ===== SECTION 06 — JAPAN IS HOME ===== */
+.japan-home { background: var(--bg-primary); }
+.japan-home-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+  align-items: center;
+}
+.japan-home-text h2 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.05; letter-spacing: -0.025em;
+  margin-bottom: 1.4rem;
+}
+.japan-home-text h2 .accent { color: var(--accent-gold); }
+.japan-home-text p {
+  font-family: var(--font-body); font-weight: 300;
+  font-size: 1.02rem; color: var(--text-secondary);
+  line-height: 1.85; margin-bottom: 1.2rem;
+}
+.circuits-list {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+}
+.circuit {
+  position: relative; overflow: hidden;
+  aspect-ratio: 4/5;
+  display: block; text-decoration: none; color: inherit;
+}
+.circuit img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(0.6) saturate(0.9);
+  transition: transform 0.8s, filter 0.4s;
+}
+.circuit:hover img, .circuit:focus-visible img { transform: scale(1.05); filter: brightness(0.85); }
+.circuit:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 2px; }
+.circuit .name {
+  position: absolute; left: 1rem; bottom: 1rem; right: 1rem;
+  font-family: var(--font-stencil); font-size: 0.85rem;
+  color: #fff; letter-spacing: 0.15em; text-transform: uppercase;
+}
+@media (max-width: 1024px) { .japan-home-grid { grid-template-columns: 1fr; gap: 3rem; } }
+
+/* ===== GALLERY — infinite-scroll strip ===== */
+.gallery {
+  background: var(--bg-secondary);
+  overflow: hidden;
+}
+.gallery-strip {
+  display: flex; gap: 1px;
+  margin: 0 -3rem;
+  animation: gallerySlide 40s linear infinite;
+}
+.gallery-strip img {
+  height: 320px; width: auto; min-width: 480px;
+  object-fit: cover;
+  filter: brightness(0.7) contrast(1.05) saturate(0.9);
+  transition: filter 0.5s;
+  flex-shrink: 0;
+}
+.gallery-strip img:hover { filter: brightness(0.9) contrast(1.05) saturate(1.1); }
+@keyframes gallerySlide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@media (max-width: 768px) {
+  .gallery-strip img { height: 220px; min-width: 330px; }
+}
+
+/* ===== SECTION 07 — CONNECT ===== */
+.connect { background: var(--bg-secondary); border-top: 1px solid var(--line); }
+.connect-head { text-align: center; margin-bottom: 3.5rem; }
+.connect-head h2 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.1; letter-spacing: -0.025em;
+  margin-bottom: 1rem;
+}
+.connect-head h2 .accent { color: var(--accent-gold); }
+.connect-head p {
+  font-family: var(--font-body); font-weight: 300;
+  font-size: 1rem; color: var(--text-secondary);
+  max-width: 580px; margin: 0 auto; line-height: 1.7;
+}
+.connect-paths {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  max-width: 1200px; margin: 0 auto;
+}
+.path {
+  background: var(--bg-primary);
+  border: 1px solid var(--line);
+  padding: 2.6rem 2.4rem;
+  display: flex; flex-direction: column; gap: 1rem;
+  transition: border-color 0.3s;
+}
+.path:hover { border-color: var(--line-2); }
+.path .path-tag {
+  font-family: var(--font-body); font-weight: 700;
+  font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--accent-gold); margin-bottom: 0.4rem;
+}
+.path.soon .path-tag { color: var(--text-muted); }
+.path h3 {
+  font-family: var(--font-stencil);
+  font-size: 1.3rem; letter-spacing: 0.04em;
+  text-transform: uppercase; line-height: 1.2;
+}
+.path p {
+  font-family: var(--font-body); font-weight: 300;
+  font-size: 0.95rem; color: var(--text-secondary);
+  line-height: 1.75;
+}
+.path .cta-row {
+  margin-top: auto; padding-top: 0.6rem;
+  display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center;
+}
+.path .path-email {
+  font-family: var(--font-body); font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--accent-gold);
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid rgba(236,231,17,0.4);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.path .path-email:hover, .path .path-email:focus-visible {
+  color: #fff; border-color: #fff; outline: none;
+}
+.inline-form {
+  display: flex; width: 100%; max-width: 100%;
+  border: 1px solid var(--line-2);
+  margin-top: 0.4rem;
+  transition: border-color 0.25s;
+}
+.inline-form:focus-within { border-color: var(--accent-gold); }
+.inline-form input {
+  flex: 1; background: transparent; border: none;
+  padding: 0.85rem 1rem;
+  font-family: var(--font-body); font-size: 0.92rem;
+  color: var(--text-primary); outline: none;
+}
+.inline-form input::placeholder { color: var(--text-muted); }
+.inline-form button {
+  background: var(--accent-gold); color: var(--bg-primary);
+  font-family: var(--font-body); font-weight: 600;
+  font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 0.85rem 1.4rem;
+  transition: background 0.3s, transform 0.2s;
+  white-space: nowrap;
+}
+.inline-form button:hover { background: #fff; }
+.inline-form button:active { transform: scale(0.97); }
+.inline-form button[disabled] { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.notify-status {
+  margin-top: 0.6rem;
+  font-family: var(--font-body); font-size: 0.78rem;
+  letter-spacing: 0.04em; min-height: 1.2em;
+}
+.notify-status.ok { color: var(--accent-gold); }
+.notify-status.err { color: var(--accent-red); }
+
+.path-privacy {
+  font-family: var(--font-body); font-size: 0.7rem;
+  color: var(--text-muted); letter-spacing: 0.04em; line-height: 1.55;
+}
+.path-privacy a {
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--line-2);
+  transition: color 0.25s, border-color 0.25s;
+}
+.path-privacy a:hover, .path-privacy a:focus-visible {
+  color: var(--accent-gold); border-color: var(--accent-gold); outline: none;
+}
+
+@media (max-width: 1100px) { .connect-paths { grid-template-columns: 1fr; max-width: 640px; } }
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--bg-primary);
+  padding: 4rem 3rem 3rem;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  border-top: 1px solid var(--line);
+  flex-wrap: wrap; gap: 2rem;
+}
+.footer-left { display: flex; align-items: center; gap: 1.4rem; }
+.footer-logo { height: 28px; opacity: 0.5; }
+.footer-divider { width: 1px; height: 26px; background: rgba(255,255,255,0.1); }
+.footer-brand {
+  font-family: var(--font-stencil);
+  font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text-muted);
+}
+.footer-right { text-align: right; display: flex; flex-direction: column; gap: 0.4rem; }
+.footer-right a {
+  font-family: var(--font-body); font-weight: 500;
+  font-size: 0.76rem; letter-spacing: 0.15em;
+  color: var(--text-secondary); text-transform: uppercase;
+  transition: color 0.2s;
+}
+.footer-right a:hover, .footer-right a:focus-visible {
+  color: var(--accent-gold); outline: none;
+}
+.footer-contact {
+  font-family: var(--font-body); font-weight: 400;
+  font-size: 0.78rem; letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+.footer-contact a {
+  color: var(--accent-gold);
+  border-bottom: 1px solid rgba(236,231,17,0.3);
+  transition: color 0.2s, border-color 0.2s;
+}
+.footer-contact a:hover, .footer-contact a:focus-visible {
+  color: #fff; border-color: #fff; outline: none;
+}
+.footer-copy {
+  font-family: var(--font-body); font-weight: 400;
+  font-size: 0.7rem; color: var(--text-muted);
+  margin-top: 0.5rem; letter-spacing: 0.05em;
+}
+@media (max-width: 768px) {
+  footer { flex-direction: column; align-items: flex-start; padding: 3rem 1.5rem 2rem; }
+  .footer-right { text-align: left; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  body.js-reveal .reveal { opacity: 1; transform: none; }
+}
+</style>
 </head>
-<body class="lang-jp">
+<body>
 
-  <!-- Noise overlay -->
-  <div class="noise"></div>
+<a href="#who" class="skip-link">Skip to main content</a>
 
-  <!-- Nav -->
-  <nav id="nav">
-    <div class="footer-left">
+<div class="noise" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-left">
+    <a href="#top" aria-label="Absolute Japan — home">
       <img src="https://absoluteracing.net/images/assets/ar-logo.png" alt="Absolute Racing" class="nav-logo">
-      <div class="footer-divider"></div>
-      <span class="nav-jp">ジャパン</span>
-      <a href="/exports.html" class="nav-link">Exports <span class="nav-link-jp">輸出</span></a>
-    </div>
-    <div class="nav-right">
-      <span class="nav-lang active">JP</span>
-      <span class="nav-lang">EN</span>
-    </div>
-  </nav>
+    </a>
+    <div class="nav-divider" aria-hidden="true"></div>
+    <span class="nav-jp">ジャパン</span>
+  </div>
+  <div class="nav-links">
+    <a href="#exports" class="live">Exports</a>
+    <a href="#tokyo">Tokyo</a>
+    <a href="#inner-circle">Inner Circle</a>
+    <a href="#racing">Racing</a>
+    <a href="#connect">Connect</a>
+  </div>
+  <div class="nav-right">
+    <button class="nav-lang active" type="button" aria-pressed="true" aria-label="English (current language)">EN</button>
+    <button class="nav-lang" type="button" aria-pressed="false" aria-label="Switch to Japanese" title="日本語版近日公開 — Japanese version coming soon">JP</button>
+  </div>
+</nav>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-bg">
-      <img src="https://absoluteracing.net/images/slide/lamborghini-2025.jpg" alt="Absolute Racing Lamborghini" class="hero-img-desktop">
-      <img src="mobile top banner.jpg" alt="Absolute Racing" class="hero-img-mobile" style="object-position: 55% 45%; transform: scale(1.25);">
-    </div>
-    <div class="kanji-watermark">絶対</div>
-    <div class="hero-content">
-      <div class="hero-eyebrow">Since 2010 — Racing Heritage</div>
-      <h1 class="hero-title">
-        ABSOLUTE
-        <span class="japan">JAPAN</span>
-      </h1>
-      <p class="hero-subtitle-jp">
-        <span class="jp-only">アブソリュート・ジャパン</span>
-        <span class="en-only">Now Operating · More to Come</span>
-      </p>
-      <p class="hero-tagline">
-        <span class="jp-only">レースで培った情熱と技術を、ストリートへ。<br>車両輸出はすでに稼働中。ディーラーシップとサービスセンターも近日開業。</span>
-        <span class="en-only">Bringing the passion and precision of racing to the street.<br>Vehicle exports already operational. Dealership and service center coming soon.</span>
-      </p>
-    </div>
-    <div class="hero-scroll">
-      <span>SCROLL</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
+<main id="top">
 
-  <!-- Accent stripe -->
-  <div class="accent-stripe"></div>
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-bg">
+    <img src="https://absoluteracing.net/images/slide/lamborghini-2025.jpg" alt="Absolute Racing Lamborghini at speed" class="hero-img-desktop">
+    <img src="mobile top banner.jpg" alt="" class="hero-img-mobile" style="object-position: 55% 45%; transform: scale(1.25);" aria-hidden="true">
+  </div>
+  <div class="kanji-watermark" aria-hidden="true">絶対</div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Since 2010 — Racing Heritage</p>
+    <h1 class="hero-title" id="hero-title">
+      ABSOLUTE
+      <span class="japan">JAPAN</span>
+    </h1>
+    <p class="hero-subline">Vehicle Export · Dealership · Service · Community.</p>
+    <p class="hero-tagline">The automotive group from one of Asia's most successful motorsport operations. International vehicle export is live worldwide today; the Tokyo destination — dealership, service center, garden and café — opens in 2027.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="#exports">Explore Exports →</a>
+      <a class="btn-secondary" href="#tokyo">Coming to Tokyo</a>
+    </div>
+  </div>
+</section>
 
-  <!-- Exports beat — the live business -->
-  <section class="exports-beat section" aria-labelledby="exports-beat-title">
-    <div class="exports-beat-inner">
-      <div class="exports-beat-image reveal">
-        <a href="/exports.html" aria-label="View the Exports service">
-          <img src="images/exports/hero.jpg" alt="Absolute Japan dealer showroom — premium vehicles arranged in a curated display">
-        </a>
-      </div>
-      <div class="exports-beat-content reveal">
-        <span class="status-pill"><span class="dot" aria-hidden="true"></span>Now Live<span class="jp">営業中</span></span>
-        <h2 id="exports-beat-title">VEHICLE EXPORTS</h2>
-        <p class="exports-beat-heading-jp">
-          <span class="jp-only">日本からの車両調達・輸出</span>
-          <span class="en-only">Vehicle Sourcing & Export from Japan</span>
-        </p>
-        <p class="exports-beat-body">
-          <span class="jp-only">国際バイヤー向けの本格的な車両調達・輸出サービス。アブソリュート・レーシングが15年以上にわたり培ったアジア全域での実績と、日本国内の現地検査体制が支えます。</span>
-          <span class="en-only">Built for international dealers, importers, collectors, and serious buyers. Backed by Absolute Racing's 15+ years operating across Asia — and on the ground in Japan.</span>
-        </p>
-        <a href="/exports.html" class="exports-beat-cta">View the Exports Service →</a>
-      </div>
-    </div>
-  </section>
+<div class="accent-stripe" aria-hidden="true"></div>
 
-  <!-- Offerings — Coming Soon -->
-  <section class="offerings section">
-    <div class="section-label reveal">
-      <span class="jp-only">ディーラーシップ &amp; サービス · 近日開業</span>
-      <span class="en-only">Dealership &amp; Service · Coming Soon</span>
-    </div>
-    <div class="section-label-jp reveal">
-      <span class="jp-only">プロジェクト概要</span>
-      <span class="en-only">What's Coming</span>
-    </div>
-    <div class="offerings-grid reveal">
-      <div class="offering-card">
-        <div class="offering-number">01</div>
-        <span class="opening-pill">Opening Soon<span class="jp">近日</span></span>
-        <h3 class="offering-title">DEALERSHIP</h3>
-        <p class="offering-title-jp">
-          <span class="jp-only">ディーラーシップ</span>
-          <span class="en-only">Premium Vehicles</span>
-        </p>
-        <p class="offering-desc">
-          <span class="jp-only">厳選されたハイパフォーマンスカーを取り扱います。ポルシェ、ランボルギーニ、フェラーリなど、レースの血統を持つ車両を中心に、最高の一台をお届けします。</span>
-          <span class="en-only">A curated selection of high-performance cars. Centred on vehicles with racing pedigree — Porsche, Lamborghini, Ferrari and more — we deliver the perfect car for you.</span>
-        </p>
-      </div>
-      <div class="offering-card">
-        <div class="offering-number">02</div>
-        <span class="opening-pill">Opening Soon<span class="jp">近日</span></span>
-        <h3 class="offering-title">SERVICE CENTER</h3>
-        <p class="offering-title-jp">
-          <span class="jp-only">サービスセンター</span>
-          <span class="en-only">Race-Grade Service</span>
-        </p>
-        <p class="offering-desc">
-          <span class="jp-only">レースチームと同じ基準のメンテナンス。エンジニアリングの精度と情熱で、あなたの愛車を最高のコンディションに保ちます。</span>
-          <span class="en-only">Maintenance to the same standards as our racing team. With engineering precision and passion, we keep your car in peak condition.</span>
-        </p>
-      </div>
-      <div class="offering-card">
-        <div class="offering-number">03</div>
-        <span class="opening-pill">Opening Soon<span class="jp">近日</span></span>
-        <h3 class="offering-title">AN ELEVATED EXPERIENCE</h3>
-        <p class="offering-title-jp">
-          <span class="jp-only">特別なつながり</span>
-          <span class="en-only">The Inner Circle</span>
-        </p>
-        <p class="offering-desc">
-          <span class="jp-only">厳選された最高の車両、レーシングチーム直結のサービス、そしてオーナーだけが体験できる限定イベント。Absolute Japanは、お客様を特別なモータースポーツの世界へお招きします。</span>
-          <span class="en-only">Handpicked cars, service direct from the racing team, and exclusive events only for our owners. Absolute Japan invites you into an extraordinary world of motorsport.</span>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Heritage -->
-  <section class="heritage section">
-    <div class="heritage-grid">
-      <div class="heritage-image reveal">
-        <img src="absolute.jpg" alt="Absolute Racing">
-      </div>
-      <div class="heritage-text reveal">
-        <div class="section-label">Heritage</div>
-        <div class="section-label-jp" style="margin-bottom: 1.5rem;">レーシングの血統</div>
-        <h2>BORN ON <span>THE TRACK</span></h2>
-        <p class="jp-heading">
-          <span class="jp-only">サーキットで生まれた技術と情熱</span>
-          <span class="en-only">Precision and passion, born on the circuit</span>
-        </p>
-        <p>
-          <span class="jp-only">2010年の設立以来、Absolute Racingはアジアのモータースポーツシーンを牽引してきました。GT World Challenge Asia、ル・マン24時間、鈴鹿10時間 — 世界最高峰のレースで培った経験が、私たちの全てのサービスの基盤です。</span>
-          <span class="en-only">Since 2010, Absolute Racing has been a driving force in Asian motorsport. GT World Challenge Asia, the 24 Hours of Le Mans, the Suzuka 10 Hours — experience from the world's greatest races is the foundation of everything we do.</span>
-        </p>
-        <p>
-          <span class="jp-only">上海、珠海、バンコク、セパンに拠点を持つ私たちが、次の挑戦の地として選んだのが日本です。</span>
-          <span class="en-only">With bases in Shanghai, Zhuhai, Bangkok, and Sepang, Japan was the natural choice for our next chapter.</span>
-        </p>
-      </div>
+<!-- 01 — WHO WE ARE / 3 BUSINESSES -->
+<section class="section who-we-are" id="who" aria-labelledby="who-title">
+  <div class="section-inner">
+    <p class="section-label reveal">About Us</p>
+    <p class="section-label-jp reveal">私たちについて</p>
+    <div class="section-head reveal">
+      <h2 id="who-title">Built On A<br/><span class="accent">Passion For Cars.</span></h2>
+      <p class="lede">Absolute Japan is the automotive group from the team behind one of Asia's most successful motorsport operations. International vehicle export, live worldwide today. A premium dealership, race-grade service center, garden and café, opening in 2027. Different offerings — held to the same motorsport standard.</p>
     </div>
 
-    <!-- Stats -->
+    <div class="businesses-grid">
+      <a href="#exports" class="business-card live-card reveal" aria-labelledby="biz-1-title">
+        <div class="img-wrap"><img src="images/homepage/platform-01-exports.jpg" alt="Premium Japanese export warehouse at twilight — Porsche, Supra and Lamborghini lined for export"></div>
+        <div class="content">
+          <div class="top">
+            <span class="num" aria-hidden="true">01</span>
+            <span class="status-badge live"><span class="dot" aria-hidden="true"></span> Live Now</span>
+          </div>
+          <div class="bottom">
+            <h3 id="biz-1-title">Vehicle Export</h3>
+            <p class="desc">Premium vehicle sourcing, inspection, condition guarantee and export from Japan — for international dealers, importers and collectors.</p>
+            <span class="learn-more">Learn More →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#tokyo" class="business-card reveal" aria-labelledby="biz-2-title">
+        <div class="img-wrap"><img src="images/homepage/platform-02-dealership.jpg" alt="Tokyo dealership interior concept — Lamborghini under a single overhead spotlight"></div>
+        <div class="content">
+          <div class="top">
+            <span class="num" aria-hidden="true">02</span>
+            <span class="status-badge soon">Coming 2027</span>
+          </div>
+          <div class="bottom">
+            <h3 id="biz-2-title">Tokyo Dealership</h3>
+            <p class="desc">A curated selection of high-performance cars — Porsche, Lamborghini, Ferrari and more — from the Tokyo showroom.</p>
+            <span class="learn-more">Learn More →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#tokyo" class="business-card reveal" aria-labelledby="biz-3-title">
+        <div class="img-wrap"><img src="images/homepage/platform-03-service.jpg" alt="Race-grade service workshop concept — Porsche 911 GT3 on a two-post lift"></div>
+        <div class="content">
+          <div class="top">
+            <span class="num" aria-hidden="true">03</span>
+            <span class="status-badge soon">Coming 2027</span>
+          </div>
+          <div class="bottom">
+            <h3 id="biz-3-title">Service Center</h3>
+            <p class="desc">Race-grade engineering, setup, and maintenance for owners' cars — to the same standard that runs our racing team.</p>
+            <span class="learn-more">Learn More →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — EXPORTS DEEP DIVE -->
+<section class="section exports-feature" id="exports" aria-labelledby="exports-title">
+  <div class="section-inner">
+    <p class="section-label reveal">Vehicle Export</p>
+    <p class="section-label-jp reveal">車両輸出事業</p>
+    <div class="exports-grid">
+      <div class="exports-text reveal">
+        <span class="live-tag"><span class="dot" aria-hidden="true"></span> Live Now</span>
+        <h2 id="exports-title">From Japan,<br/><span class="accent">For Serious Buyers.</span></h2>
+        <p class="lede">Most exporters give you the basics — auction listings, FOB pricing, documents, shipping. We give you what listings can't: local condition judgment, a condition guarantee, and accountability on the ground in Japan.</p>
+
+        <div class="exports-pillars">
+          <div class="exports-pillar">
+            <span class="check" aria-hidden="true">01</span>
+            <span class="text">Inspected In Japan<span>Pre-auction and post-auction — by people who've seen the car.</span></span>
+          </div>
+          <div class="exports-pillar">
+            <span class="check" aria-hidden="true">02</span>
+            <span class="text">Condition Guaranteed<span>Anything material that's off, we cure at our cost — or refund.</span></span>
+          </div>
+          <div class="exports-pillar">
+            <span class="check" aria-hidden="true">03</span>
+            <span class="text">End-To-End Execution<span>Documentation, export paperwork, shipping, delivery — coordinated.</span></span>
+          </div>
+        </div>
+
+        <div class="exports-ctas">
+          <a class="btn-primary" href="/exports.html">Visit Exports →</a>
+          <a class="btn-secondary" href="mailto:exports@absoluteracing.jp">exports@absoluteracing.jp</a>
+        </div>
+      </div>
+
+      <div class="exports-image-wrap reveal">
+        <img src="images/homepage/exports-feature.jpg" alt="Porsche 911 Turbo in a Japanese inspection bay — premium export operation">
+        <div class="exports-image-overlay">
+          <span>Vehicles Sourced In Japan</span>
+          <span class="right">Worldwide Delivery</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — COMING TO TOKYO -->
+<section class="section tokyo" id="tokyo" aria-labelledby="tokyo-title">
+  <div class="section-inner">
+    <p class="section-label reveal">Coming to Tokyo</p>
+    <p class="section-label-jp reveal">東京、2027年</p>
+    <div class="section-head reveal">
+      <span class="first-in-japan">First Of Its Kind In Japan</span>
+      <h2 id="tokyo-title">A Destination<br/><span class="accent">For Those Who Love Cars.</span></h2>
+      <p class="lede">In 2027, Absolute Japan opens something Japan hasn't had — a dealership and service center, wrapped around a Japanese garden, a lounge, and a café. Open to owners, enthusiasts and the general public. A place where you don't just buy or service a car — you come to spend time with them.</p>
+    </div>
+
+    <div class="tokyo-image-wrap reveal">
+      <img src="images/homepage/tokyo-destination.jpg" alt="Concept rendering — Tokyo destination featuring dealership, service center, Japanese garden and café">
+      <div class="tokyo-image-overlay">
+        <span>Opening 2027 · Greater Tokyo</span>
+        <span class="right">Dealership · Service · Garden · Café</span>
+      </div>
+    </div>
+
+    <div class="tokyo-offerings">
+      <article class="tokyo-offering reveal">
+        <div class="num" aria-hidden="true">01</div>
+        <h3>Dealership</h3>
+        <p class="kicker">Premium Vehicles</p>
+        <p>Curated, racing-pedigree cars from Porsche, Lamborghini, Ferrari and beyond. Sourced through the same network we use for our race operations.</p>
+      </article>
+      <article class="tokyo-offering reveal">
+        <div class="num" aria-hidden="true">02</div>
+        <h3>Service Center</h3>
+        <p class="kicker">Race-Grade Maintenance</p>
+        <p>Engineering, setup and maintenance to the same standard as our racing team. For owners who drive their cars the way they were designed to be driven.</p>
+      </article>
+      <article class="tokyo-offering reveal">
+        <div class="num" aria-hidden="true">03</div>
+        <h3>The Garden</h3>
+        <p class="kicker">A Place To Be</p>
+        <p>A Japanese garden, fire pit and lounge at the heart of the destination — where owners, enthusiasts and visitors come to talk cars, meet, and stay a while.</p>
+      </article>
+      <article class="tokyo-offering reveal">
+        <div class="num" aria-hidden="true">04</div>
+        <h3>Absolute Coffee</h3>
+        <p class="kicker">Open To Everyone</p>
+        <p>Specialty coffee, espresso, matcha and our own curated goods — open to the public. The easiest way to spend an afternoon around cars in Tokyo.</p>
+      </article>
+    </div>
+
+    <div class="tokyo-cta-row reveal">
+      <p class="left">Opening updates are sent only when we have something real to share. No newsletters, no marketing noise.</p>
+      <a class="btn-primary" href="#notify">Notify Me When We Open →</a>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — INNER CIRCLE -->
+<section class="section inner-circle" id="inner-circle" aria-labelledby="inner-title">
+  <div class="section-inner">
+    <p class="section-label reveal">The Inner Circle</p>
+    <p class="section-label-jp reveal">インナーサークル</p>
+    <div class="inner-grid">
+      <div class="inner-image-wrap reveal">
+        <img src="images/homepage/inner-circle.jpg" alt="A row of premium cars along the pit wall at a Japanese race circuit — Inner Circle members' meetup">
+      </div>
+      <div class="inner-text reveal">
+        <h2 id="inner-title">More Than<br/><span class="accent">Owning A Car.</span></h2>
+        <p class="lede">The Inner Circle is the community around Absolute Japan — for the people who buy and service with us, and the ones who love cars as much as we do. A way to spend time with the cars, the team, and like-minded people who share the obsession.</p>
+        <div class="inner-benefits">
+          <article class="inner-benefit">
+            <p class="num">01</p>
+            <h4>Behind The Pit Wall</h4>
+            <p>Paddock access at the GT World Challenge Asia rounds we race in, close-up time with our racing cars, and meetups with the drivers.</p>
+          </article>
+          <article class="inner-benefit">
+            <p class="num">02</p>
+            <h4>Dinners, Drinks, Drives</h4>
+            <p>Where the Inner Circle gathers. Members' dinners at our Tokyo destination, drives through the countryside, and drinks around the fire pit — with the people who love cars as much as you do.</p>
+          </article>
+          <article class="inner-benefit">
+            <p class="num">03</p>
+            <h4>Members' Editions</h4>
+            <p>Racing-team apparel and limited pieces made specifically for the Inner Circle. Not sold to the public.</p>
+          </article>
+          <article class="inner-benefit">
+            <p class="num">04</p>
+            <h4>Priority Access</h4>
+            <p>First look at new dealership inventory, service priority, and early access to anything we're about to release.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 — ABOUT ABSOLUTE RACING -->
+<section class="section about-racing" id="racing" aria-labelledby="racing-title">
+  <div class="section-inner">
+    <p class="section-label reveal">About Absolute Racing</p>
+    <p class="section-label-jp reveal">Absolute Racingについて</p>
+    <div class="racing-grid">
+      <div class="racing-text reveal">
+        <h2 id="racing-title">Born On The Track.<br/><span class="accent">Built For The Road.</span></h2>
+        <p class="lede primary">Absolute Racing is one of Asia's most successful motorsport operations — and Absolute Japan is the natural next step.</p>
+        <p class="lede">Since 2010 we've competed and won across the highest levels of GT racing — GT World Challenge Asia, the 24 Hours of Le Mans, the Suzuka 10 Hours. From bases in Shanghai, Zhuhai, Bangkok and Sepang, we've earned trust handling some of the most demanding cars in the world.</p>
+        <p class="lede">Tokyo is our next chapter. The same precision and honesty that runs our race operations runs how we'll handle every car that comes through Absolute Japan.</p>
+        <a class="racing-link-out" href="https://absoluteracing.net" target="_blank" rel="noopener">Full Racing Portfolio At absoluteracing.net ↗</a>
+      </div>
+      <div class="racing-image-wrap reveal">
+        <img src="https://absoluteracing.net/images/gallery/202507-fuji-japan/12.jpg" alt="Absolute Racing paddock at Fuji Speedway">
+      </div>
+    </div>
+
+    <!-- Stats numbers source-of-truth = current production index.html
+         (15+ / 100+ / 4 / 11+). Draft mockup proposed 15/100/5/20 but
+         @user (id=731) confirmed to keep the existing figures. -->
     <div class="stats-bar reveal">
       <div class="stat-item">
-        <div class="stat-number" data-target="15">0</div>
-        <div class="stat-label">Years of Racing</div>
+        <div class="stat-number" data-target="15" data-suffix="+">0</div>
+        <p class="stat-label">Years of Racing</p>
       </div>
       <div class="stat-item">
-        <div class="stat-number" data-target="100">0</div>
-        <div class="stat-label">Race Victories</div>
+        <div class="stat-number" data-target="100" data-suffix="+">0</div>
+        <p class="stat-label">Race Victories</p>
       </div>
       <div class="stat-item">
-        <div class="stat-number" data-target="4">0</div>
-        <div class="stat-label">Asian Bases</div>
+        <div class="stat-number" data-target="4" data-suffix="">0</div>
+        <p class="stat-label">Asian Bases</p>
       </div>
       <div class="stat-item">
-        <div class="stat-number" data-target="11">0</div>
-        <div class="stat-label">Countries Worldwide</div>
+        <div class="stat-number" data-target="11" data-suffix="+">0</div>
+        <p class="stat-label">Countries Worldwide</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Japan is Home -->
-  <section class="japan-home section">
-    <div class="japan-home-header reveal">
-      <div class="section-label">Our Story in Japan</div>
-      <div class="section-label-jp" style="margin-bottom: 1.5rem;">日本との歩み</div>
-      <h2>JAPAN IS <span>HOME</span></h2>
-      <p class="jp-heading">
-        <span class="jp-only">日本は、私たちのホームです</span>
-        <span class="en-only">Japan has always been home</span>
-      </p>
-      <p>
-        <span class="jp-only">毎年、日本の名門サーキットで戦い続けてきたAbsolute Racing。富士、鈴鹿、岡山 — この地で築いた絆とファンの皆様への感謝が、次の拠点を日本に置くという決断を、自然なものにしました。</span>
-        <span class="en-only">Year after year, Absolute Racing competes at Japan's most iconic circuits. Fuji, Suzuka, Okayama — the bonds we've built here and our gratitude to Japanese fans made the decision to establish our next base in Japan a natural one.</span>
-      </p>
+<!-- 06 — JAPAN IS HOME -->
+<section class="section japan-home" aria-labelledby="japan-title">
+  <div class="section-inner">
+    <p class="section-label reveal">Japan is Home</p>
+    <p class="section-label-jp reveal">日本との歩み</p>
+    <div class="japan-home-grid">
+      <div class="japan-home-text reveal">
+        <h2 id="japan-title">Tokyo Was Always<br/><span class="accent">The Next Step.</span></h2>
+        <p>Year after year, Absolute Racing has competed at Japan's most iconic circuits — Fuji, Suzuka, Okayama. The bonds we've built with Japanese teams, drivers and fans made it natural that Japan would be the home of our first dealership and service operation outside the racing paddock.</p>
+        <p>Tokyo is where the next chapter begins. The export business is already running. The showroom follows in 2027.</p>
+      </div>
+      <div class="circuits-list reveal">
+        <a href="https://absoluteracing.net/gallery/202507-fuji-japan.html" target="_blank" rel="noopener" class="circuit">
+          <img src="fuji.jpg" alt="Fuji Speedway" style="object-position: 75% 80%;">
+          <span class="name">Fuji</span>
+        </a>
+        <a href="https://absoluteracing.net/gallery/202407-suzuka-japan.html" target="_blank" rel="noopener" class="circuit">
+          <img src="https://absoluteracing.net/images/gallery/202407-suzuka-japan/01.jpg" alt="Suzuka Circuit">
+          <span class="name">Suzuka</span>
+        </a>
+        <a href="https://absoluteracing.net/gallery/202508-okayama-japan.html" target="_blank" rel="noopener" class="circuit">
+          <img src="okayama 2.jpg" alt="Okayama International Circuit" style="object-position: 65% 30%;">
+          <span class="name">Okayama</span>
+        </a>
+      </div>
     </div>
-    <div class="japan-races reveal">
-      <a href="https://absoluteracing.net/gallery/202508-okayama-japan.html" target="_blank" rel="noopener" class="race-card">
-        <img src="okayama 2.jpg" alt="Okayama International Circuit" style="object-position: 65% 30%;">
-        <div class="race-card-overlay">
-          <div class="race-card-circuit">OKAYAMA</div>
-          <div class="race-card-circuit-jp">岡山国際サーキット</div>
-          <div class="race-card-date">August 2025</div>
+  </div>
+</section>
+
+<!-- GALLERY STRIP — brand-asset credibility before Connect -->
+<section class="section gallery" style="padding-left: 0; padding-right: 0;" aria-label="Race gallery">
+  <div style="padding: 0 3rem;">
+    <p class="section-label reveal">Gallery</p>
+    <p class="section-label-jp reveal">ギャラリー</p>
+  </div>
+  <div class="gallery-strip" id="gallery-strip">
+    <img src="https://absoluteracing.net/images/gallery/202507-fuji-japan/05.jpg" alt="Fuji Speedway">
+    <img src="https://absoluteracing.net/images/gallery/202407-suzuka-japan/03.jpg" alt="Suzuka Circuit">
+    <img src="https://absoluteracing.net/images/gallery/202508-okayama-japan/07.jpg" alt="Okayama International Circuit">
+    <img src="https://absoluteracing.net/images/gallery/202507-fuji-japan/12.jpg" alt="Fuji Speedway">
+    <img src="https://absoluteracing.net/images/gallery/202408-okayama-japan/04.jpg" alt="Okayama International Circuit">
+    <img src="https://absoluteracing.net/images/gallery/202407-suzuka-japan/10.jpg" alt="Suzuka Circuit">
+    <img src="https://absoluteracing.net/images/gallery/202508-okayama-japan/15.jpg" alt="Okayama International Circuit">
+    <img src="https://absoluteracing.net/images/gallery/202507-fuji-japan/20.jpg" alt="Fuji Speedway">
+    <!-- Duplicated set for seamless infinite scroll -->
+    <img src="https://absoluteracing.net/images/gallery/202507-fuji-japan/05.jpg" alt="" aria-hidden="true">
+    <img src="https://absoluteracing.net/images/gallery/202407-suzuka-japan/03.jpg" alt="" aria-hidden="true">
+    <img src="https://absoluteracing.net/images/gallery/202508-okayama-japan/07.jpg" alt="" aria-hidden="true">
+    <img src="https://absoluteracing.net/images/gallery/202507-fuji-japan/12.jpg" alt="" aria-hidden="true">
+    <img src="https://absoluteracing.net/images/gallery/202408-okayama-japan/04.jpg" alt="" aria-hidden="true">
+    <img src="https://absoluteracing.net/images/gallery/202407-suzuka-japan/10.jpg" alt="" aria-hidden="true">
+    <img src="https://absoluteracing.net/images/gallery/202508-okayama-japan/15.jpg" alt="" aria-hidden="true">
+    <img src="https://absoluteracing.net/images/gallery/202507-fuji-japan/20.jpg" alt="" aria-hidden="true">
+  </div>
+</section>
+
+<!-- 07 — CONNECT -->
+<section class="section connect" id="connect" aria-labelledby="connect-title">
+  <div class="section-inner">
+    <p class="section-label reveal" style="text-align:center;">Get in Touch</p>
+    <p class="section-label-jp reveal" style="text-align:center;">お問い合わせ</p>
+    <div class="connect-head reveal">
+      <h2 id="connect-title">Reach Us<br/><span class="accent">Directly.</span></h2>
+      <p>Whether you're buying from outside Japan today or waiting for the Tokyo showroom — here's where to start.</p>
+    </div>
+
+    <div class="connect-paths">
+      <article class="path reveal">
+        <p class="path-tag">For International Buyers</p>
+        <h3>Export Inquiry</h3>
+        <p>Sourcing, inspection, condition guarantee and shipping from Japan — for dealers, importers, collectors and serious buyers. Our team replies personally within one business day.</p>
+        <div class="cta-row">
+          <a class="btn-primary" href="/exports.html#contact">Submit Inquiry →</a>
+          <a class="path-email" href="mailto:exports@absoluteracing.jp">exports@absoluteracing.jp</a>
         </div>
-        <div class="race-card-arrow">&#8599;</div>
-      </a>
-      <a href="https://absoluteracing.net/gallery/202507-fuji-japan.html" target="_blank" rel="noopener" class="race-card">
-        <img src="fuji.jpg" alt="Fuji Speedway" style="object-position: 75% 80%;">
-        <div class="race-card-overlay">
-          <div class="race-card-circuit">FUJI</div>
-          <div class="race-card-circuit-jp">富士スピードウェイ</div>
-          <div class="race-card-date">July 2025</div>
+      </article>
+
+      <article class="path soon reveal" id="notify">
+        <p class="path-tag">For Tokyo Customers</p>
+        <h3>Showroom Updates</h3>
+        <p>We send updates only when there's news worth sharing — opening dates, first cars on the floor, Inner Circle launch.</p>
+        <!-- Notify form. Routes to the shared Formspree endpoint with a
+             dedicated _subject so submissions are filterable in the
+             dashboard. Long term, swap to a separate notify-list endpoint
+             once @user provisions one. -->
+        <form class="inline-form" id="notify-form" action="https://formspree.io/f/mgoddqzp" method="POST" novalidate>
+          <input type="email" name="email" required placeholder="your@email.com" aria-label="Email address for showroom opening updates">
+          <input type="hidden" name="_subject" value="Absolute Japan — Showroom opening updates signup">
+          <input type="hidden" name="source" value="Homepage notify (showroom opening)">
+          <!-- honeypot -->
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;">
+          <button type="submit" id="notify-btn">Notify Me</button>
+        </form>
+        <p class="notify-status" id="notify-status" role="status" aria-live="polite"></p>
+        <p class="path-privacy">By submitting, you agree to be contacted about the Tokyo opening. See our <a href="/privacy" rel="nofollow">privacy notice</a>.</p>
+      </article>
+
+      <article class="path reveal">
+        <p class="path-tag">For Anything Else</p>
+        <h3>General Inquiries</h3>
+        <p>Press, partnerships, careers, or anything else not covered above — write us directly and the right person will reply.</p>
+        <div class="cta-row">
+          <a class="path-email" href="mailto:info@absoluteracing.jp">info@absoluteracing.jp</a>
         </div>
-        <div class="race-card-arrow">&#8599;</div>
-      </a>
-      <a href="https://absoluteracing.net/gallery/202407-suzuka-japan.html" target="_blank" rel="noopener" class="race-card">
-        <img src="https://absoluteracing.net/images/gallery/202407-suzuka-japan/01.jpg" alt="Suzuka Circuit">
-        <div class="race-card-overlay">
-          <div class="race-card-circuit">SUZUKA</div>
-          <div class="race-card-circuit-jp">鈴鹿サーキット</div>
-          <div class="race-card-date">July 2024</div>
-        </div>
-        <div class="race-card-arrow">&#8599;</div>
-      </a>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Location -->
-  <section class="location section reveal">
-    <div class="location-kanji">東京</div>
-    <div class="location-content">
-      <p class="location-pre">ロケーション / Location</p>
-      <h2>NEAR <span class="accent">TOKYO</span></h2>
-      <p class="location-sub">
-        <span class="jp-only">首都圏に新拠点オープン予定 — 詳細は近日発表</span>
-        <span class="en-only">Opening soon in the Greater Tokyo area — details coming soon</span>
-      </p>
-    </div>
-  </section>
+</main>
 
-  <!-- Gallery strip -->
-  <section class="gallery section" style="padding-left: 0; padding-right: 0;">
-    <div style="padding: 0 3rem;">
-      <div class="section-label reveal">Gallery</div>
-      <div class="section-label-jp reveal">ギャラリー</div>
-    </div>
-    <div class="gallery-strip">
-      <img src="https://absoluteracing.net/images/gallery/202507-fuji-japan/05.jpg" alt="Fuji Speedway">
-      <img src="https://absoluteracing.net/images/gallery/202407-suzuka-japan/03.jpg" alt="Suzuka Circuit">
-      <img src="https://absoluteracing.net/images/gallery/202508-okayama-japan/07.jpg" alt="Okayama International Circuit">
-      <img src="https://absoluteracing.net/images/gallery/202507-fuji-japan/12.jpg" alt="Fuji Speedway">
-      <img src="https://absoluteracing.net/images/gallery/202408-okayama-japan/04.jpg" alt="Okayama International Circuit">
-      <img src="https://absoluteracing.net/images/gallery/202407-suzuka-japan/10.jpg" alt="Suzuka Circuit">
-      <img src="https://absoluteracing.net/images/gallery/202508-okayama-japan/15.jpg" alt="Okayama International Circuit">
-      <img src="https://absoluteracing.net/images/gallery/202507-fuji-japan/20.jpg" alt="Fuji Speedway">
-      <!-- Duplicate for infinite scroll -->
-      <img src="https://absoluteracing.net/images/gallery/202507-fuji-japan/05.jpg" alt="Fuji Speedway">
-      <img src="https://absoluteracing.net/images/gallery/202407-suzuka-japan/03.jpg" alt="Suzuka Circuit">
-      <img src="https://absoluteracing.net/images/gallery/202508-okayama-japan/07.jpg" alt="Okayama International Circuit">
-      <img src="https://absoluteracing.net/images/gallery/202507-fuji-japan/12.jpg" alt="Fuji Speedway">
-      <img src="https://absoluteracing.net/images/gallery/202408-okayama-japan/04.jpg" alt="Okayama International Circuit">
-      <img src="https://absoluteracing.net/images/gallery/202407-suzuka-japan/10.jpg" alt="Suzuka Circuit">
-      <img src="https://absoluteracing.net/images/gallery/202508-okayama-japan/15.jpg" alt="Okayama International Circuit">
-      <img src="https://absoluteracing.net/images/gallery/202507-fuji-japan/20.jpg" alt="Fuji Speedway">
-    </div>
-  </section>
+<div class="accent-stripe" aria-hidden="true"></div>
 
-  <!-- CTA -->
-  <section class="cta reveal">
-    <h2>BE THE FIRST TO KNOW</h2>
-    <p class="jp-sub">
-      <span class="jp-only">ディーラーシップ・サービスセンター開業情報</span>
-      <span class="en-only">Updates on dealership &amp; service center opening</span>
-    </p>
-    <form class="email-form" onsubmit="handleSubmit(event)">
-      <input type="email" placeholder="メールアドレスを入力 / Enter your email" required>
-      <button type="submit">NOTIFY ME</button>
-    </form>
-    <p class="cta-note">
-      <span class="jp-only">スパムは送信しません。オープン情報のみをお届けします。</span>
-      <span class="en-only">No spam — only opening updates.</span>
-    </p>
-    <p class="cta-exports-link">
-      <span class="jp-only">今すぐ車両調達・輸出をご希望の方は <a href="/exports.html">こちらへ →</a></span>
-      <span class="en-only">Looking to source or export a vehicle now? <a href="/exports.html">Visit our exports service →</a></span>
-    </p>
-  </section>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <img src="https://absoluteracing.net/images/assets/ar-logo.png" alt="Absolute Racing" class="footer-logo">
+    <div class="footer-divider" aria-hidden="true"></div>
+    <span class="footer-brand">ABSOLUTE JAPAN</span>
+  </div>
+  <div class="footer-right">
+    <p class="footer-contact">General inquiries: <a href="mailto:info@absoluteracing.jp">info@absoluteracing.jp</a></p>
+    <a href="https://absoluteracing.net" target="_blank" rel="noopener">absoluteracing.net</a>
+    <p class="footer-copy">© 2026 Absolute Racing. All rights reserved.</p>
+  </div>
+</footer>
 
-  <!-- Accent stripe -->
-  <div class="accent-stripe"></div>
+<script>
+  // Nav scroll background
+  const nav = document.getElementById('nav');
+  function onScroll() {
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-left">
-      <img src="https://absoluteracing.net/images/assets/ar-logo.png" alt="Absolute Racing" class="footer-logo">
-      <div class="footer-divider"></div>
-      <span class="footer-brand">ABSOLUTE JAPAN</span>
-    </div>
-    <div class="footer-right">
-      <a href="https://absoluteracing.net" target="_blank" rel="noopener">absoluteracing.net</a>
-      <p class="footer-copy">&copy; 2026 Absolute Racing. All rights reserved.</p>
-    </div>
-  </footer>
+  // Language toggle is currently visual-only — JP content for the
+  // restructured homepage hasn't been native-reviewed yet. The button
+  // stays focusable for parity with the exports page, with a tooltip
+  // explaining the state.
 
-  <script>
-    // Language toggle
-    const langSwitchers = document.querySelectorAll('.nav-lang');
-    langSwitchers.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const lang = btn.textContent.trim().toLowerCase();
-        document.body.className = document.body.className.replace(/lang-\w+/, 'lang-' + lang);
-        langSwitchers.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      });
-    });
-
-    // Nav scroll effect
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 80);
-    });
-
-    // Reveal on scroll
+  // Scroll reveal — gated by body.js-reveal so static content stays
+  // visible if JS fails or motion is reduced. Matches /exports.html.
+  (function () {
+    const prefersReducedMotion =
+      window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) return;
+    document.body.classList.add('js-reveal');
     const reveals = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, i * 100);
-          revealObserver.unobserve(entry.target);
-        }
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry, i) {
+        if (!entry.isIntersecting) return;
+        const delay = Math.min(i * 90, 360);
+        setTimeout(function () { entry.target.classList.add('visible'); }, delay);
+        observer.unobserve(entry.target);
       });
-    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-    reveals.forEach(el => revealObserver.observe(el));
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(function (el) { observer.observe(el); });
+  })();
 
-    // Counter animation
+  // Stats counter — ports the count-up animation pattern from the
+  // earlier Coming Soon homepage so 15/100/5/20 ease up to their
+  // target values when the stats bar enters view.
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
     const statNumbers = document.querySelectorAll('.stat-number[data-target]');
-    const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const target = parseInt(el.dataset.target);
-          const duration = 2000;
-          const start = performance.now();
-
-          function update(now) {
-            const elapsed = now - start;
-            const progress = Math.min(elapsed / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            el.textContent = Math.round(eased * target) + '+';
-            if (progress < 1) requestAnimationFrame(update);
-          }
-          requestAnimationFrame(update);
+    const prefersReducedMotion =
+      window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const counterObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseInt(el.dataset.target, 10);
+        const suffix = el.dataset.suffix || '';
+        if (prefersReducedMotion) {
+          el.textContent = target + suffix;
           counterObserver.unobserve(el);
+          return;
         }
+        const duration = 1800;
+        const start = performance.now();
+        function update(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(eased * target) + suffix;
+          if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+        counterObserver.unobserve(el);
       });
     }, { threshold: 0.5 });
-    statNumbers.forEach(el => counterObserver.observe(el));
+    statNumbers.forEach(function (el) { counterObserver.observe(el); });
+  })();
 
-    // Email form
-    function handleSubmit(e) {
+  // Pause gallery strip on hover (matches the editorial restraint of
+  // the rest of the page — don't keep yanking the user's eye while
+  // they're trying to look at a frame).
+  (function () {
+    const strip = document.getElementById('gallery-strip');
+    if (!strip) return;
+    strip.addEventListener('mouseenter', function () { strip.style.animationPlayState = 'paused'; });
+    strip.addEventListener('mouseleave', function () { strip.style.animationPlayState = 'running'; });
+  })();
+
+  // Notify Me form — POSTs to Formspree via fetch. The form's `action`
+  // attribute provides the no-JS fallback path (browser-native POST,
+  // Formspree's hosted thank-you page handles it).
+  (function () {
+    const form = document.getElementById('notify-form');
+    if (!form) return;
+    const btn = document.getElementById('notify-btn');
+    const status = document.getElementById('notify-status');
+    form.addEventListener('submit', function (e) {
       e.preventDefault();
-      const input = e.target.querySelector('input');
-      const btn = e.target.querySelector('button');
-      btn.textContent = '登録完了 ✓';
-      btn.style.background = '#22c55e';
-      input.value = '';
-      setTimeout(() => {
-        btn.textContent = 'NOTIFY ME';
-        btn.style.background = '';
-      }, 3000);
-    }
-
-    // Pause gallery on hover
-    const galleryStrip = document.querySelector('.gallery-strip');
-    galleryStrip.addEventListener('mouseenter', () => {
-      galleryStrip.style.animationPlayState = 'paused';
+      if (form.elements['website'].value) return; // honeypot
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      btn.disabled = true;
+      status.className = 'notify-status';
+      status.textContent = 'Sending…';
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      })
+        .then(function (res) {
+          if (res.ok) return res.json();
+          return res.json().then(function (j) {
+            throw new Error((j && j.errors && j.errors[0] && j.errors[0].message) || 'Submission failed.');
+          });
+        })
+        .then(function () {
+          form.reset();
+          btn.textContent = 'Subscribed ✓';
+          btn.style.background = '#22c55e';
+          status.className = 'notify-status ok';
+          status.textContent = "Thanks — we'll let you know when there's something real to share.";
+          setTimeout(function () {
+            btn.textContent = 'Notify Me';
+            btn.style.background = '';
+            btn.disabled = false;
+          }, 5000);
+        })
+        .catch(function () {
+          status.className = 'notify-status err';
+          status.textContent = 'Something went wrong. Email info@absoluteracing.jp and we’ll add you manually.';
+          btn.disabled = false;
+        });
     });
-    galleryStrip.addEventListener('mouseleave', () => {
-      galleryStrip.style.animationPlayState = 'running';
-    });
-  </script>
+  })();
+</script>
 
 </body>
 </html>
