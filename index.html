@@ -1563,14 +1563,10 @@ footer {
         <p class="path-tag">For Tokyo Customers</p>
         <h3>Showroom Updates</h3>
         <p>We send updates only when there's news worth sharing — opening dates, first cars on the floor, Inner Circle launch.</p>
-        <!-- Notify form. Routes to the shared Formspree endpoint with a
-             dedicated _subject so submissions are filterable in the
-             dashboard. Long term, swap to a separate notify-list endpoint
-             once @user provisions one. -->
-        <!-- Notify form now uses its own Formspree endpoint
-             (xvzljwqy) — partitioned from the exports inquiry form
-             so showroom wait-list signups are isolated from buying-
-             intent submissions in the user's dashboard. -->
+        <!-- Notify form uses its own Formspree endpoint (xvzljwqy),
+             separate from the exports inquiry form so showroom
+             wait-list signups land in their own dashboard, isolated
+             from buying-intent submissions. -->
         <form class="inline-form" id="notify-form" action="https://formspree.io/f/xvzljwqy" method="POST" novalidate>
           <input type="email" name="email" required placeholder="your@email.com" aria-label="Email address for showroom opening updates">
           <input type="hidden" name="_subject" value="Absolute Japan — Showroom opening updates signup">
