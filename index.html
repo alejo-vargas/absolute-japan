@@ -6,8 +6,13 @@
 <title>Absolute Japan — Vehicle Export · Dealership · Service · Community</title>
 <meta name="description" content="Absolute Japan — the automotive group from one of Asia's most successful motorsport operations. International vehicle export live worldwide today; Tokyo dealership, service center, garden and café opening 2027.">
 
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="shortcut icon" href="favicon.ico">
+<!-- Modern favicon: SVG master, raster fallbacks. The 絶 kanji ties
+     to the hero kanji watermark — Absolute Japan brand mark. -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0a0d14">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Absolute Japan — Vehicle Export · Dealership · Service · Community">
@@ -1562,10 +1567,13 @@ footer {
              dedicated _subject so submissions are filterable in the
              dashboard. Long term, swap to a separate notify-list endpoint
              once @user provisions one. -->
-        <form class="inline-form" id="notify-form" action="https://formspree.io/f/mgoddqzp" method="POST" novalidate>
+        <!-- Notify form now uses its own Formspree endpoint
+             (xvzljwqy) — partitioned from the exports inquiry form
+             so showroom wait-list signups are isolated from buying-
+             intent submissions in the user's dashboard. -->
+        <form class="inline-form" id="notify-form" action="https://formspree.io/f/xvzljwqy" method="POST" novalidate>
           <input type="email" name="email" required placeholder="your@email.com" aria-label="Email address for showroom opening updates">
           <input type="hidden" name="_subject" value="Absolute Japan — Showroom opening updates signup">
-          <input type="hidden" name="source" value="Homepage notify (showroom opening)">
           <!-- honeypot -->
           <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;">
           <button type="submit" id="notify-btn">Notify Me</button>
