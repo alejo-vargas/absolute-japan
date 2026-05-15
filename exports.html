@@ -109,9 +109,9 @@
   .nav-left { display: flex; align-items: center; gap: 1.5rem; }
   .nav-logo { height: 38px; filter: brightness(1.1); }
   .nav-divider { width: 1px; height: 28px; background: rgba(255,255,255,0.1); }
-  .nav-wordmark {
-    font-family: var(--font-stencil);
-    font-size: 0.85rem; letter-spacing: 0.18em;
+  .nav-jp {
+    font-family: var(--font-jp, 'Shippori Mincho', serif);
+    font-size: 0.82rem; letter-spacing: 0.15em;
     color: var(--text-secondary);
   }
   .nav-right { display: flex; align-items: center; gap: 2rem; }
@@ -162,7 +162,7 @@
 
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
-    .nav-wordmark, .nav-divider { display: none; }
+    .nav-jp, .nav-divider { display: none; }
     .nav-right { gap: 1.2rem; }
     .nav-cta { padding: 0.55rem 1rem; font-size: 0.72rem; letter-spacing: 0.12em; }
   }
@@ -1290,14 +1290,14 @@
       <img src="https://absoluteracing.net/images/assets/ar-logo.png" alt="Absolute Racing" class="nav-logo">
     </a>
     <div class="nav-divider" aria-hidden="true"></div>
-    <span class="nav-wordmark">ジャパン</span>
+    <span class="nav-jp">ジャパン</span>
   </div>
   <div class="nav-links">
     <a href="#top" class="live">Exports</a>
     <a href="/#tokyo">Tokyo</a>
     <a href="/#inner-circle">Inner Circle</a>
     <a href="/#racing">Racing</a>
-    <a href="/#connect">Connect</a>
+    <a href="#contact">Connect</a>
   </div>
   <div class="nav-right">
     <button type="button" class="nav-lang active" aria-pressed="true" aria-label="English (current language)">EN</button>
@@ -1332,7 +1332,7 @@
     <a href="/#tokyo"><span>Tokyo</span><span class="jp">東京</span></a>
     <a href="/#inner-circle"><span>Inner Circle</span><span class="jp">インナーサークル</span></a>
     <a href="/#racing"><span>Racing</span><span class="jp">レーシング</span></a>
-    <a href="/#connect"><span>Connect</span><span class="jp">お問い合わせ</span></a>
+    <a href="#contact"><span>Connect</span><span class="jp">お問い合わせ</span></a>
   </nav>
   <div class="nav-drawer-lang" role="group" aria-label="Language">
     <button class="nav-lang active" type="button" aria-pressed="true">EN</button>
