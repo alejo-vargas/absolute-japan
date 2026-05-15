@@ -173,6 +173,312 @@
     .nav-cta { padding: 0.5rem 0.85rem; font-size: 0.68rem; }
   }
 
+  /* === SECTION-NAV STRIP — parity with homepage =====
+     Section links (Tokyo / Inner Circle / Racing / Connect cross-link
+     back to /; Exports is the current page so it scrolls to top with
+     a live-dot "you are here" indicator). */
+  .nav-links {
+    display: flex; gap: 2rem;
+    font-family: var(--font-body); font-weight: 500;
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+  .nav-links a {
+    color: var(--text-secondary);
+    transition: color 0.2s;
+    padding: 0.4rem 0;
+    position: relative;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible { color: var(--accent-gold); outline: none; }
+  .nav-links a.live::after {
+    content: ''; position: absolute; top: 6px; right: -10px;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent-gold);
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.4; transform: scale(0.7); }
+  }
+
+  /* Scroll-condensed nav: past hero, the section links and lang
+     toggle fade out, leaving logo + Inquire CTA as the sole chrome.
+     Same threshold as .nav-cta.is-visible (~70vh). */
+  body.nav-condensed .nav-links,
+  body.nav-condensed .nav-right .nav-lang {
+    opacity: 0; pointer-events: none;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 1024px) {
+    .nav-links { display: none; }
+  }
+
+  /* === MOBILE HAMBURGER + DRAWER ===== */
+  .nav-toggle {
+    display: none;
+    width: 44px; height: 44px;
+    align-items: center; justify-content: center;
+    background: transparent; border: none;
+    color: var(--text-primary); cursor: pointer;
+    position: relative;
+    transition: color 0.25s;
+  }
+  .nav-toggle:hover, .nav-toggle:focus-visible { color: var(--accent-gold); outline: none; }
+  .nav-toggle:focus-visible { box-shadow: 0 0 0 2px rgba(236,231,17,0.4); }
+  .nav-toggle .bar {
+    position: absolute; left: 11px; right: 11px;
+    height: 1.5px; background: currentColor;
+    transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.25s ease, top 0.25s ease;
+  }
+  .nav-toggle .bar.top    { top: 14px; }
+  .nav-toggle .bar.mid    { top: 21px; }
+  .nav-toggle .bar.bottom { top: 28px; }
+  body.drawer-open .nav-toggle .bar.top    { top: 21px; transform: rotate(45deg); }
+  body.drawer-open .nav-toggle .bar.mid    { opacity: 0; transform: scaleX(0.5); }
+  body.drawer-open .nav-toggle .bar.bottom { top: 21px; transform: rotate(-45deg); }
+  @media (max-width: 1024px) {
+    .nav-toggle { display: inline-flex; }
+    .nav-right .nav-lang { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-toggle .bar { transition: opacity 0.15s ease; }
+    body.drawer-open .nav-toggle .bar.top,
+    body.drawer-open .nav-toggle .bar.bottom { transform: none; top: 21px; }
+    body.drawer-open .nav-toggle .bar.mid    { opacity: 0; }
+  }
+
+  .nav-drawer-backdrop {
+    position: fixed; inset: 0; z-index: 199;
+    background: rgba(5,7,12,0.55);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+  body.drawer-open .nav-drawer-backdrop {
+    opacity: 1; pointer-events: auto;
+  }
+
+  .nav-drawer {
+    position: fixed; top: 0; right: 0;
+    width: min(420px, 100%);
+    height: 100vh; height: 100dvh;
+    background: var(--bg-secondary);
+    z-index: 200;
+    transform: translateX(100%);
+    transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0s linear 0.38s;
+    display: flex; flex-direction: column;
+    border-left: 1px solid var(--accent-gold);
+    box-shadow: -24px 0 64px rgba(0,0,0,0.45);
+    overflow-y: auto;
+    visibility: hidden;
+  }
+  body.drawer-open .nav-drawer {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0s linear 0s;
+  }
+  .nav-drawer::before {
+    content: ''; position: absolute; top: 0; bottom: 0; left: 0;
+    width: 1px;
+    background: linear-gradient(180deg,
+      var(--accent-gold) 0%,
+      rgba(236,231,17,0.4) 60%,
+      transparent 100%);
+  }
+
+  .nav-drawer-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.6rem 1.8rem 0.6rem;
+    min-height: 72px;
+    flex-shrink: 0;
+  }
+  .nav-drawer-eyebrow {
+    font-family: var(--font-stencil);
+    font-size: 0.72rem; letter-spacing: 0.32em;
+    color: var(--text-muted); text-transform: uppercase;
+  }
+  .nav-drawer-close {
+    width: 40px; height: 40px;
+    display: inline-flex; align-items: center; justify-content: center;
+    position: relative;
+    color: var(--text-secondary);
+    transition: color 0.25s;
+  }
+  .nav-drawer-close:hover, .nav-drawer-close:focus-visible {
+    color: var(--accent-gold); outline: none;
+  }
+  .nav-drawer-close:focus-visible { box-shadow: 0 0 0 2px rgba(236,231,17,0.4); }
+  .nav-drawer-close .x-line {
+    position: absolute; left: 10px; right: 10px;
+    height: 1.5px; background: currentColor; top: 19px;
+  }
+  .nav-drawer-close .x-line:nth-child(1) { transform: rotate(45deg); }
+  .nav-drawer-close .x-line:nth-child(2) { transform: rotate(-45deg); }
+
+  .nav-drawer-links {
+    display: flex; flex-direction: column;
+    padding: 2rem 1.8rem 1.4rem;
+  }
+  .nav-drawer-links a {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 1rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--font-stencil);
+    font-size: 1.45rem; letter-spacing: 0.06em;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    transition: color 0.25s, padding-left 0.25s;
+    opacity: 0; transform: translateY(14px);
+  }
+  .nav-drawer-links a:last-child { border-bottom: none; }
+  .nav-drawer-links a .jp {
+    font-family: var(--font-body); font-weight: 400;
+    font-size: 0.85rem; letter-spacing: 0.18em;
+    color: var(--text-muted);
+    transition: color 0.25s;
+  }
+  .nav-drawer-links a .live-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent-gold);
+    align-self: center; margin-left: 0.4rem;
+    animation: pulse 1.8s ease-in-out infinite;
+    box-shadow: 0 0 8px rgba(236,231,17,0.5);
+  }
+  .nav-drawer-links a:hover, .nav-drawer-links a:focus-visible {
+    color: var(--accent-gold); padding-left: 0.35rem; outline: none;
+  }
+  .nav-drawer-links a:hover .jp, .nav-drawer-links a:focus-visible .jp {
+    color: var(--text-secondary);
+  }
+  body.drawer-open .nav-drawer-links a {
+    opacity: 1; transform: translateY(0);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                color 0.25s, padding-left 0.25s;
+  }
+  body.drawer-open .nav-drawer-links a:nth-child(1) { transition-delay: 0.12s; }
+  body.drawer-open .nav-drawer-links a:nth-child(2) { transition-delay: 0.18s; }
+  body.drawer-open .nav-drawer-links a:nth-child(3) { transition-delay: 0.24s; }
+  body.drawer-open .nav-drawer-links a:nth-child(4) { transition-delay: 0.30s; }
+  body.drawer-open .nav-drawer-links a:nth-child(5) { transition-delay: 0.36s; }
+
+  .nav-drawer-lang {
+    display: flex; gap: 0.4rem;
+    padding: 1.2rem 1.8rem;
+    border-top: 1px solid var(--line);
+    margin-top: auto;
+    flex-shrink: 0;
+  }
+  .nav-drawer-lang .nav-lang {
+    display: inline-flex; padding: 0.55rem 1rem;
+    border: 1px solid var(--line-2);
+    letter-spacing: 0.2em; font-weight: 600; font-size: 0.72rem;
+  }
+  .nav-drawer-lang .nav-lang.active {
+    border-color: var(--accent-gold); color: var(--accent-gold);
+  }
+
+  .nav-drawer-foot {
+    padding: 1.2rem 1.8rem 2rem;
+    border-top: 1px solid var(--line);
+    font-family: var(--font-body); font-size: 0.78rem;
+    color: var(--text-muted); letter-spacing: 0.04em; line-height: 1.7;
+    flex-shrink: 0;
+  }
+  .nav-drawer-foot a {
+    color: var(--accent-gold);
+    border-bottom: 1px solid rgba(236,231,17,0.25);
+    transition: color 0.25s, border-color 0.25s;
+  }
+  .nav-drawer-foot a:hover, .nav-drawer-foot a:focus-visible {
+    color: #fff; border-color: #fff; outline: none;
+  }
+  .nav-drawer-foot .legal {
+    margin-top: 0.6rem; font-size: 0.68rem;
+    color: var(--text-muted); letter-spacing: 0.05em;
+  }
+
+  body.drawer-open { overflow: hidden; }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-drawer { transition: none; }
+    .nav-drawer-backdrop { transition: none; }
+    .nav-drawer-links a { transition: none !important; }
+    body.drawer-open .nav-drawer-links a {
+      transition-delay: 0s !important;
+    }
+  }
+
+  /* === BACK-TO-TOP BUTTON =====
+     Fixed bottom-right, hidden until scroll past hero. Premium minimal:
+     small square with a 1px gold border and thin yellow up-arrow. */
+  .back-to-top {
+    position: fixed;
+    right: max(1.5rem, env(safe-area-inset-right, 0));
+    bottom: max(1.5rem, env(safe-area-inset-bottom, 0));
+    width: 48px; height: 48px;
+    background: rgba(10,13,20,0.75);
+    border: 1px solid rgba(236,231,17,0.4);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    color: var(--accent-gold);
+    display: inline-flex; align-items: center; justify-content: center;
+    z-index: 150;
+    opacity: 0; pointer-events: none;
+    transform: translateY(8px);
+    transition: opacity 0.35s ease, transform 0.35s ease,
+                background 0.25s ease, border-color 0.25s ease;
+    cursor: pointer;
+  }
+  .back-to-top.is-visible {
+    opacity: 1; pointer-events: auto; transform: translateY(0);
+  }
+  .back-to-top:hover, .back-to-top:focus-visible {
+    background: rgba(236,231,17,0.95);
+    color: var(--bg-primary);
+    border-color: var(--accent-gold);
+    outline: none;
+  }
+  .back-to-top:focus-visible {
+    box-shadow: 0 0 0 3px rgba(236,231,17,0.35);
+  }
+  .back-to-top .arrow {
+    width: 14px; height: 14px;
+    position: relative;
+  }
+  /* Up-arrow built from two thin diagonals + a vertical stem,
+     drawn from inline CSS so no SVG dependency. */
+  .back-to-top .arrow::before,
+  .back-to-top .arrow::after {
+    content: ''; position: absolute;
+    background: currentColor;
+    transition: background 0.25s ease;
+  }
+  .back-to-top .arrow::before {
+    /* vertical stem */
+    left: 50%; top: 0; bottom: 0;
+    width: 1.5px; transform: translateX(-50%);
+  }
+  .back-to-top .arrow::after {
+    /* arrowhead — two short lines via box-shadow trick */
+    left: 50%; top: 0;
+    width: 8px; height: 8px;
+    border-top: 1.5px solid currentColor;
+    border-left: 1.5px solid currentColor;
+    background: transparent;
+    transform: translateX(-50%) rotate(45deg);
+    transform-origin: top left;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .back-to-top { transition: opacity 0.2s ease; transform: none; }
+    .back-to-top.is-visible { transform: none; }
+  }
+
   /* === HERO === */
   .hero {
     position: relative; height: 100vh; min-height: 700px;
@@ -970,26 +1276,76 @@
 <body>
 
 <!-- Skip link for keyboard nav -->
-<a href="#main" class="skip-link">Skip to main content</a>
+<a href="#top" class="skip-link">Skip to main content</a>
 
 <!-- Noise overlay -->
 <div class="noise" aria-hidden="true"></div>
 
-<!-- NAV -->
+<!-- NAV — unified with homepage. Section links on desktop fade out
+     past hero scroll, leaving logo + Inquire CTA. Hamburger drawer
+     replaces section links on mobile. -->
 <nav id="nav">
   <div class="nav-left">
-    <a href="/" aria-label="Absolute Racing — home">
+    <a href="/" aria-label="Absolute Japan — home">
       <img src="https://absoluteracing.net/images/assets/ar-logo.png" alt="Absolute Racing" class="nav-logo">
     </a>
+    <div class="nav-divider" aria-hidden="true"></div>
+    <span class="nav-wordmark">ジャパン</span>
+  </div>
+  <div class="nav-links">
+    <a href="#top" class="live">Exports</a>
+    <a href="/#tokyo">Tokyo</a>
+    <a href="/#inner-circle">Inner Circle</a>
+    <a href="/#racing">Racing</a>
+    <a href="/#connect">Connect</a>
   </div>
   <div class="nav-right">
     <button type="button" class="nav-lang active" aria-pressed="true" aria-label="English (current language)">EN</button>
     <button type="button" class="nav-lang" aria-pressed="false" aria-label="Switch to Japanese" title="日本語版近日公開 — Japanese version coming soon">JP</button>
     <a href="#contact" class="nav-cta" id="nav-cta" aria-label="Jump to inquiry form" tabindex="-1" aria-hidden="true">Inquire →</a>
+    <button class="nav-toggle" type="button" id="nav-toggle"
+            aria-controls="nav-drawer" aria-expanded="false" aria-label="Open menu">
+      <span class="bar top" aria-hidden="true"></span>
+      <span class="bar mid" aria-hidden="true"></span>
+      <span class="bar bottom" aria-hidden="true"></span>
+    </button>
   </div>
 </nav>
 
-<main id="main">
+<!-- Mobile drawer -->
+<div class="nav-drawer-backdrop" id="nav-drawer-backdrop" aria-hidden="true"></div>
+<aside class="nav-drawer" id="nav-drawer" role="dialog" aria-modal="true"
+       aria-labelledby="nav-drawer-heading" tabindex="-1">
+  <h2 id="nav-drawer-heading" class="sr-only">Site navigation</h2>
+  <div class="nav-drawer-head">
+    <span class="nav-drawer-eyebrow">Menu</span>
+    <button type="button" class="nav-drawer-close" id="nav-drawer-close" aria-label="Close menu">
+      <span class="x-line" aria-hidden="true"></span>
+      <span class="x-line" aria-hidden="true"></span>
+    </button>
+  </div>
+  <nav class="nav-drawer-links" aria-label="Sections">
+    <a href="#top">
+      <span>Exports <span class="live-dot" aria-hidden="true"></span></span>
+      <span class="jp">輸出</span>
+    </a>
+    <a href="/#tokyo"><span>Tokyo</span><span class="jp">東京</span></a>
+    <a href="/#inner-circle"><span>Inner Circle</span><span class="jp">インナーサークル</span></a>
+    <a href="/#racing"><span>Racing</span><span class="jp">レーシング</span></a>
+    <a href="/#connect"><span>Connect</span><span class="jp">お問い合わせ</span></a>
+  </nav>
+  <div class="nav-drawer-lang" role="group" aria-label="Language">
+    <button class="nav-lang active" type="button" aria-pressed="true">EN</button>
+    <button class="nav-lang" type="button" aria-pressed="false"
+            title="日本語版近日公開 — Japanese version coming soon">JP</button>
+  </div>
+  <div class="nav-drawer-foot">
+    General inquiries: <a href="mailto:info@absoluteracing.jp">info@absoluteracing.jp</a>
+    <p class="legal">© 2026 Absolute Racing. All rights reserved.</p>
+  </div>
+</aside>
+
+<main id="top">
 
 <!-- HERO -->
 <section class="hero" aria-labelledby="hero-title">
@@ -1396,6 +1752,10 @@
 
 </main>
 
+<button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top">
+  <span class="arrow" aria-hidden="true"></span>
+</button>
+
 <!-- ACCENT STRIPE -->
 <div class="accent-stripe" aria-hidden="true"></div>
 
@@ -1446,11 +1806,127 @@
     const next = y > window.innerHeight * 0.7;
     if (next !== pastHero) {
       pastHero = next;
+      // Condensed nav: fade out section-links + lang toggle so logo +
+      // Inquire are the sole chrome past the hero.
+      document.body.classList.toggle('nav-condensed', pastHero);
       syncNavCta();
+      syncBackToTop();
     }
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  // === Back-to-top button =====
+  // Hidden until past hero. Smooth-scroll to top on click; instant on
+  // prefers-reduced-motion. Tab order tracks visibility so keyboard
+  // users can't focus the invisible button.
+  const backTop = document.getElementById('back-to-top');
+  const prefersReducedMotionGlobal =
+    window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function syncBackToTop() {
+    if (!backTop) return;
+    backTop.classList.toggle('is-visible', pastHero);
+    if (pastHero) {
+      backTop.removeAttribute('tabindex');
+      backTop.removeAttribute('aria-hidden');
+    } else {
+      backTop.setAttribute('tabindex', '-1');
+      backTop.setAttribute('aria-hidden', 'true');
+    }
+  }
+  syncBackToTop();
+
+  if (backTop) {
+    backTop.addEventListener('click', function () {
+      window.scrollTo({
+        top: 0,
+        behavior: prefersReducedMotionGlobal ? 'auto' : 'smooth'
+      });
+    });
+  }
+
+  // === Mobile drawer =====
+  (function () {
+    const trigger  = document.getElementById('nav-toggle');
+    const drawer   = document.getElementById('nav-drawer');
+    const closer   = document.getElementById('nav-drawer-close');
+    const backdrop = document.getElementById('nav-drawer-backdrop');
+    const mainEl   = document.getElementById('top');
+    if (!trigger || !drawer) return;
+
+    let lastFocused = null;
+    let lockedY = 0;
+
+    function focusables() {
+      return drawer.querySelectorAll(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+    }
+
+    function openDrawer() {
+      if (document.body.classList.contains('drawer-open')) return;
+      lastFocused = document.activeElement;
+      lockedY = window.scrollY;
+      document.body.style.top = '-' + lockedY + 'px';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.classList.add('drawer-open');
+      trigger.setAttribute('aria-expanded', 'true');
+      trigger.setAttribute('aria-label', 'Close menu');
+      if (mainEl) {
+        if ('inert' in mainEl) mainEl.inert = true;
+        else mainEl.setAttribute('aria-hidden', 'true');
+      }
+      setTimeout(function () { if (closer) closer.focus(); }, 60);
+    }
+
+    function closeDrawer() {
+      if (!document.body.classList.contains('drawer-open')) return;
+      document.body.classList.remove('drawer-open');
+      trigger.setAttribute('aria-expanded', 'false');
+      trigger.setAttribute('aria-label', 'Open menu');
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, lockedY);
+      if (mainEl) {
+        if ('inert' in mainEl) mainEl.inert = false;
+        else mainEl.removeAttribute('aria-hidden');
+      }
+      if (lastFocused && typeof lastFocused.focus === 'function') {
+        lastFocused.focus();
+      }
+    }
+
+    trigger.addEventListener('click', openDrawer);
+    if (closer)   closer.addEventListener('click', closeDrawer);
+    if (backdrop) backdrop.addEventListener('click', closeDrawer);
+
+    drawer.querySelectorAll('.nav-drawer-links a').forEach(function (a) {
+      a.addEventListener('click', function () { closeDrawer(); });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!document.body.classList.contains('drawer-open')) return;
+      if (e.key === 'Escape') { e.preventDefault(); closeDrawer(); return; }
+      if (e.key !== 'Tab') return;
+      const items = focusables();
+      if (!items.length) return;
+      const first = items[0];
+      const last  = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault(); last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault(); first.focus();
+      }
+    });
+
+    const mq = window.matchMedia('(min-width: 1025px)');
+    function onChange(e) { if (e.matches) closeDrawer(); }
+    if (mq.addEventListener) mq.addEventListener('change', onChange);
+    else mq.addListener(onChange);
+  })();
 
   // Hide the nav CTA when the contact section is in view — it
   // shouldn't sit over its own destination.
